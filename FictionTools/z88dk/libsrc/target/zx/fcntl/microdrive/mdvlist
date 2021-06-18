@@ -1,0 +1,8 @@
+close
+lseek
+open
+readbyte
+remove
+rename
+fdtell
+writebyte

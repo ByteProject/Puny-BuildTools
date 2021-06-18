@@ -1,0 +1,80 @@
+1     0000              ; Substitute for z80 rld instruction
+2     0000              ; aralbrec 06.2007
+3     0000              ; CPU   Min T Max T
+4     0000              ; 8080  201   232
+5     0000              ; 8085  197   226
+6     0000              ; gbz80 164   188
+7     0000              ; r2k   108   125
+8     0000              ; z180   18    18
+9     0000              ; z80    18    18
+10    0000              ; z80n   18    18
+11    0000              
+12    0000                    SECTION  code_crt0_sccz80
+13    0000                    PUBLIC   __z80asm__rld
+14    0000              
+15    0000              __z80asm__rld:
+16    0000              
+17    0000  30 05             jr    nc, dorld
+18    0002              
+19    0002  CD 07 00          call  dorld
+20    0005  37                scf
+21    0006  C9                ret
+22    0007              
+23    0007              dorld:
+24    0007              
+25    0007              IF __CPU_INTEL__              ; a = xi, (hl) = jk --> a = xj, (hl) = ki
+26    0007                    push  de
+27    0007                    push  hl
+28    0007              
+29    0007                    ld    l, (hl)
+30    0007                    ld    h, 0              ; hl = 00jk
+31    0007              
+32    0007                    ld    d, a              ; d = xi
+33    0007                    and   0xf0
+34    0007                    ld    e, a              ; e = x0
+35    0007                    ld    a, d
+36    0007                    and   0x0f
+37    0007                    ld    d, a              ; d = a = 0i
+38    0007              
+39    0007                    add   hl, hl
+40    0007                    add   hl, hl
+41    0007                    add   hl, hl
+42    0007                    add   hl, hl            ; a = 0i, hl = 0jk0
+43    0007              
+44    0007                    add   a, l
+45    0007                    ld    l, a              ; a = 0i, hl = 0jki
+46    0007                    ld    a, h              ; a = 0j, hl = 0jki
+47    0007                    add   a, e              ; a = xj, hl = 0jki
+48    0007              
+49    0007                    ld    e, l              ; a = xj, e = ki
+50    0007              
+51    0007                    pop   hl
+52    0007                    ld    (hl), e           ; a = xj, (hl) = ki
+53    0007              
+54    0007                    pop   de
+55    0007              ELSE
+56    0007  07                rlca
+57    0008  07                rlca
+58    0009  07                rlca
+59    000A  07                rlca                    ; a = bits 32107654
+60    000B              
+61    000B  CB 27             sla   a
+62    000D  CB 16             rl    (hl)
+63    000F  CE 00             adc   a, 0
+64    0011              
+65    0011  17                rla
+66    0012  CB 16             rl    (hl)
+67    0014  CE 00             adc   a, 0
+68    0016              
+69    0016  17                rla
+70    0017  CB 16             rl    (hl)
+71    0019  CE 00             adc   a, 0
+72    001B              
+73    001B  17                rla
+74    001C  CB 16             rl    (hl)
+75    001E  CE 00             adc   a, 0
+76    0020              ENDIF
+77    0020              
+78    0020  B7                or    a
+79    0021  C9                ret
+80    0022              

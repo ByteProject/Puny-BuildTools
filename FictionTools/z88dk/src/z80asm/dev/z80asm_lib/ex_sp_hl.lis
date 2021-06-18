@@ -1,0 +1,34 @@
+1     0000              ; Substitute for the z80 ex (sp),hl instruction
+2     0000              ; CPU   Min T Max T
+3     0000              ; 8080   18    18
+4     0000              ; 8085   16    16
+5     0000              ; gbz80 148   148
+6     0000              ; r2k    15    15
+7     0000              ; z180   16    16
+8     0000              ; z80    19    19
+9     0000              ; z80n   19    19
+10    0000              
+11    0000              IF __CPU_GBZ80__
+12    0000                    SECTION  code_crt0_sccz80
+13    0000                    PUBLIC   __z80asm__ex_sp_hl
+14    0000              
+15    0000              __z80asm__ex_sp_hl:
+16    0000                    push  af                ;16
+17    0000                    push  de                ;16
+18    0000                    ld    d, h              ;4			DE = HL0
+19    0000                    ld    e, l              ;4
+20    0000                    ld    hl, sp+6          ;12, (sp)	HL = & SP0
+21    0000                    ld    a, (hl)           ;8
+22    0000                    ld    (hl), e           ;8
+23    0000                    ld    e, a              ;4			swap low HL0, SP0
+24    0000                    inc   hl                ;8			HL = & SP0+1
+25    0000                    ld    a, (hl)           ;8
+26    0000                    ld    (hl), d           ;8
+27    0000                    ld    h, a              ;4			swap hi HL0, SP0 -> HL
+28    0000                    ld    l, e              ;4
+29    0000                    pop   de                ;12
+30    0000                    pop   af                ;12
+31    0000                    ret                     ;16
+32    0000              
+33    0000              ENDIF
+34    0000              

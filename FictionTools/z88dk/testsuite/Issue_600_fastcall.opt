@@ -1,0 +1,158 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_600_fastcall_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function func1 flags 0x00000208 __smallc __z88dk_fastcall 
+; void func1(int fd)
+; parameter 'int fd' at 2 size(2)
+._func1
+	push	hl
+	ld	hl,0	;const
+	ld	d,h
+	ld	e,l
+	push	de
+	push	hl
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_gint	;
+	push	hl
+	call	_func
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function func2 flags 0x00000208 __smallc __z88dk_fastcall 
+; void func2(long val, int fd)
+; parameter 'int fd' at 2 size(2)
+; parameter 'long val' at 4 size(4)
+._func2
+	push	hl
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_glong2sp
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_gint	;
+	push	hl
+	call	_func
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function func3 flags 0x00000008 __stdc __z88dk_fastcall 
+; void func3(int fd)
+; parameter 'int fd' at 2 size(2)
+._func3
+	push	hl
+	ld	hl,0	;const
+	ld	d,h
+	ld	e,l
+	push	de
+	push	hl
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_gint	;
+	push	hl
+	call	_func
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function callfunc1 flags 0x00000200 __smallc 
+; void callfunc1()
+._callfunc1
+	ld	hl,10	;const
+	call	_func1
+	ret
+
+
+
+; Function callfunc2 flags 0x00000200 __smallc 
+; void callfunc2()
+._callfunc2
+	ld	hl,1000	;const
+	ld	de,0
+	push	de
+	push	hl
+	ld	hl,10	;const
+	call	_func2
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function callfunc3 flags 0x00000200 __smallc 
+; void callfunc3()
+._callfunc3
+	ld	hl,10	;const
+	call	_func3
+	ret
+
+
+
+; Function callfunc4 flags 0x00000200 __smallc 
+; void callfunc4()
+._callfunc4
+	ld	hl,10	;const
+	push	hl
+	ld	hl,1000	;const
+	ld	de,0
+	push	de
+	push	hl
+	call	_func4
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_func
+	GLOBAL	_func1
+	GLOBAL	_func2
+	GLOBAL	_func3
+	GLOBAL	_func4
+	GLOBAL	_callfunc1
+	GLOBAL	_callfunc2
+	GLOBAL	_callfunc3
+	GLOBAL	_callfunc4
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

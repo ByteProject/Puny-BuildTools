@@ -1,0 +1,120 @@
+-------------------------
+
+3D Libraries (2/15/2002)
+
+Doc taken from the OZ Developement kit.
+See section III for Credits on this file and on the whole library
+
+$Id: lib3d.txt,v 1.3 2004-03-02 16:49:48 stefano Exp $
+
+-------------------------
+
+TOC
+I.   Introduction
+II.  Reference
+III. Credits/Acknowledgements
+IV.  Links
+
+
+I. Introduction
+----------------
+The 3D Libraries include a standard set of functions for making your own 3D functions. This document is a reference for these functions.
+
+
+
+II. Reference
+--------------
+The following is a reference for the available functions in lib3d.lib. Please note that you will have to include "lib3d.h" in order to use these functions in your code.
+
+
+
+	void ozrotatepointx(Vector_t *v, int rot)
+	void ozrotatepointy(Vector_t *v, int rot)
+	void ozrotatepointz(Vector_t *v, int rot)
+
+Use these functions to rotate a vector around the origin. The variable 'rot' is the rotation factor in degrees (?), not radians (? × p ÷ 180). Note: Do not rotate the original coordinates! This will distort an object after a few times of use. Use ozcopyvector() to first copy the coordinates into a temporary variable and rotate them there.
+
+Example:
+...
+Vector_t v;
+...
+v.x = 10;
+v.y = 10;
+v.z = 10;
+ozrotatepointx(&v, 90);
+ozrotatepointy(&v, 90);
+ozrotatepointz(&v, 90);
+...
+
+
+
+	void ozcopyvector(Vector_t *dest, Vector_t *src)
+
+This function copies a vector's X, Y, and Z coordinates from *src to *dest.
+
+Example:
+...
+Vector_t v1;
+Vector_t v2;
+...
+ozcopyvector(&v2, &v1);
+...
+
+
+
+	void oztranslatevector(Vector_t *v, Vector_t *offset)
+
+Offset a vector by using this function. It will add the X, Y and Z coordinates from *offset to *v.
+
+Example:
+...
+Vector_t v1;
+Vector_t v2;
+...
+oztranslatevector(&v2, &v1);
+...
+
+
+
+	void ozplotpointcam(Vector_t *v, Cam_t *c, Point_t *p)
+
+This function will convert 3D vectors (X, Y, Z) into 2D Points (X, Y). This will even compensate for camera's position and angle. If you do not wish to use a camera in your program, use ozplotpoint() instead (see next function.)
+
+Example:
+...
+Vector_t v;
+Point_t p;
+Cam_t mycam;
+...
+ozplotpointcam(&v, &mycam, &p);
+...
+
+
+
+	void ozplotpoint(Vector_t *v, Point_t *p)
+
+This function converts 3D vectors to 2D points without compensating for camera's position, thus it is much faster.
+
+Example:
+...
+Vector_t v;
+Point_t p;
+...
+ozplotpointcam(&v, &p);
+...
+
+
+
+
+III. Credits/Acknowledgements
+
+3D Libraries Copyright© 2002, Mark Hamilton Jr. Vector rotation optimizations performed by Lawrence Chitty. Wonderful Sine and Cosine enhancements done by Alexander Pruss.
+Many thanks to on-line tutorials, Alexander Pruss and Benjamin Green for helping me with 3D concepts. I certainly learned a lot from this experience.
+
+
+
+
+IV. Links
+
+http://evesw.techmods.com - My development site.
+http://www.ozdev.com - You should know this place--it's where you got the Hi-Tech C compiler from!

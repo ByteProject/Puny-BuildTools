@@ -1,0 +1,36 @@
+$Id: README,v 1.3 2002-01-02 09:50:49 stefano Exp $
+
+
+Since all the TI calculators' startup files have been modified to be
+"bin2var" compatible, the old conversion tool aren't supported anymore.
+
+This HOWTO is much more simple now:
+
+
+TI82: CrASH shell SDK suggested (http://www.lfx.org/crashware/ or http://www.ticalc.org)
+
+
+TI83: All the Shells ! (http://www.ticalc.org/pub/83/asm/shells)
+	Change the -startup flag at compile time (see TI83_CRT0.ASM)
+	ION Shell is used by default, now.
+
+TI83 plus: Tested under the ION SHELL (http://www.ticalc.org/pub/83plus/asm/shells/ion.zip).
+
+TI85: We heavily changed the binary structure, recently !!
+
+TI86: Different options available; the LASM startup is good for long programs,
+      otherwise choose another shell or the pure asm() exec starup.
+      LASM can be found on http://www.ticalc.org/pub/86/asm/shells/ti86no8k.zip
+      this will go over the 8Kb barrier.
+
+
+Generic examples :
+	- zcc +ti85ansi -lm program.c
+	- bin2var a.bin program.85s
+
+	- zcc +ti83 -lm -startup=2 program.c
+	- bin2var a.bin program.83p
+
+	- zcc +ti8xansi -lm -startup=1 program.c
+	- bin2var a.bin program.8xp
+

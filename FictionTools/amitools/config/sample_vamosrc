@@ -1,0 +1,19 @@
+[volumes]
+shared=~/amiga/chris/shared
+system=~/amiga
+
+[assigns]
+c=system:c
+
+[path]
+# every undefined assign "xy:" will be mapped to "system:xy/"
+auto_assign=system:
+
+# disable loading library in any case
+[68040.library]
+mode=off
+
+# "auto" mode: either use amiga library if available and fall back
+# to vamos internal lib if not amiga library was found
+[icon.library]
+mode=auto

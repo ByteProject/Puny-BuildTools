@@ -1,0 +1,83 @@
+#!/bin/sh
+
+#  Copyright (c) 2019 Andy Kosela <akosela@andykosela.com>
+#  All rights reserved.
+#
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions
+#  are met:
+#  1. Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+#  2. Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in
+#     the documentation and/or other materials provided with the
+#     distribution.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS''
+#  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+#  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+#  PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR
+#  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+#  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+#  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+#  OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+#  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+#  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#  Adaption to PunyInform by Stefan Vogt, Puddle Soft.
+
+inform=~/FictionTools/inform6
+lib=~/Projects/8bit/Z-Machine/lib/lib/
+a8bin=~/FictionTools/atari8bit/a8.bin
+v=-v3
+suffix=_atari8bit
+
+main()
+{
+	$inform -d2esi $v +$lib $game
+	game=`basename $game .inf`
+	if [ ! -z $a8bin ]; then
+		cat $a8bin $game.z3 > ${game}${suffix}.atr 2>/dev/null
+		size=`ls -l ${game}${suffix}.atr | cut -d' ' -f5`
+		head --bytes $((133136-$size)) /dev/zero >> ${game}${suffix}.atr
+	fi
+	exit 0
+}
+
+usage()
+{
+	echo "PUDDLE BUILDTOOLS FOR PUNYINFORM V1.0"
+	echo "Usage: puny game.inf"
+	echo "       puny [-5] game.inf"
+	echo ""
+	echo "       -5 : create v5 release"
+	echo ""
+	echo "By default puny creates Z-code v3 releases."
+	echo "No Atari 8-bit disk image output for v5 targets."
+	exit 0
+}
+
+# Start of script
+
+if [ ! -z `echo $1 | grep '.inf'` ]; then
+	game=$1
+	main
+elif [ -z "$1" ]; then
+	usage
+fi	
+
+while getopts 5:h opts
+do
+	case $opts in
+		5) game=$2
+		   v=-v5
+		   a8bin=""
+		   main
+		;;
+		h) usage
+		;;
+		*) usage
+		;;
+	esac
+done

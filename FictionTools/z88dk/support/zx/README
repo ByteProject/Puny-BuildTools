@@ -1,0 +1,35 @@
+$Id: README,v 1.4 2001-09-13 15:31:29 stefano Exp $
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+TAPMAKER:
+
+This is a quick and dirty hack originally written for
+mymzx - this takes any file and creates a .TAP file for it
+- the file contained is of type CODE and loads to address 0.
+
+This tool appends to the end of the specified .TAP file so
+watch out!
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+BIN2TAP:
+
+Creates .TAP file with a very simple BASIC loader at the beginning.
+After converting, a LOAD "" is sufficient to run your code !
+
+Warning:  this tool OVERWRITES the specified .TAP file !!!
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+BIN2BAS-REM:
+
+For skilled users only.
+Creates a .TAP file with a single BASIC REM line inside.
+The line has the binary code in it...
+
+Warning:  this tool OVERWRITES the specified .TAP file !!!
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

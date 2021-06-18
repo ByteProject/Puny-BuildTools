@@ -1,0 +1,23 @@
+1     0000              ; Substitute for the z80 adc hl,sp instruction
+2     0000              ; CPU   Min T Max T
+3     0000              ; 8080  57    62
+4     0000              ; 8085  60    63
+5     0000              ; gbz80 52    60
+6     0000              ; r2k    4     4
+7     0000              ; z180  10    10
+8     0000              ; z80   15    15
+9     0000              ; z80n  15    15
+10    0000              
+11    0000                    SECTION  code_crt0_sccz80
+12    0000                    PUBLIC   __z80asm__adc_hl_sp
+13    0000              
+14    0000              __z80asm__adc_hl_sp:
+15    0000  30 01             jr    nc, carry0
+16    0002  23                inc   hl
+17    0003              carry0:
+18    0003  23                inc   hl                ; compensate for return address on the stack
+19    0004  23                inc   hl
+20    0005              
+21    0005  39                add   hl, sp
+22    0006  C9                ret
+23    0007              

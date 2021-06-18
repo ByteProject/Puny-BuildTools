@@ -1,0 +1,144 @@
+digraph memory {
+    graph [nodesep=1, label="Ozmoo virtual memory data structures", fontsize=20, labelloc=t];
+    forcelabels=true;
+    node [shape=plaintext];
+
+    vmcache [label=<
+    <table border="0" cellborder="1" cellspacing="0">
+        <!-- SFTODO: could label start of this chunk of memory vmap_first_ram_page -->
+        <tr><td colspan="2" border="0">Virtual memory cache<br/>(vmap_max_entries 512-byte blocks)</td></tr>
+                    <tr>
+                        <td><i>VM cache index<br/>(implicit)</i></td>
+                        <td><i>512-byte data block</i></td>
+                    </tr>
+                    <tr>
+                        <td port="baz">0</td>
+                        <td>baz</td>
+                    </tr>
+                    <tr>
+                        <td port="wobble">1</td>
+                        <td>wobble</td>
+                    </tr>
+                    <tr><td colspan="2">...</td></tr>
+                    <tr>
+                        <td port="jim">vmap_max_entries-1</td>
+                        <td>jim</td>
+                    </tr>
+    </table>>];
+
+    vmap [label=<
+    <table border="0" cellborder="1" cellspacing="0">
+        <tr><td colspan="3" border="0">vmap<br/>(vmap_max_entries 16-bit words)</td></tr>
+        <tr>
+            <td><i>VM cache index<br/>(implicit)</i></td>
+            <td><i>timestamp<br/>(5-7 bits)</i></td>
+            <td><i>Z-machine address<br/>high+mid bytes<br/>(9-11 bits)</i></td>
+        </tr>
+        <tr><td>0</td><td>$61</td><td port="z002c">$002c</td></tr>
+        <tr><td port="1">1</td><td>$7e</td><td port="z0182">$0182</td></tr>
+        <tr><td colspan="3">...</td></tr>
+        <tr><td port="29">29</td><td>$7d</td><td>...</td></tr>
+        <tr><td colspan="3">...</td></tr>
+        <tr><td port="86">86</td><td>$7e</td><td>...</td></tr>
+        <tr><td colspan="3">...</td></tr>
+        <tr><td>vmap_max_entries-1</td><td>$2d</td><td port="z004a">$004a</td></tr>
+    </table>>];
+
+    zmachine [label=<
+    <table border="0" cellspacing="0">
+        <tr>
+            <td colspan="2" border="0">Z-code game file</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td border="1">...</td>
+        </tr>
+        <tr>
+            <td valign="bottom"><sub>$018400</sub></td>
+            <td border="1" cellpadding="10"><!-- Z-code: -->wubble</td>
+        </tr>
+        <tr>
+            <td port="z0182" valign="bottom"><sub>$018200</sub></td>
+            <td port="wobble" border="1" cellpadding="10"><!-- Z-code: -->wobble</td>
+        </tr>
+        <tr>
+            <td valign="bottom"><sub>$018000</sub></td>
+            <td border="1" cellpadding="10"><!-- Z-code: -->wibble</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td border="1">...</td>
+        </tr>
+        <tr>
+            <td valign="bottom"><sub>$004c00</sub></td>
+            <td border="1" cellpadding="10"><!-- Z-code: -->sheila</td>
+        </tr>
+        <tr>
+            <td port="z004a" valign="bottom"><sub>$004a00</sub></td>
+            <td port="jim" border="1" cellpadding="10"><!-- Z-code: -->jim</td>
+        </tr>
+        <tr>
+            <td valign="bottom"><sub>$004800</sub></td>
+            <td border="1" cellpadding="10"><!-- Z-code: -->fred</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td border="1">...</td>
+        </tr>
+        <tr>
+            <td valign="bottom"><sub>$002e00</sub></td>
+            <td border="1" cellpadding="10"><!-- Z-code: -->quux</td>
+        </tr>
+        <tr>
+            <td port="z002c" valign="bottom"><sub>$002c00</sub></td>
+            <td port="baz" border="1" cellpadding="10"><!-- Z-code: -->baz</td>
+        </tr>
+        <tr>
+            <td valign="bottom"><sub>$002a00</sub></td>
+            <td border="1" cellpadding="10"><!-- Z-code: -->bar</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td border="1">...</td>
+        </tr>
+        <tr>
+            <td valign="bottom"><sub>$000000</sub></td>
+            <td border="1" cellpadding="10"><!-- Z-code: -->foo</td>
+        </tr>
+    </table>>];
+
+    quickindex [label=<
+    <table border="0" cellborder="1" cellspacing="0">
+        <tr><td border="0">vmap_quick_index<br/>(vmap_quick_index_length<br/>8-bit VM cache indices)</td></tr>
+        <tr><td port="29">29</td></tr>
+        <tr><td port="1">1</td></tr>
+        <tr><td port="86">86</td></tr>
+    </table>>];
+
+    # vmapnextquickindex [label="vmap_next_quick_index"];
+
+    {rank = same; quickindex vmap zmachine vmcache};
+
+    vmap:z004a:e -> zmachine:z004a:sw;
+    vmap:z002c:e -> zmachine:z002c:sw;
+    vmap:z0182:e -> zmachine:z0182:sw;
+
+    zmachine:jim:e -> vmcache:jim:w;
+    zmachine:wobble:e -> vmcache:wobble:w;
+    zmachine:baz:e -> vmcache:baz:w;
+
+    quickindex:1:e -> vmap:1:w;
+    quickindex:29:e -> vmap:29:w;
+    quickindex:86:e -> vmap:86:w;
+
+    # vmapnextquickindex -> quickindex:29:w;
+}
+
+# Note that:
+# - Multiple vmap entries can share the same timestamp (as entries 1 and 86 do here), because the tick is only advanced when a block is fetched from disc but a vmap entry's timestamp is set to the current tick every time it's accessed.
+# - In general, to see if block $abcd00 is in RAM already, it's necessary to do a linear search of the whole of vmap for an entry containing the value $abcd.
+# - The vmap_quick_index entries point to the mostly recently accessed entries in vmap, and therefore those entries have the most recent timestamps in vmap. These entries are checked first to see if they are the block of interest, avoiding the need to do a linear search of the whole of vmap a lot of the time.
+# - Virtual memory blocks are always double-page-aligned, so the Z-machine address $abcd in vmap will normally have the least significant bit clear.
+# - The low and high bytes of each vmap entry are actually stored separately, at vmap_z_l and vmap_z_h respectively. This avoids the need to double-increment index registers to step through the entries. On the Acorn port, this also means we can have ~256 vmap entries accessed using index registers.
+
+# vi: sw=4 sts=4

@@ -1,0 +1,194 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_452_far_pointers_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function func flags 0x00000200 __smallc 
+; int func()
+._func
+	push	bc
+	dec	sp
+	ld	hl,0	;const
+	add	hl,sp
+	call	l_getptr
+	call	lp_gchar
+	call	l_sxt
+	inc	sp
+	pop	bc
+	ret
+
+
+
+; Function func2 flags 0x00000200 __smallc 
+; int func2()
+._func2
+	push	bc
+	dec	sp
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	l_getptr
+	call	l_inclong
+	pop	bc
+	call	l_putptr
+	call	l_declong
+	call	lp_gchar
+	call	l_sxt
+	inc	sp
+	pop	bc
+	ret
+
+
+
+; Function func3 flags 0x00000200 __smallc 
+; int func3()
+._func3
+	push	bc
+	dec	sp
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	l_getptr
+	call	l_inclong
+	pop	bc
+	call	l_putptr
+	call	lp_gchar
+	call	l_sxt
+	inc	sp
+	pop	bc
+	ret
+
+
+
+; Function func4 flags 0x00000200 __smallc 
+; int func4()
+._func4
+	push	bc
+	dec	sp
+	ld	hl,0	;const
+	add	hl,sp
+	call	l_getptr
+	ld	bc,3
+	add	hl,bc
+	jr	nc,ASMPC+3
+	inc	de
+	call	lp_gchar
+	call	l_sxt
+	inc	sp
+	pop	bc
+	ret
+
+
+
+; Function func5 flags 0x00000200 __smallc 
+; int func5(char *__far ptr, char val)
+; parameter 'char val' at 2 size(1)
+; parameter 'char *__far ptr' at 4 size(3)
+._func5
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_getptr
+	push	de
+	push	hl
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_gchar
+	exx
+	pop	hl
+	pop	de
+	exx
+	call	lp_pchar
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_getptr
+	push	de
+	push	hl
+	ld	hl,1	;const
+	push	hl
+	call	_func5
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function func6 flags 0x00000200 __smallc 
+; int func6()
+._func6
+	push	bc
+	pop	hl
+	push	hl
+	ld	de,0
+	push	de
+	push	hl
+	ld	hl,1	;const
+	push	hl
+	call	_func5
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function func7 flags 0x00000200 __smallc 
+; void func7()
+._func7
+	push	bc
+	dec	sp
+	ld	hl,0	;const
+	add	hl,sp
+	call	l_getptr
+	ld	bc,12
+	add	hl,bc
+	jr	nc,ASMPC+3
+	inc	de
+	push	de
+	push	hl
+	ld	hl,1	;const
+	exx
+	pop	hl
+	pop	de
+	exx
+	call	lp_pint
+	inc	sp
+	pop	bc
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_func
+	GLOBAL	_func2
+	GLOBAL	_func3
+	GLOBAL	_func4
+	GLOBAL	_func5
+	GLOBAL	_func6
+	GLOBAL	_func7
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

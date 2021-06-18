@@ -1,0 +1,56 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:25 2020
+
+
+
+	MODULE	Issue_1007_Fix_FP_Constant_Multiplication_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function do_something flags 0x00000200 __smallc 
+; void do_something(unsigned char param1, unsigned char param2)
+; parameter 'unsigned char param2' at 2 size(1)
+; parameter 'unsigned char param1' at 4 size(1)
+._do_something
+	ret
+
+
+
+; Function main flags 0x00000000 __stdc 
+; void main()
+._main
+	ld	hl,9	;const
+	push	hl
+	ld	hl,20	;const
+	push	hl
+	call	_do_something
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_do_something
+	GLOBAL	_main
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

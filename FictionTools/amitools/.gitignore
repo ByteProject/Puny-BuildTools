@@ -1,0 +1,17 @@
+*.egg-info
+*.egg
+__pycache__/
+build/
+dist/
+gen/
+emu.c
+emu.so
+emu.*.so
+emu.pyd
+.python-version
+.cache
+.pytest_cache
+.eggs
+.tox
+.idea
+.vscode

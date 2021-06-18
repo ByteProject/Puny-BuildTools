@@ -1,0 +1,90 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_295_structgetsfar_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	rodata_compiler
+._rooms
+	defw	_room0_desc + 0
+	defb	1
+	defb	2
+	defb	3
+	defw	_room1_desc + 0
+	defb	1
+	defb	2
+	defb	3
+	defw	_room2_desc + 0
+	defb	1
+	defb	2
+	defb	3
+	defw	_room3_desc + 0
+	defb	0
+	defb	0
+	defb	0
+	SECTION	code_compiler
+	SECTION	data_compiler
+._room0_desc
+	defm	"room0"
+	defb	10
+
+	defm	""
+	defb	0
+
+	SECTION	code_compiler
+	SECTION	data_compiler
+._room1_desc
+	defm	"room1"
+	defb	10
+
+	defm	""
+	defb	0
+
+	SECTION	code_compiler
+	SECTION	data_compiler
+._room2_desc
+	defm	"room2"
+	defb	10
+
+	defm	""
+	defb	0
+
+	SECTION	code_compiler
+	SECTION	data_compiler
+._room3_desc
+	defm	"room3"
+	defb	10
+
+	defm	""
+	defb	0
+
+	SECTION	code_compiler
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_room0_desc
+	GLOBAL	_room1_desc
+	GLOBAL	_room2_desc
+	GLOBAL	_room3_desc
+	GLOBAL	_rooms
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

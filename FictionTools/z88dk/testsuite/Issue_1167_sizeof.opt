@@ -1,0 +1,125 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_1167_sizeof_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function func1 flags 0x00000200 __smallc 
+; int func1()
+._func1
+	ld	hl,104	;const
+	ret
+
+
+
+; Function func1a flags 0x00000200 __smallc 
+; int func1a()
+._func1a
+	ld	hl,2	;const
+	ret
+
+
+
+; Function func1b flags 0x00000200 __smallc 
+; int func1b()
+._func1b
+	ld	hl,102	;const
+	ret
+
+
+
+; Function func1c flags 0x00000200 __smallc 
+; int func1c()
+._func1c
+	ld	hl,2	;const
+	ret
+
+
+
+; Function func1d flags 0x00000200 __smallc 
+; int func1d()
+._func1d
+	ld	hl,100	;const
+	ret
+
+
+
+; Function func2 flags 0x00000200 __smallc 
+; int func2()
+._func2
+	ld	hl,104	;const
+	ret
+
+
+
+; Function func2a flags 0x00000200 __smallc 
+; int func2a()
+._func2a
+	ld	hl,2	;const
+	ret
+
+
+
+; Function func2b flags 0x00000200 __smallc 
+; int func2b()
+._func2b
+	ld	hl,102	;const
+	ret
+
+
+
+; Function func2c flags 0x00000200 __smallc 
+; int func2c()
+._func2c
+	ld	hl,2	;const
+	ret
+
+
+
+; Function func2d flags 0x00000200 __smallc 
+; int func2d()
+._func2d
+	ld	hl,100	;const
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+._s	defs	104
+._ptr	defs	2
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_s
+	GLOBAL	_ptr
+	GLOBAL	_func1
+	GLOBAL	_func1a
+	GLOBAL	_func1b
+	GLOBAL	_func1c
+	GLOBAL	_func1d
+	GLOBAL	_func2
+	GLOBAL	_func2a
+	GLOBAL	_func2b
+	GLOBAL	_func2c
+	GLOBAL	_func2d
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

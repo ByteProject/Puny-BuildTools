@@ -1,0 +1,9 @@
+
+SECTION code_driver
+SECTION code_driver_terminal_output
+
+PUBLIC zx_01_output_fzx_tty_z88dk_29_right
+
+EXTERN zx_01_output_fzx_proc_move_right
+
+defc zx_01_output_fzx_tty_z88dk_29_right = zx_01_output_fzx_proc_move_right

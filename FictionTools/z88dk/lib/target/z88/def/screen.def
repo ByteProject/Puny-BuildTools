@@ -1,0 +1,20 @@
+lstoff
+
+; Standard Z88	Operating	System manifests:
+
+; The information below is defined	in Developers Notes, release 3.00
+; (c) Cambridge Computer	1989
+
+; Screen control:
+
+	DEFC	os_off  =	$EC06		; switch machine (screen) off
+
+	DEFC	os_sci  =	$D406		; alter screen	info
+	; arguments:
+		DEFC	sc_lr0  =	$01			; LORES0 (512 byte granularity)
+		DEFC	sc_lr1  =	$02			; LORES1 (4K granularity)
+		DEFC	sc_hr0  =	$03			; HIRES0 (8K granularity)
+		DEFC	sc_hr1  =	$04			; HIRES1 (2K granularity)
+		DEFC	sc_sbr  =	$05			; screen base (2K granularity)
+
+lston

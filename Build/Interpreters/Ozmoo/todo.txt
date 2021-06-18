@@ -1,0 +1,51 @@
+Known bugs
+----------
+
+Ideas for tasks / subprojects to do next
+----------------------------------------
+Handle case where REU is present but not large enough to hold entire game.
+
+Verify that game data was written correctly to REU and signal error if not.
+
+Keep everything in residential memory area in RAM rather than just the dynamic RAM. Decrease residential area as needed to make a game fit.
+
+Support REU for fast memory copying.
+
+Add fast-loader code.
+
+Investigate if we can keep channels open between two consecutive block reads, and if this would make the game faster.
+
+If and when we keep channel open between block reads, investigate best interleave value again.
+
+Handle disk errors (To see how it works now: use True Drive Emulation, type "save", detach all disks and try to go through with the save. The game locks up.) The question is how many bytes we are prepared to use on code to handle disk errors.
+
+Allow user to choose save/restore device, including tape, in non vmem mode. (Is this feasible?)
+
+Build config utility. Could be in same location as Z-machine stack and accessible on boot.
+
+Setup profiling, where we can see how much time is spent in different instructions over a session (Log # of executions and # of timer ticks).
+
+Output transcript to printer support.
+
+Add support to save/restore a memory area. (Do we even need this? Is it feasible?)
+
+
+Possible alternative versions / extensions
+------------------------------------------
+* Support for SD2IEC, which can use fileseek operators to load any part of a file in the file system.
+* A build mode where the whole game fits in memory from the start, and load/save will use the same device as the game was loaded from (tape or a disk drive)
+* PET version
+* Apple II version
+* Atari version
+* Oric Atmos/Telestrat version
+* NES/Famicom version
+* Commander X16
+
+Alternate versions / extensions which have been done
+----------------------------------------------------
+* C128 version which can use a C1571, additional RAM and 80-column mode.
+* Plus/4 version
+* Mega 65 version
+* BBC Micro version
+
+

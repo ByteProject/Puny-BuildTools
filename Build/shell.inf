@@ -1,0 +1,435 @@
+!% -~S
+!% $OMIT_UNUSED_ROUTINES=1
+!% $MAX_ABBREVS=96
+!% $TRANSCRIPT_FORMAT=1
+!% -r
+! ----------------------------------------------------------------------------
+!  A SHELL AT THE SEASIDE
+!  An advanced interactive Skeleton
+!  Made public domain in 2021 Stefan Vogt, Puddle Soft.
+!  http://8bitgames.itch.io | http://puddlesoft.net
+! ----------------------------------------------------------------------------
+
+! IFID (http://babel.ifarchive.org) -- generate with https://uuidgenerator.net
+Array UUID_ARRAY string "UUID://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx//";
+#Ifdef UUID_ARRAY; #Endif;
+
+Switches e; ! Use Economize mode
+Include ">abbrvs_generic.h";
+
+Constant Story "A SHELL AT THE SEASIDE";
+Constant Headline "^An interactive Skeleton by Your Name^\
+                    First-time players should type ~about~^";
+Release 1;
+
+! game-specific defines
+!Constant DEBUG; ! deactivate for release
+Constant CUSTOM_ABBREVIATIONS;
+Constant MAX_CARRIED = 20;
+Constant OPTIONAL_SCORED;
+Constant OPTIONAL_FULL_SCORE;
+Constant OBJECT_SCORE = 3;
+Constant ROOM_SCORE = 3;
+Constant MAX_SCORE 10;
+Constant OPTIONAL_MANUAL_REACTIVE;
+Constant OPTIONAL_MANUAL_SCOPE;
+Constant INITIAL_LOCATION_VALUE = Seashore;
+#ifV5;
+Constant OPTIONAL_PROVIDE_UNDO; ! undo opcode is only supported in Z-machine v5 spec
+#endif;
+
+! 0 production build, 1 notification on errors, 2 full error messages
+Constant RUNTIME_ERRORS = 0;
+
+! routine overrides
+Replace PronounNotice;
+!Replace SmellSub;
+
+Include "globals.h";
+
+! cheap scenery
+[SceneryReply; !word1 word2;
+    Search:
+        !if (word1 == 'commodore' && word2 == 'atari') <<Search something>>;
+        "It's not necessary to search that.";
+    default:
+        rfalse;
+];
+Include "ext_cheap_scenery.h";
+
+! recurring messages and conversations (self-defined)
+Constant MESS_UNKNOWN_WORD "This game understands many words but ";
+Constant MESS_ONEMORETIME "You do it one more time without gaining any new insights.";
+Constant MESS_NONEEDAGAIN "There is no point in doing this again.";
+Constant MESS_SCENERY "You needn't worry about that.";
+Constant MESS_TURN_SELF "Now you feel dizzy. What a great idea that was.";
+Constant MESS_LANDMARK "You don't need to refer to doors and exits here.";
+Constant MESS_GO_LANDMARK "You decide to take a closer look and ";
+
+! messages (lib-overrides)
+Constant MSG_PROMPT 1000; 
+Constant MSG_TAKE_ANIMATE 1001;
+Constant MSG_EAT_ANIMATE 1002;
+Constant MSG_PARSER_NO_INPUT 1003;
+Constant MSG_PARSER_UNKNOWN_VERB 1004;
+Constant MSG_PARSER_CANT_SEE_SUCH_THING 1005;
+Constant MSG_PARSER_DONT_UNDERSTAND_WORD 1006;
+Constant MSG_LOOK_BEFORE_ROOMNAME 1007;
+Constant MSG_FILL_NO_WATER 1008;
+Constant MSG_INSERT_NOT_CONTAINER 1009; 
+Constant MSG_EMPTY_CANT_CONTAIN 1010;
+Constant MSG_OPEN_YOU_CANT 1011;
+[LibraryMessages p_msg p_arg_1 p_arg_2;
+ switch(p_msg) { 
+    MSG_PROMPT:
+      print ">";
+      p_arg_1 = p_arg_2;
+    MSG_TAKE_ANIMATE, MSG_EAT_ANIMATE:
+      "And you think ", (the) noun, " would be fine with that?";
+    MSG_PARSER_NO_INPUT:
+      "You won't get anywhere without entering something.^";
+    MSG_PARSER_UNKNOWN_VERB:
+      "This is an unknown verb. You should try something else.";
+    MSG_PARSER_CANT_SEE_SUCH_THING:
+      "What do you mean? I don't see that here.";
+    MSG_PARSER_DONT_UNDERSTAND_WORD:
+      print (string)MESS_UNKNOWN_WORD;
+			print "~";
+			_PrintUnknownWord();
+			print_ret "~ is not one of them.";
+    MSG_LOOK_BEFORE_ROOMNAME:
+      @new_line; ! mimics Inform style location texts, disable for Infocom style
+    MSG_FILL_NO_WATER:
+      "That doesn't seem to work. Are you referring to an object that can be filled with liquid? Please refer to the usage of the fill command by typing [fill object].";
+    MSG_INSERT_NOT_CONTAINER, 
+    MSG_EMPTY_CANT_CONTAIN:
+      print_ret "Either this object can't contain any things or doing it won't help you progress in this game.";
+    MSG_OPEN_YOU_CANT:
+      if (verb_word == 'operate' or 'access' or 'start' or 'unsecure' or 'consult') "That's not something you can operate or consult.";
+      "That doesn't seem to be something you can ", (verbname) p_arg_1, ".";
+   }
+ rfalse;
+];
+
+[PrintRank; ! this uses Puny's PrintRank feature
+  print ", earning you the rank: ";
+  if (score >= 10) "The Ten Commandments.";
+  if (score >= 5) "High Five.";
+  if (score >= 1) "The chosen One.";
+  "Absolute Zero.";
+];
+
+! flags (in the form of globals, which is very memory efficient)
+Global F_HELP = 0; ! asks player to type HELP when the game starts
+
+! will be triggered when the room is described
+! [ LookRoutine;
+! ];
+
+! will be triggered when you visit a new room
+! [ NewRoom;
+! ];
+
+Include "puny.h";
+
+! set this for non-animate objects that may be referred to with "him"
+Attribute male;
+
+! limbo for objects that we don't need anymore, beware of the grues!
+Object Limbo;
+
+! classes
+Class Room;      ! inside locations (walls in scope)
+Class Outside;   ! outside locations
+Class Character;  ! character class for NPCs
+
+! walls will be an object we put in scope on demand
+Object walls "walls"
+  with name 'wall' 'walls//p',
+      description [;
+          "You check the walls without gaining any new insights.";
+      ],
+      before [;
+          Attack: 
+            "There is surely a better way to deal with frustration.";
+          Turn:
+            "The walls? Are you serious?";
+          Push, Pull:
+            "The walls won't move.";
+      ],
+      found_in [;
+            if (location ofclass Room) rtrue;
+            if (location ofclass Outside) rfalse;
+      ],
+  has pluralname scenery;
+
+Outside Seashore "Seashore" ! -- locations start here
+  with  description [;
+            print "The ocean stretches endlessly towards the horizon, while wave after wave, rushing and roaring, the shore is churned and washed by the warm water.^^Shells glitter and flash in the white sand, reflecting beautiful colors back at you.";
+            if (F_HELP == 0) {
+              print "^^[For getting started type ~help~ and then hit enter.]";
+            }
+            new_line;
+        ],
+        cheap_scenery
+            'sky' 'horizon' "The sky and the ocean seem to merge in the distance. A majestic sight."
+            'shore' 'seashore' "This your favorite place to be."
+            '1' 'shells' "Look at all those beautiful shells!"
+            'white' 'sand' "Sand on tropical islands often looks white because it is made up of calcium carbonate, which comes from the shells and skeletons of reef-living marine organisms, including corals, mollusks and microorganisms called foraminifera."
+            'reef' 'corals' "Did you know that reefs are sometimes called rainforests of the sea?"
+            'beautiful' 'colors' "You could lose yourself in these.",
+   has light;
+
+Object -> ocean,
+  with description "The sea is very calm today. Delicate waves move slowly towards you. Through the clear, green water you can see the reef.",
+    parse_name [ n;
+      n=0;
+      while (NextWord()==
+      'ocean' or 'sea' or 'warm' or 'water' or 'wave' or 'waves' or 'clear' or 'green') {n++;}
+      return n;
+    ],
+    before [;
+      Examine:
+        rfalse; ! for this object we only want EXAMINE to work...
+      default:
+        print_ret (string)MESS_SCENERY; ! ...the rest triggers a standard message
+    ],
+  has scenery;
+
+[EndingSequence;
+  print "^Just as quickly as it began, it ended. What a shame.";
+  deadflag = 2; ! you have won!
+];
+
+[ Initialise; ! init vars and start the game
+  score = 0; ! your score is at 0 when you start the game, which kinda makes sense
+  notify_mode = false; ! deactivate score notifications if set false
+  lookmode = 2; ! activate verbose look mode
+
+  thedark.description = "It is pitch black. You are likely to be eaten by a grue."; ! I hail you, Infocom!
+
+  player.before = PlayerBefore; ! player.before override, see routine implementation
+  player.parse_name = PlayerParseName; ! own routine that parses the player's name
+  player.description = "There you are, a ghost in a shell, surrounded by a sea of shells.";
+  
+  print "^^\
+        And when he hath the kernel eat,^\
+        who doth not fling away the shell?^\
+        -- John Donne^\
+        ^^";
+];
+
+#ifdef DEBUG;
+  [ CheatmodeSub; ! hic sunt dracones... trigger with 'aenima' magic verb in debug mode
+    PlayerTo(Seashore);
+    update_moved = true;
+    scope_modified = true;
+    MoveFloatingObjects();
+  ];
+#endif;
+
+! adding the ability of making non-animate objects referred to with "him" or "her"
+[ PronounNotice p_object;
+	if (p_object == 0 or player or Directions) return;
+	if (p_object has pluralname) {
+    themobj = p_object;
+	}
+  else if (p_object has male or female or neuter) {
+    SetPronoun(p_object);
+  }
+  else if (p_object has animate) {
+    SetPronoun(p_object);
+	}
+  else itobj = p_object;
+];
+
+[ SetPronoun p_object;
+  if (p_object has female) herobj = p_object;
+	else if (p_object has neuter) itobj = p_object;
+	else himobj = p_object;
+];
+
+[ AboutSub;
+  print_ret (string)Story, " is copyright (c) 2021 by Your Name.^^You may freely distribute the game, but you have to link to <youramazingurl.com>. This work may not be sold or included in any for-profit collection without written permission from the author.^^Please send bug reports to ", "<me@@64","mymail.com>.^^For acknowledgements and credits, please type ~credits~.";
+];
+
+[ CreditsSub;
+  print_ret (string)Story, " is dedicated to literally no one.^^~Try to be like the turtle - at ease in your own shell.~ -- Bill Copeland^^Beta testers: Mom, Dad, Aunt Gertrud, Will from the butcher shop.^^This game was created using the Inform language by Graham Nelson and it utilizes PunyInform, a custom library by Fredrik Ramsberg and Johan Berntsson.";
+];
+
+[ UseSub;
+  "The verb [use] is not something you need to refer to in the course of this game. Be more specfic. Here are a few common examples:^^[operate computer],^you can [talk to someone] or [ask someone],^and [insert floppy in drive].";
+];
+
+[ HelpSub;
+  F_HELP = 1;
+  print_ret "The ", (string)Story, " package contains a PlayIF card that explains the basic gameplay and many synonyms will enhance what you read on it. There are a few extra verbs necessary but these will be introduced to you in advance. You never have to guess the verb.^^Conversations are not as complex as in Infocom titles. It is sufficient to type [talk to NPC] or [ask NPC].^^Use the [save] command to store your progress and [restore] to load it again.";
+];
+
+[ XyzzySub;
+  "You say the magic word but nothing happens. Crowther would be disappointed!";
+];
+
+[ LookUnderSub;
+  "You don't have to look under any objects in this game. The only two verbs you need in this context are [examine] and [search].";
+];
+
+#ifV3;
+[ UndoSub;
+  "This version of the game does not support the UNDO command.";
+];
+#endif;
+
+[ UnlockWithoutKeySub;
+  if (noun has lockable) print_ret "Try being more specific. You probably want to unlock ", (the) noun, " with a certain object?";
+  "You cannot unlock this object.";
+];
+
+[ TypeSub;
+  "That's not an object on which you can type something.";
+];
+
+[ TypeErrSub;
+  print "You'll need to be more specific. The type command wants you to provide a number or a string and an object to type it on.^^[type 1234 or ABCD on/into object]^";
+  noun = false;
+];
+
+! if not overridden by a before routine, TURN NOUN LEFT/RIGHT will invoke a regular TURN NOUN 
+[ TurnLeftSub;
+  <<Turn noun>>; 
+];
+
+[ TurnRightSub; 
+  <<Turn noun>>;
+];
+
+[ TurnAroundSub;
+  print_ret (string)MESS_TURN_SELF;
+];
+
+[ TalkSub;
+  if (noun == player) "Nothing you hear surprises you.";
+  if (~~(noun ofclass Character)) "Generally, it's best to talk to living things.";
+  if (noun ofclass Character && noun hasnt animate) "You once saw a movie with someone who was able to talk to the dead. You don't expect a reply in this particular case so you let it be.";
+  if (RunLife(noun,##Talk) ~= 0) rfalse;
+  print_ret "At the moment, you can't think of anything to say to ", (the) noun, ".";
+];
+
+[ InteractSub;
+  if (noun == nothing) noun = second;
+  print_ret "Please use [talk to ", (the) noun, "] for this type of interaction.";
+];
+
+[ InteractErrorSub;
+  print_ret "That doesn't seem to make any sense. Please use [talk to someone/something] for this type of interaction.";
+];
+
+[ PlayerBefore;
+    Turn:
+      print_ret (string)MESS_TURN_SELF;
+    Attack:
+      "As hopeless as the situation may be, this is never a way out.";
+    default:
+      rfalse;
+];
+
+[ PlayerParseName n;
+		n=0;
+		while (NextWord()=='me' or 'myself' or 'self' or 'yourself') {n++;}
+		return n;
+];
+
+[ FillErrorSub;
+  "The fill command wants you to be more specific.^^[fill object with liquid]";
+];
+
+[ DisassembleSub;
+  if (second == false) "The disassemble command wants you to be more specific.^^[disassemble object with tool]";
+  "Disassembling that object won't help you progress.";
+];
+
+#ifdef DEBUG;
+Verb 'aenima' * -> Cheatmode;
+#endif;
+
+Verb 'about' * -> About;
+Verb 'credits' * -> Credits;
+Verb 'help' * -> Help;
+
+Verb 'use' * -> Use
+           * noun -> Use
+           * noun 'with'/'on'/'in'/'at' noun -> Use;
+
+Verb 'xyzzy' * -> Xyzzy;
+
+#ifV3;
+Verb 'undo' * -> Undo;
+#endif;
+
+Verb 'type'  * -> TypeErr
+             * special -> TypeErr
+             * special 'on'/'into'/'in' -> TypeErr
+             * special 'on'/'into'/'in' noun -> Type;
+
+Extend 'turn' * noun 'left' -> TurnLeft
+              * noun 'right' -> TurnRight;
+Extend 'turn' * 'around' -> TurnAround;
+Extend 'turn' * 'over' noun -> Turn;
+Extend 'turn' * noun 'with' noun -> Disassemble;
+
+Verb 'disassemble' * noun -> Disassemble
+                   * noun 'with' noun -> Disassemble;
+
+Extend 'examine' * 'back' 'of' noun -> Turn;
+
+Extend 'look' * 'under' noun -> LookUnder;
+Extend 'look' * 'through'/'out' noun -> Examine;
+Extend 'look' * 'out' 'of' noun -> Examine;
+
+Extend 'unlock' first * noun -> UnlockWithoutKey;
+
+Extend 'attack' * held 'at'/'on' noun -> Attack;
+
+Extend 'fill' replace
+  * noun -> FillError
+  * held 'with' noun -> Fill
+  * noun 'in'/'into' held -> Fill;
+
+Extend 'speak' replace
+  * noun -> Talk
+  * 'to'/'with' noun -> Talk
+  * topic 'to' noun -> Interact
+  * topic -> InteractError;
+
+Extend 'ask' replace
+  * noun -> Talk
+  * noun 'for' noun -> AskFor
+  * noun 'about' topic -> Interact
+	* noun 'to' topic -> Interact
+  * 'that' noun topic -> Interact;
+
+Extend 'tell' replace
+	* noun 'about' topic -> Interact
+	* noun 'to' topic -> Interact;
+
+Extend 'eat' replace
+    * creature -> Eat
+    * held -> Eat;
+
+Verb meta 'continue' = 'again';
+Verb 'grab' = 'take';
+Verb 'kick' = 'attack';
+Verb 'feel' = 'touch';
+Verb 'flip' = 'turn';
+Verb 'talk' = 'speak';
+Verb 'unplug' = 'take';
+Verb 'operate' = 'open';
+Verb 'access' = 'open';
+Verb 'start' = 'open';
+Verb 'unsecure' = 'open';
+Verb 'consult' = 'open';
+Verb 'shoot' = 'attack';
+Verb 'stab' = 'cut';
+Verb 'pour' = 'fill';
+
+end;

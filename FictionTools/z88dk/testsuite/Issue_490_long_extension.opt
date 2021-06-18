@@ -1,0 +1,53 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_490_long_extension_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function main flags 0x00000000 __stdc 
+; void main()
+._main
+	ld	hl,_main
+	push	hl
+	ld	hl,1	;const
+	call	l_int2long_s
+	push	de
+	push	hl
+	ld	hl,3	;const
+	push	hl
+	call	_function
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_function
+	GLOBAL	_main
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

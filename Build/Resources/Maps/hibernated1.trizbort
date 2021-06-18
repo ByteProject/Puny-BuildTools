@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<trizbort version="1.7.2.0">
+	<info>
+		<title>Hibernated 1</title>
+		<author>Stefan Vogt</author>
+		<description>This Place is Death (Director's Cut)</description>
+	</info>
+	<map>
+		<room id="1" name="A Cold Dark Place" subtitle="" x="-320" y="-32" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" isStartRoom="yes" description="You wake up. A feeling of nauseau grips you as you slowly regain control of your senses. You should open your eyes." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<room id="2" name="Hibernation Chamber" subtitle="" x="-128" y="0" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="The room is lit by a gentle blue light. A glance through the porthole reveals nothing but the endless vastness of the Lyra constellation. Vega seems to be very close now. There is no planetary orbit in sight. An incident must have interrupted your journey to Kepler-62. The only exit is to the east." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>hypersleep tube</objects>
+		</room>
+		<room id="3" name="Southern Corridor" subtitle="" x="32" y="0" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="Flashing red warning lights are reflected on the palladium glass walls. The hibernation chamber is to the west, while your private area is to the east. In the north, you get to the Polaris-7 command unit, protected by a security door. It divides the narrow corridor into two halves. The docking bay is to the south." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>security door</objects>
+		</room>
+		<line id="4" name="" description="">
+			<dock index="0" id="2" port="e" />
+			<dock index="1" id="3" port="w" />
+		</line>
+		<room id="5" name="Northern Corridor" subtitle="" x="32" y="-160" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="The 24th century is known for emergence of crystalline architecture and what you see here is the perfect example of that era. The lab is situated westward, the storage space lies to the east and a massive door to the north leads to the bridge. You can also gos south to get back to the southern part of the ship." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<room id="6" name="Docking Bay" subtitle="" x="32" y="128" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="You stand in a large, desolate hall. According to the Terran Alliance directive is this the section where raw materials and samples of foreign origin must be stored. The door to the NORTH leads back to the corridor. An airlock to the SOUTH allows you to leave the Polaris-7." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>laser rifle|space suit</objects>
+		</room>
+		<room id="7" name="Airlock" subtitle="" x="32" y="288" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="A constant feeling of anxiety grips you in here. Before entering the eternal cold of space, you should check your gear. To the NORTH, the safe environment of the Polaris-7 is waiting for you." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects at="e">button</objects>
+		</room>
+		<room id="8" name="Bridge" subtitle="" x="32" y="-288" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="The heart of the Polaris-7 is dominated by a huge 180 degree window. A large object obscures the stars in the field of vision, certainly of extraterrestial origin, slowly drifting like a dead giant in icy waters. Two cockpit chairs are located in front of the main console, where countless lights dance. The exit is located to the SOUTH." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>Io</objects>
+		</room>
+		<room id="9" name="Laboratory" subtitle="" x="-128" y="-160" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="When the ship was built, great importance was attached to equipping this place with the latest technology. Today much is probably obsolete. Nevertheless the lab supports a range of focal points such as medicine, biology, chemistry and technology. A door to the east is the sole exit." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>lab computer|specimen cube|interface cube|medicine cabinet\|vaccine</objects>
+		</room>
+		<room id="10" name="Storage Space" subtitle="" x="192" y="-160" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="You stare at the most unspectacular location ever integrated into a spaceship. Naked walls and steel shelves convey unprecedented sterility. The best thing about this interstellar broom closet is that you can leave it to the west." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>flashlight|toolbox</objects>
+		</room>
+		<room id="11" name="Private area" subtitle="" x="192" y="0" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="This place looks like it was abandoned only a few hours ago. Amazing when you consider that your journey through the cosmos began centuries before. You see, among other things, a class 4 hygiene module, a bed and a terribly messy desk. Go west to get back to the corridor." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>digital library|messy desk|biometric pass</objects>
+		</room>
+		<line id="12" name="" description="">
+			<dock index="0" id="3" port="e" />
+			<dock index="1" id="11" port="w" />
+		</line>
+		<line id="13" name="" description="">
+			<dock index="0" id="3" port="n" />
+			<dock index="1" id="5" port="s" />
+		</line>
+		<line id="14" name="" description="">
+			<dock index="0" id="5" port="w" />
+			<dock index="1" id="9" port="e" />
+		</line>
+		<line id="15" name="" description="">
+			<dock index="0" id="5" port="e" />
+			<dock index="1" id="10" port="w" />
+		</line>
+		<line id="16" name="" description="">
+			<dock index="0" id="5" port="n" />
+			<dock index="1" id="8" port="s" />
+		</line>
+		<line id="17" name="" description="">
+			<dock index="0" id="3" port="s" />
+			<dock index="1" id="6" port="n" />
+		</line>
+		<line id="18" name="" description="">
+			<dock index="0" id="6" port="s" />
+			<dock index="1" id="7" port="n" />
+		</line>
+		<room id="19" name="Alien Ship (Entrance)" subtitle="" x="640" y="416" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="You're in outer space. Fragments of stardust shine like a sea of fireflies, illuminated by a shimmering green light that emanates from an open hatch to the north. Majestic and awe-inspiring, the alien spaceship is drifting right in front of you. We always assumed we are not alone, now here is a proof. Drift up to return to the Polaris-7. Further east something seems in motion." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="20" name="" description="" startText="down" endText="up">
+			<dock index="0" id="7" port="s" />
+			<dock index="1" id="19" port="n" />
+		</line>
+		<room id="21" name="Alien Ship (Hull)" subtitle="" x="800" y="416" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="Small, spider-like robots scurry over the hull of the alien ship. They seem to have a maintenance function. You'd better go back west. There's nowhere else to go." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>rushing mechanical spiders|mechanical spider|strange technology parts|</objects>
+		</room>
+		<line id="22" name="" description="">
+			<dock index="0" id="19" port="e" />
+			<dock index="1" id="21" port="w" />
+		</line>
+		<room id="23" name="Sphere Room" subtitle="" x="640" y="256" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="The green glow that you have already noticed outside comes from a sphere in the middle of the room. You couldn't even guess the purpose. An obvious exit is to the east. The passage to the west seems to lead to a corridor. The door to the south is now closed, but it looks like you can use it anytime to get back to space." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="24" name="" description="">
+			<dock index="0" id="19" port="n" />
+			<dock index="1" id="23" port="s" />
+		</line>
+		<room id="25" name="Gloomy Corridor" subtitle="" x="800" y="256" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="It's dark here, but not too dark to see. You can go east or west." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="26" name="" description="">
+			<dock index="0" id="23" port="e" />
+			<dock index="1" id="25" port="w" />
+		</line>
+		<room id="27" name="Base Station" subtitle="" x="1120" y="256" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="The area appears to be a station for service droids. Many of the humanoid robots are twitching on the ground. It seems this ship has been abandoned for ages. Without necessary maintenance, malfunctions such as these would occur over time. There are exits both north and west." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>[m]aggressive droid|droid spares</objects>
+		</room>
+		<line id="28" name="" description="">
+			<dock index="0" id="25" port="e" />
+			<dock index="1" id="27" port="w" />
+		</line>
+		<room id="29" name="Quarters" subtitle="" x="1120" y="128" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="A cold shiver runs down your spine as you approach a crew quarters, very similar to those you'd expect on a human spacecraft. The dust-covered room leaves a desolate impression. Whoever was here is long gone. The more you see, the more you fear that death may be the only thing waiting here for you, underneath the surface, lurking in the dark. There are exits north or south." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>locker|ID chip</objects>
+		</room>
+		<line id="30" name="" description="">
+			<dock index="0" id="27" port="n" />
+			<dock index="1" id="29" port="s" />
+		</line>
+		<room id="31" name="Sick Bay" subtitle="" x="1120" y="0" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="This facility far surpasses terran technology. All walls seem to be made of an unknown red metal. The colour may have had a calming effect on the alien builders. With such equipment, a good medic might work wonders. Exits: north, south." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>vibro knife</objects>
+		</room>
+		<line id="32" name="" description="">
+			<dock index="0" id="29" port="n" />
+			<dock index="1" id="31" port="s" />
+		</line>
+		<room id="33" name="Regeneration Chamber" subtitle="" x="1120" y="-128" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="This seems to be a rest area. The walls are actually displays on which thousands of statuses are visualized. In the middle of the room there are glass tubes, obviously intended for patients. The only exit is to the south." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>tube</objects>
+		</room>
+		<line id="34" name="" description="">
+			<dock index="0" id="33" port="s" />
+			<dock index="1" id="31" port="n" />
+		</line>
+		<room id="35" name="Control Room" subtitle="" x="480" y="256" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="This must be some kind of hub on the ship's data network. Both technology and logic are likely to differ markedly from terran standards. At least some beeping noises and a subliminal humming create a feeling of familiarity. You can leave this place by going north or east." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>small terminal</objects>
+		</room>
+		<line id="36" name="" description="">
+			<dock index="0" id="23" port="w" />
+			<dock index="1" id="35" port="e" />
+		</line>
+		<room id="37" name="Video Surveillance" subtitle="" x="480" y="128" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="You feel watched, even though you are the observer here. A variety of monitors gives you an insight into numerous places, mainly locations where you have been before. One of the monitors catches your eye. Any direction allow you to leave." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>surveillance monitor</objects>
+		</room>
+		<line id="38" name="" description="">
+			<dock index="0" id="35" port="n" />
+			<dock index="1" id="37" port="s" />
+		</line>
+		<room id="39" name="Small Quarter" subtitle="" x="320" y="128" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="The grim reaper doesn't seem to be just a scourge of humanity. The corpse on the bed maybe is a security guard, as the proximity to the video room suggests. At first glance, the species looks much like humans, but differences are difficult to detect as the deceased is already mummified. A door to the east is the only exit." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>body|mummified hand</objects>
+		</room>
+		<line id="40" name="" description="">
+			<dock index="0" id="37" port="w" />
+			<dock index="1" id="39" port="e" />
+		</line>
+		<room id="41" name="Cargo Bay" subtitle="" x="480" y="0" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="You wonder how busy it must have been here back in the days when the spacecraft was in full operation. The incredible dimensions of this place take your breath away. Everywhere you see containers, metal boxes and heavy machinery to move them. Southward you can go back to the video room." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>freight terminal|connector|</objects>
+		</room>
+		<line id="42" name="" description="">
+			<dock index="0" id="41" port="s" />
+			<dock index="1" id="37" port="n" />
+		</line>
+		<room id="43" name="Checkpoint" subtitle="" x="640" y="128" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="It's quite likely that you're in a secure area here. A massive door to the north suggests that it can only be passed by authorized individuals. Another exit is to the west." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>glass slab</objects>
+		</room>
+		<line id="44" name="" description="">
+			<dock index="0" id="37" port="e" />
+			<dock index="1" id="43" port="w" />
+		</line>
+		<room id="45" name="Hall of the Dead" subtitle="" x="640" y="0" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="Here they are, the builders and masters who departed millenia ago to travel the stars. Your heart beats fiercely as you stare at thousands of cryosleep capsules, all filled with human-like beings. Somehow you already know they're dead. Exits are to the north and the south." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>cryosleep capsule|alien corpse|blood sample</objects>
+		</room>
+		<line id="46" name="" description="">
+			<dock index="0" id="45" port="s" />
+			<dock index="1" id="43" port="n" />
+		</line>
+		<room id="47" name="Checkpoint 2" subtitle="" x="640" y="-128" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="Another checkpoint crosses your path. Slowly you seem to be approaching the inner sanctuary of the ship, as the increasing security precautions suggest. You should be careful now. Exits are to the west, south and east." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="48" name="" description="">
+			<dock index="0" id="47" port="s" />
+			<dock index="1" id="45" port="n" />
+		</line>
+		<room id="49" name="Ship Hangar" subtitle="" x="480" y="-128" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" isDark="yes" description="This is rather a city of its own with rows of interceptors and larger transport pods as far as the eye can see. A single spaceship like the one you are currently on could probably destroy entire worlds. Go east to get back to the checkpoint. You may also go inside a starfighter." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>arrow starfighter|energy cell</objects>
+		</room>
+		<line id="50" name="" description="">
+			<dock index="0" id="47" port="w" />
+			<dock index="1" id="49" port="e" />
+		</line>
+		<room id="51" name="Starfighter (Inside)" subtitle="" x="352" y="-128" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="The pilot's seat is extremely comfortable. If not for the unusual symbols on the instruments, the starfighter could be considered a far human achievement. You feel like you're looking into the distant future with a crystal ball. Astonishing and at the same time terrifying how similar the strangers are to us. A theory says that life always evolves similarly. Maybe there is something about it, maybe it is just coincidence. GO OUT to leave." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>starfighter console</objects>
+		</room>
+		<line id="52" name="" description="" startText="in" endText="out">
+			<dock index="0" id="49" port="w" />
+			<dock index="1" id="51" port="e" />
+		</line>
+		<room id="53" name="Decontamination" subtitle="" x="800" y="-128" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="You know places like this one. It is a crew decontamination chamber and another indication that you are close to the high-security area. To the west you can go back to the checkpoint, the north leads to an area where you percieve an intense glow, the east leads you deeper into the mysteries of this vessel." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="54" name="" description="">
+			<dock index="0" id="47" port="e" />
+			<dock index="1" id="53" port="w" />
+		</line>
+		<room id="55" name="Star Gallery" subtitle="" x="800" y="-256" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="The sight takes your breath away. You are in the midst of a three-dimensional projection, a huge holographic simulation of our galaxy, the Milky Way. The constellation of the stars however, is completely different, probably seen from the point of view of the foreigners' homeworld. Exits are to the south and west." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>data hub</objects>
+		</room>
+		<line id="56" name="" description="">
+			<dock index="0" id="53" port="n" />
+			<dock index="1" id="55" port="s" />
+		</line>
+		<room id="57" name="Energy Stream" subtitle="" x="640" y="-256" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="The majority of the room consists of a basin in which impressive rays of energy flow, an almost surreal phenomenon. Here apparently is the energy source of the star gallery. The exit is eastward." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>mounting</objects>
+		</room>
+		<line id="58" name="" description="">
+			<dock index="0" id="55" port="w" />
+			<dock index="1" id="57" port="e" />
+		</line>
+		<room id="59" name="Lift (Lower Deck)" subtitle="" x="960" y="-128" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="There it is again, this oppressive feeling in confined spaces. Some sort of laser constantly scans you. You can't identify the source. The walls seem to be made of some kind of crystal and emit a slightly pulsating purple light. The elevator appears to lead exclusively up. Go west to remain on the current deck." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>scanner</objects>
+		</room>
+		<line id="60" name="" description="">
+			<dock index="0" id="53" port="e" />
+			<dock index="1" id="59" port="w" />
+		</line>
+		<room id="61" name="Lift (Upper Deck)" subtitle="" x="960" y="-256" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="The walls on this level pulsate in rich red, an interesting way to make the decks distinguishable. The lift has turned during the movement so that the exit is now to the north. You also get down to the lower deck from here." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="62" name="" description="">
+			<dock index="0" id="59" port="n" />
+			<dock index="1" id="61" port="s" />
+		</line>
+		<room id="63" name="Specimen Exhibition" subtitle="" x="960" y="-384" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="Cuneiform script all over the vessel already indicated a connection to Sol, but this is an exciting discovery. You're in a gallery with human exhibits, obviously Sumerians of different eras. The visitors must have taught us their writing. Assuming the ship has left us during the archaic era of the Sumerian empire, it must have stranded here over 30.000 years ago. Exits are to the east, south and west." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>high priestess|sumerian gold dagger</objects>
+		</room>
+		<line id="64" name="" description="">
+			<dock index="0" id="63" port="s" />
+			<dock index="1" id="61" port="n" />
+		</line>
+		<room id="65" name="Research Area" subtitle="" x="1120" y="-384" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="You are in an advanced lab for positronics and robotics. It has been devastated for unknown reasons. Much of the equipment still seems to be functional. The sole exit is to the west." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>broken assistant robot</objects>
+		</room>
+		<line id="66" name="" description="">
+			<dock index="0" id="63" port="e" />
+			<dock index="1" id="65" port="w" />
+		</line>
+		<room id="67" name="Homeworld Exposition" subtitle="" x="800" y="-384" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="The hall seems to be dedicated to the homeworld of the alien voyagers. Interactive holograms depict flora and fauna, technological achievements and even colonies on the three moons surrounding their planet. You can go north or west." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="68" name="" description="">
+			<dock index="0" id="63" port="w" />
+			<dock index="1" id="67" port="e" />
+		</line>
+		<room id="69" name="Creepy Passage" subtitle="" x="800" y="-512" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="This isn't just a tunnel. Places like these are already known from medieval castles. You corner the enemy to kill them efficiently. Doors are to the south and to the east." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>plasma barrier</objects>
+		</room>
+		<line id="70" name="" description="">
+			<dock index="0" id="69" port="s" />
+			<dock index="1" id="67" port="n" />
+		</line>
+		<room id="71" name="Crew Database" subtitle="" x="640" y="-512" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="You're in some kind of digital place of remembrance. At least that seems to be it. In the middle is a metal platform where life-size holograms of crew members are presented. The projection changes every few seconds to a new individual. Perhaps it is part of the alien culture to honor the dead in this way. Exits are to the east and the south." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>metallic niche|hologram</objects>
+		</room>
+		<line id="72" name="" description="">
+			<dock index="0" id="71" port="e" />
+			<dock index="1" id="69" port="w" />
+		</line>
+		<room id="73" name="Lounge" subtitle="" x="640" y="-384" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="The area is lavishly equipped. Beautiful upholstered seats with strange patterns create an infinite cosy impression, which is enhanced by the subdued light. The western wall is a single window and allows a longing look into the starlit depths of space. There is a group of dead strangers at a table near the bar. The way they sit there suggests a collective suicide. Exits are north and west." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>dead spaceship officers|identity disc</objects>
+		</room>
+		<line id="74" name="" description="">
+			<dock index="0" id="71" port="s" />
+			<dock index="1" id="73" port="n" />
+		</line>
+		<room id="75" name="Officers Quarters" subtitle="" x="480" y="-384" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="There are a handful of lockers and various rest areas here. Pictures on the wall show impressions of monumental space battles as well as strange landscapes on even more strange planets. On the northern wall there's a tactical map of a star quadrant, whose constellations do not correspond to any of your known records. There are doors to the east and the north." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>quarter terminal|key card</objects>
+		</room>
+		<line id="76" name="" description="">
+			<dock index="0" id="73" port="w" />
+			<dock index="1" id="75" port="e" />
+		</line>
+		<room id="77" name="Starship Bridge" subtitle="" x="480" y="-512" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="You are underneath a huge glass dome which extends outwards to the console of the ship's positronic mainframe. The sight is truly breathtaking. It's a feeling of becoming one with the universe, of being absorbed by infinity. A small door to the north blocks your way to a secured area. The southern passage leads back to the quarters." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>codepad|positronic mainframe|small door|</objects>
+		</room>
+		<room id="78" name="Sanctum of the Keeper" subtitle="" x="640" y="-640" w="96" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="You are in a surprisingly small room that is bathed in a faint red light. On one of the walls, an interactive side view of the alien spaceship is displayed, over which a series of status messages run. In a transparent tube in front of you swims one of the aliens, surrounded by a kind of nutrient solution. The only way out is the door to the south." roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0">
+			<objects>Draak, the navigator|white crystal</objects>
+		</room>
+		<line id="79" name="" description="">
+			<dock index="0" id="75" port="n" />
+			<dock index="1" id="77" port="s" />
+		</line>
+		<line id="80" name="" description="">
+			<dock index="0" id="77" port="n" />
+			<dock index="1" id="78" port="s" />
+		</line>
+	</map>
+	<settings>
+		<colors>
+			<canvas>White</canvas>
+			<border>MidnightBlue</border>
+			<line>MidnightBlue</line>
+			<selectedLine>Gold</selectedLine>
+			<hoverLine>DarkOrange</hoverLine>
+			<subTitle>MidnightBlue</subTitle>
+			<smallText>MidnightBlue</smallText>
+			<lineText>MidnightBlue</lineText>
+			<grid>#F5F5F5</grid>
+			<startRoom>GreenYellow</startRoom>
+			<endRoom>Red</endRoom>
+		</colors>
+		<regions>
+			<NoRegion Name="NoRegion" TextColor="Blue">White</NoRegion>
+		</regions>
+		<fonts>
+			<room size="13">Arial</room>
+			<object size="11">Arial</object>
+			<subTitle size="9">Arial</subTitle>
+			<line size="9">Arial</line>
+		</fonts>
+		<grid>
+			<snapTo>yes</snapTo>
+			<visible>yes</visible>
+			<showOrigin>yes</showOrigin>
+			<size>32</size>
+		</grid>
+		<lines>
+			<width>2</width>
+			<arrowSize>12</arrowSize>
+			<textOffset>4</textOffset>
+		</lines>
+		<rooms>
+			<darknessStripeSize>24</darknessStripeSize>
+			<objectListOffset>4</objectListOffset>
+			<connectionStalkLength>32</connectionStalkLength>
+			<preferredDistanceBetweenRooms>64</preferredDistanceBetweenRooms>
+			<defaultRoomName>Cave</defaultRoomName>
+			<defaultRoomShape>0</defaultRoomShape>
+		</rooms>
+		<ui>
+			<handleSize>12</handleSize>
+			<snapToElementSize>16</snapToElementSize>
+		</ui>
+		<margins>
+			<documentSpecific>no</documentSpecific>
+			<horizontal>0</horizontal>
+			<vertical>0</vertical>
+			<wrapDashes>no</wrapDashes>
+		</margins>
+		<keypadNavigation>
+			<creationModifier>control</creationModifier>
+			<unexploredModifier>alt</unexploredModifier>
+		</keypadNavigation>
+	</settings>
+</trizbort>

@@ -1,0 +1,8 @@
+# SF: This is based on my own inferences and is not remotely official...
+
+root = true
+
+[*.asm]
+indent_style = space
+indent_size = 4
+tab_width = 4

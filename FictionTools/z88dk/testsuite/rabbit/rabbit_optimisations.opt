@@ -1,0 +1,264 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	rabbit_rabbit_optimisations_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function getviapointer flags 0x00000200 __smallc 
+; int getviapointer(int *x)
+; parameter 'int *x' at 2 size(2)
+._getviapointer
+	ld	hl,(sp + 2)
+	ld	hl,(hl+0)
+	ret
+
+
+
+; Function mult flags 0x00000200 __smallc 
+; int mult()
+._mult
+	add	sp,-4
+	ld	hl,(sp + 2)
+	push	hl
+	ld	hl,(sp + 2)
+	pop	de
+	call	l_mult
+	add	sp,4
+	ret
+
+
+
+; Function negate flags 0x00000200 __smallc 
+; int negate(int a)
+; parameter 'int a' at 2 size(2)
+._negate
+	ld	hl,(sp + 2)
+	call	l_neg
+	ret
+
+
+
+; Function or flags 0x00000200 __smallc 
+; int or(int a, int b)
+; parameter 'int b' at 2 size(2)
+; parameter 'int a' at 4 size(2)
+._or
+	ld	hl,(sp + 4)
+	push	hl
+	ld	hl,(sp + 4)
+	pop	de
+	or	hl,de
+	push	hl
+	ld	hl,(sp + 6)
+	ld	a,l
+	or	255
+	ld	l,a
+	ld	(sp + 0),hl
+	ld	hl,(sp + 6)
+	ld	de,511
+	or	hl,de
+	add	sp,2
+	ret
+
+
+
+; Function and flags 0x00000200 __smallc 
+; int and(int a, int b)
+; parameter 'int b' at 2 size(2)
+; parameter 'int a' at 4 size(2)
+._and
+	ld	hl,(sp + 4)
+	push	hl
+	ld	hl,(sp + 4)
+	pop	de
+	and	hl,de
+	push	hl
+	ld	hl,(sp + 6)
+	ld	h,0
+	ld	(sp + 0),hl
+	ld	hl,(sp + 6)
+	ld	de,511
+	and	hl,de
+	add	sp,2
+	ret
+
+
+
+; Function rshift flags 0x00000200 __smallc 
+; int rshift(unsigned int a)
+; parameter 'unsigned int a' at 2 size(2)
+._rshift
+	ld	hl,(sp + 2)
+	and	a
+	rr	hl
+	ret
+
+
+
+; Function lshift flags 0x00000200 __smallc 
+; int lshift(unsigned int a)
+; parameter 'unsigned int a' at 2 size(2)
+._lshift
+	ld	hl,(sp + 2)
+	add	hl,hl
+	ret
+
+
+
+; Function lshift_long flags 0x00000200 __smallc 
+; int lshift_long(unsigned long l)
+; parameter 'unsigned long l' at 2 size(4)
+._lshift_long
+	ld	hl,(sp + 2 + 2)
+	ex	de,hl
+	ld	hl,(sp + 2)
+	add	hl,hl
+	rl	de
+	push	de
+	push	hl
+	bool	hl
+	rr	hl
+	add	hl,sp
+	push	hl
+	ld	hl,(sp + 8 + 2)
+	ex	de,hl
+	ld	hl,(sp + 8)
+	add	hl,hl
+	rl	de
+	add	hl,hl
+	rl	de
+	pop	bc
+	call	l_plong
+	bool	hl
+	rr	hl
+	add	hl,sp
+	push	hl
+	ld	hl,(sp + 8 + 2)
+	ex	de,hl
+	ld	hl,(sp + 8)
+	ld	a,3
+	call	l_long_aslo
+	pop	bc
+	call	l_plong
+	bool	hl
+	rr	hl
+	add	sp,4
+	ret
+
+
+
+; Function addition flags 0x00000200 __smallc 
+; int addition(int a)
+; parameter 'int a' at 2 size(2)
+._addition
+	ld	hl,(sp + 2)
+	ld	bc,10
+	add	hl,bc
+	push	hl
+	call	_mult
+	ld	hl,(sp + 0)
+	add	sp,2
+	ret
+
+
+
+; Function subtract flags 0x00000200 __smallc 
+; int subtract(int a)
+; parameter 'int a' at 2 size(2)
+._subtract
+	ld	hl,(sp + 2)
+	ld	bc,-10
+	add	hl,bc
+	push	hl
+	call	_mult
+	ld	hl,(sp + 0)
+	add	sp,2
+	ret
+
+
+
+; Function longops flags 0x00000200 __smallc 
+; long longops(long l)
+; parameter 'long l' at 2 size(4)
+._longops
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	call	l_inclong
+	pop	bc
+	call	l_plong
+	call	l_declong
+	ret
+
+
+
+; Function longadd flags 0x00000200 __smallc 
+; long longadd(long l)
+; parameter 'long l' at 2 size(4)
+._longadd
+	ld	hl,(sp + 2 + 2)
+	ex	de,hl
+	ld	hl,(sp + 2)
+	ld	bc,10
+	add	hl,bc
+	jr	nc,ASMPC+3
+	inc	de
+	ret
+
+
+
+; Function pushinstr flags 0x00000200 __smallc 
+; long pushinstr()
+._pushinstr
+	ld	hl,1	;const
+	push	hl
+	ld	hl,2	;const
+	push	hl
+	ld	hl,3	;const
+	push	hl
+	call	_anotherfunc
+	add	sp,6
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_getviapointer
+	GLOBAL	_mult
+	GLOBAL	_negate
+	GLOBAL	_or
+	GLOBAL	_and
+	GLOBAL	_rshift
+	GLOBAL	_lshift
+	GLOBAL	_lshift_long
+	GLOBAL	_addition
+	GLOBAL	_subtract
+	GLOBAL	_longops
+	GLOBAL	_longadd
+	GLOBAL	_anotherfunc
+	GLOBAL	_pushinstr
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

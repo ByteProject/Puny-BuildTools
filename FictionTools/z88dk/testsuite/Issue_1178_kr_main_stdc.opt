@@ -1,0 +1,85 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_1178_kr_main_stdc_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function main flags 0x00000000 __stdc 
+; int main(int argc, char **argv)
+; parameter 'int argc' at 2 size(2)
+; parameter 'char **argv' at 4 size(2)
+._main
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	push	hl
+	call	_func
+	pop	bc
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_gint	;
+	inc	hl
+	inc	hl
+	call	l_gint	;
+	push	hl
+	call	_func2
+	pop	bc
+	ret
+
+
+
+; Function func3 flags 0x00000200 __smallc 
+; int func3(int argc, char **argv)
+; parameter 'char **argv' at 2 size(2)
+; parameter 'int argc' at 4 size(2)
+._func3
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_gint	;
+	push	hl
+	call	_func
+	pop	bc
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	inc	hl
+	inc	hl
+	call	l_gint	;
+	push	hl
+	call	_func2
+	pop	bc
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_func
+	GLOBAL	_func2
+	GLOBAL	_main
+	GLOBAL	_func3
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

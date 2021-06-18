@@ -1,0 +1,64 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	X01_cast_global_pointer_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function main flags 0x00000000 __stdc 
+; int main()
+._main
+	SECTION	data_compiler
+._st_main_c
+	defw	0
+	SECTION	code_compiler
+	ld	hl,(_a)
+	push	hl
+	ld	hl,(_st_main_c)
+	pop	bc
+	ret
+
+
+
+; Function test flags 0x00000200 __smallc 
+; int test(char *v)
+; parameter 'char *v' at 2 size(2)
+._test
+	ld	hl,2	;const
+	call	l_gintspsp	;
+	ld	hl,1	;const
+	push	hl
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+._a	defs	2
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_a
+	GLOBAL	_main
+	GLOBAL	_test
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

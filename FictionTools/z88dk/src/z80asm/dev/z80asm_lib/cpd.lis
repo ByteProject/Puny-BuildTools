@@ -1,0 +1,84 @@
+1     0000              ; Substitute for z80 cpd instruction
+2     0000              ; aralbrec 06.2007
+3     0000              
+4     0000                    SECTION  code_crt0_sccz80
+5     0000                    PUBLIC   __z80asm__cpd
+6     0000              
+7     0000              IF __CPU_GBZ80__
+8     0000                    EXTERN   __z80asm__ex_sp_hl
+9     0000              ENDIF
+10    0000              
+11    0000              __z80asm__cpd:
+12    0000              
+13    0000  38 12             jr    c, cpdwcarry
+14    0002              
+15    0002  BE                cp    (hl)
+16    0003  2B                dec   hl
+17    0004  0B                dec   bc
+18    0005              
+19    0005  F5                push  af
+20    0006              IF __CPU_GBZ80__
+21    0006                    call  __z80asm__ex_sp_hl
+22    0006              ELSE
+23    0006  E3                ex    (sp), hl
+24    0007              ENDIF
+25    0007              IF __CPU_INTEL__
+26    0007                    ld    a, l
+27    0007                    and   @11111110
+28    0007                    ld    l, a
+29    0007              ELSE
+30    0007  CB 85             res   0, l              ; clear carry
+31    0009              ENDIF
+32    0009              
+33    0009              rejoin:
+34    0009              
+35    0009              IF __CPU_INTEL__
+36    0009                    ld    a, l
+37    0009                    or    @00000010
+38    0009                    ld    l, a
+39    0009              ELSE
+40    0009  CB D5             set   2, l              ; set P/V -> BC != 0
+41    000B              ENDIF
+42    000B              
+43    000B  78                ld    a, b
+44    000C  B1                or    c
+45    000D  20 02             jr    nz, exitcpd
+46    000F              IF __CPU_INTEL__
+47    000F                    ld    a, l
+48    000F                    and   @11111101
+49    000F                    ld    l, a
+50    000F              ELSE
+51    000F  CB 95             res   2, l              ; clear P/V -> BC == 0
+52    0011              ENDIF
+53    0011              
+54    0011              exitcpd:
+55    0011              
+56    0011              IF __CPU_GBZ80__
+57    0011                    call  __z80asm__ex_sp_hl
+58    0011              ELSE
+59    0011  E3                ex    (sp), hl
+60    0012              ENDIF
+61    0012  F1                pop   af
+62    0013  C9                ret
+63    0014              
+64    0014              cpdwcarry:
+65    0014              
+66    0014  BE                cp    (hl)
+67    0015  2B                dec   hl
+68    0016  0B                dec   bc
+69    0017              
+70    0017  F5                push  af
+71    0018              IF __CPU_GBZ80__
+72    0018                    call  __z80asm__ex_sp_hl
+73    0018              ELSE
+74    0018  E3                ex    (sp), hl
+75    0019              ENDIF
+76    0019              IF __CPU_INTEL__
+77    0019                    ld    a, l
+78    0019                    or    @00000001
+79    0019                    ld    l, a
+80    0019              ELSE
+81    0019  CB C5             set   0, l              ; set carry
+82    001B              ENDIF
+83    001B  18 EC             jr    rejoin
+84    001D              

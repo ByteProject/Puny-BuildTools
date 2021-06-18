@@ -1,0 +1,63 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_1126_opt_rule_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function sendJoinTeam flags 0x00000200 __smallc 
+; int sendJoinTeam(unsigned char team)
+; parameter 'unsigned char team' at 2 size(1)
+._sendJoinTeam
+	ld	hl,2	;const
+	push	hl
+	call	_zx_border
+	pop	bc
+	ld	hl,_sendbuf
+	ld	(hl),+(201 % 256 % 256)
+	ld	de,_sendbuf+1
+	ld	hl,2	;const
+	add	hl,sp
+	ld	a,(hl)
+	ld	(de),a
+	ld	hl,0	;const
+	push	hl
+	call	_zx_border
+	pop	bc
+	ld	hl,2	;const
+	push	hl
+	call	_sendMsg
+	pop	bc
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+._sendbuf	defs	10
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_zx_border
+	GLOBAL	_sendMsg
+	GLOBAL	_sendbuf
+	GLOBAL	_sendJoinTeam
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

@@ -1,0 +1,84 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_1103_fastcall_fnptr_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function test1 flags 0x00000200 __smallc 
+; int test1()
+._test1
+	ld	hl,_func_fcall
+	push	hl
+	push	hl
+	ld	hl,1	;const
+	pop	af
+	ld	bc,i_2
+	push	bc
+	push	af
+	ret
+.i_2
+	pop	bc
+	ret
+
+
+
+; Function test2 flags 0x00000200 __smallc 
+; int test2()
+._test2
+	ld	hl,_func
+	push	hl
+	push	hl
+	ld	hl,1	;const
+	ex	(sp),hl
+	call	l_jphl
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function test3 flags 0x00000200 __smallc 
+; int test3()
+._test3
+	ld	hl,_func_callee
+	push	hl
+	push	hl
+	ld	hl,1	;const
+	ex	(sp),hl
+	call	l_jphl
+	pop	bc
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_func_fcall
+	GLOBAL	_func
+	GLOBAL	_func_callee
+	GLOBAL	_test1
+	GLOBAL	_test2
+	GLOBAL	_test3
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

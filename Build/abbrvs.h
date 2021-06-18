@@ -1,0 +1,5 @@
+! ----------------------------------------------------------------------------
+!  abbreviations based on gametext.txt 
+! ----------------------------------------------------------------------------
+
+Abbreviate " the " " you" "You " " to " "ing " " is " "The " " and " ". " " th" "here" "n't " " something" ", " " with" " in" " for" " a " "tion" " of" " technology" " are " " object" "'s " "already " "ight" "ould " "this " " it" "alien " "ly " "the Polaris-7" "ter" " seems" "that " "ing" "ed " "not" " which " "This " "positronic" "have " "^^" " from" " starboard" "er " "ent" " on" " but" " co" "ou're " "an " "ship" " like" "all" "place" " be" "able" "It" "ver" " about " "space" "close" "ess" "erminal" "sta" " more specific." "-----------------------------" " look" "nce" "ate" "ain" "connect" " cube report: " "know" ".~" "your " "rea" "and" " Terra" "disintegrat" " to" "robot" " some" "hat" " happen" " obvious" " was " "open" "he navigator" "need" " has " "probably" "ough" "nder" "port" ;

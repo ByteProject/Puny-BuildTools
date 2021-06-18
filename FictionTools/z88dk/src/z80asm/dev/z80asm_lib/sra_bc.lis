@@ -1,0 +1,45 @@
+1     0000              ; Emulate 'sra bc' instruction, only carry is affected
+2     0000              ; CPU   Min T Max T
+3     0000              ; 8080  99    99
+4     0000              ; 8085  96    96
+5     0000              ; gbz80 16    16
+6     0000              ; r2k    8     8
+7     0000              ; z180  14    14
+8     0000              ; z80   16    16
+9     0000              ; z80n  16    16
+10    0000              
+11    0000                    SECTION  code_crt0_sccz80
+12    0000                    PUBLIC   __z80asm__sra_bc
+13    0000              
+14    0000              __z80asm__sra_bc:
+15    0000              
+16    0000              IF __CPU_INTEL__
+17    0000                    push  af
+18    0000              
+19    0000                    ld    a, b
+20    0000                    rla                     ; save bit 7 in carry
+21    0000                    ld    a, b
+22    0000                    rra                     ; rotate right, maitain bit 7
+23    0000                    ld    b, a
+24    0000              
+25    0000                    ld    a, c
+26    0000                    rra
+27    0000                    ld    c, a
+28    0000              
+29    0000                    jr    nc, carry0
+30    0000              
+31    0000                    pop   af
+32    0000                    scf
+33    0000                    ret
+34    0000              
+35    0000              carry0:
+36    0000                    pop   af
+37    0000                    and   a
+38    0000                    ret
+39    0000              ELSE
+40    0000  CB 28             sra   b
+41    0002  CB 19             rr    c
+42    0004  C9                ret
+43    0005              ENDIF
+44    0005              
+45    0005              

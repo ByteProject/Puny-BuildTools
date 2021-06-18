@@ -1,0 +1,204 @@
+
+
+
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+._mul
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	add	hl,hl
+	ret
+
+
+
+._mul2
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	add	hl,hl
+	ret
+
+
+
+._mul3
+	ld	de,(_g)
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	call	l_mult
+	ret
+
+
+
+._mul3_2
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	ex	de,hl
+	ld	hl,(_g)
+	call	l_mult
+	ret
+
+
+
+._div
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	ld	de,2
+	call	l_div
+	ret
+
+
+
+._div2
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	bit	7,h
+	jr	z,i_2
+	inc	hl
+.i_2
+	sra	h
+	rr	l
+	ret
+
+
+
+._div3
+	ld	de,(_g)
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	call	l_div
+	ret
+
+
+
+._add
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	inc	hl
+	inc	hl
+	ret
+
+
+
+._add2
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	inc	hl
+	inc	hl
+	ret
+
+
+
+._sub
+	pop	bc
+	pop	de
+	push	de
+	push	bc
+	ld	hl,2
+	and	a
+	sbc	hl,de
+	ret
+
+
+
+._sub_1
+	ld	hl,2	;const
+	call	l_gintspsp	;
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_gint	;
+	pop	de
+	call	l_mult
+	ld	de,2
+	ex	de,hl
+	and	a
+	sbc	hl,de
+	ret
+
+
+
+._sub2
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	dec	hl
+	dec	hl
+	ret
+
+
+
+._sub2_1
+	ld	hl,2	;const
+	call	l_gintspsp	;
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_gint	;
+	pop	de
+	call	l_mult
+	dec	hl
+	dec	hl
+	ret
+
+
+
+._sub3
+	ld	de,(_g)
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	ex	de,hl
+	and	a
+	sbc	hl,de
+	ret
+
+
+
+
+	SECTION	bss_compiler
+._g	defs	2
+	SECTION	code_compiler
+
+
+
+	GLOBAL	_g
+	GLOBAL	_mul
+	GLOBAL	_mul2
+	GLOBAL	_mul3
+	GLOBAL	_mul3_2
+	GLOBAL	_div
+	GLOBAL	_div2
+	GLOBAL	_div3
+	GLOBAL	_add
+	GLOBAL	_add2
+	GLOBAL	_sub
+	GLOBAL	_sub_1
+	GLOBAL	_sub2
+	GLOBAL	_sub2_1
+	GLOBAL	_sub3
+
+
+
+
