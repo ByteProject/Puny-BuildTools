@@ -1,6 +1,6 @@
 # Puddle BuildTools (for PunyInform and other libraries and compilers targeting the Infocom Z-machine)
 
-If you're into classic 8-bit and 16-bit home computers and you love Infocom style adventure games, we already have much in common and it's likely you appreciate a build environment, allowing you to target 25 retro systems. And what about transforming a single source file to 25 ready to use disk images in under 5 seconds? You'd like that? I have good news for you because that's essentially what the Puddle BuildTools are. The build environment runs out of the box with [PunyInform](https://github.com/johanberntsson/PunyInform), a lightweight but featureful [Inform 6](https://github.com/DavidKinder/Inform6) library, that is optimized to perform well on old hardware but everything is modular designed, so it would be very easy to add ZILF support for example. The only thing you'd need is a wrapper tool like the bundled one for Puny. I am looking forward to your pull requests!
+If you're into classic 8-bit and 16-bit home computers and you love Infocom style adventure games, we already have much in common and it's likely you appreciate a build environment, allowing you to target 25 retro systems. And what about transforming a single source file to 25 ready to use disk images in under 5 seconds? You'd like that? I have good news for you because that's essentially what the Puddle BuildTools are. The build environment runs out of the box with [PunyInform](https://github.com/johanberntsson/PunyInform), a lightweight but powerful [Inform 6](https://github.com/DavidKinder/Inform6) library, optimized to perform well on old hardware. The BuildTools are modular designed, so it would be very easy to add for support other libraries and compilers like ZILF for example. The only thing you'd need is a wrapper tool like the bundled one for Puny, which you even could use as a base. Whatever you come up with, I am looking forward to your pull requests!
 
 ## Current version
 
@@ -20,7 +20,7 @@ Since the commandline tools included are distributed as binaries, you'd need to 
 
 Note that the installation requires knowledge about Unix-like operating systems. Make sure you have `WLS2` (the Windows Subystem for Linux) installed, as described in [this guide](https://docs.microsoft.com/en-us/windows/wsl/install-win10). Go for `Debian`. It is the recommended distro as it will give you a very stable system in turn. You can optionally go for `Ubuntu`, which is Debian based.
 
-(Linux users don't need WSL since they are already working from a Linux environment.)
+(Linux users don't need to care about WSL of course since they are already working from a Linux environment.)
 
 Once the prerequisites are met, switch to a Bash terminal and follow these steps.
 
@@ -174,7 +174,7 @@ For the MSX, unfortunately there is no easy way to disable the intro screen feat
 
 **SAM Coupé**
 
-The SAM Coupé is actually work in progress and there currently is no documentation on how to create a proper SCREEN and PAL file. If you know how to create it, you may use an emulator, `SimCoupe` is recommended, and replace the SCREEN and PAL file on the `SAM_image.cpm` template disk found in `Interpreters` with your own creation. 
+The SAM Coupé requires a SCREEN and PAL file to work. In the `Interpreters/Tools` directory you find a guide, which [@SamsterDave](https://twitter.com/SamsterDave) kindly provided. Once you followed these steps, replace the SCREEN and PAL file on the `SAM_image.cpm` template disk found in `Interpreters` with your own creations. 
 
 If you don't intend to use an intro screen on the SAM, just edit `sam_coupe.sh` and replace all occurances of `SAM_image.cpm` with `SAM_Coupe.cpm`. You may then start the game with `INTERPR.COM`.
 
@@ -200,7 +200,9 @@ What you also find in the project directory is the source of my award-winning ga
 
 ## Interpreters
 
-Here is a quick reference of the interpreters used.
+One thing to mention in advance: when targeting 25 classic systems at once, you have to go for the smallest common denominator, which means when using the BuildTools, your game design needs to conform to the constraints to Z-machine version 3, so the story file for instance may not exceed 128k. The BuildTools auto-generate a z5 story only for a few interpreters but mostly for cosmetical reasons. You could however do something fancy and enable UNDO for the z5 targets, see H1DC sources to learn how I did it.
+
+Here is a quick reference of the interpreters used. 
 
 **C64, C128, Plus/4, Mega65**
 
@@ -212,7 +214,7 @@ Infocom interpreter, version K.
 
 **MS-DOS**
 
-Frotz originally by Stefan Jokisch, DOS port maintained by David Griffith.
+Frotz, originally by Stefan Jokisch, DOS port maintained by David Griffith. The BuildTools create a z5 story file for this interpreter.
 
 **Atari 8-bit**
 
@@ -220,11 +222,11 @@ Infocom interpreter with a patched header by Thomas Cherryhomes. This version wo
 
 **BBC Micro / Acorn Electron**
 
-BeebOzmoo (a port of Ozmoo) by Steven Flintham.
+Ozmoo for Acorn by Steven Flintham.
 
 **Commodore Amiga**
 
-ZIP by Mark Howell, the author of the Amiga port is unknown. I stumbled upon this specific version on an old Amiga FTP server and from what I saw it's not preserved elsewhere. It's notably the only Amiga ZIP version I found that works without issues on all hardware, from the Amiga 500 to the 4000. It's also the only one I saw with a custom (black/white) color scheme. It's Z-machine v3 only.
+ZIP by Mark Howell, the author of the Amiga port is unknown. I stumbled upon this specific version on an old Amiga FTP server and from what I saw it's not preserved elsewhere. It's notably the only Amiga ZIP version I found that works without issues on all hardware, from the Amiga 500 to the 4000. It's also the only one I saw with a custom (black/white) color scheme.
 
 **Amstrad CPC / PCW**
 
@@ -252,7 +254,7 @@ PInforic by Jose-Maria Enguita and Fabrice Frances.
 
 **Atari ST**
 
-Infocom interpreter. This is Z-machine version 5.
+Infocom interpreter. This is Z-machine version 5, so the BuildTools create a z5 story file for this target.
 
 **TI99/4a**
 
@@ -273,6 +275,8 @@ Interpreters by Edilbert Kirk.
 ## Credits
 
 Countless people have contributed directly or indirectly to this project. While I am not able to name them all, I'd like to thank you from the bottom of my heart. Without you lighting my path, none of this would exist now. Special thanks to Infocom for being a constant inspiration, to Graham Nelson for his work on Inform 6, to Fredrik Ramsberg and Johan Berntsson for creating PunyInform, to Andrew Plotkin for all he does for the community. I'd also like to thank Hugo Labrande, who was so kind to act a beta tester for the Puddle BuildTools.
+
+This release is dedicated to John Wilson, better known as Rochdale Balrog, legendary founder of Zenobi Software. In the shimmering, glowing night sky that was the vibrant UK adventure scene, you were the North Star. And even you may be gone now, your light still shines for us, guides us. Until we meet again at the end of time.
 
 ## Disclaimer and license
 
