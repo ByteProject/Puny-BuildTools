@@ -200,7 +200,7 @@ What you also find in the project directory is the source of my award-winning ga
 
 ## Interpreters
 
-One thing to mention in advance: when targeting 25 classic systems at once, you have to go for the smallest common denominator, which means when using the BuildTools, your game design needs to conform to the constraints to Z-machine version 3, so the story file for instance may not exceed 128k. The BuildTools auto-generate a z5 story only for a few interpreters but mostly for cosmetical reasons. You could however do something fancy and enable UNDO for the z5 targets, see H1DC sources to learn how I did it.
+One thing to mention in advance: when targeting 25 classic systems at once, you have to go for the smallest common denominator, which means when using the BuildTools, your game design needs to conform to the constraints of Z-machine version 3, so the story file for instance may not exceed 128k. The BuildTools auto-generate a z5 story only for a few interpreters but mostly for cosmetical reasons. You could however do something fancy and enable UNDO for the z5 targets, see H1DC sources to learn how I did it.
 
 Here is a quick reference of the interpreters used. 
 
