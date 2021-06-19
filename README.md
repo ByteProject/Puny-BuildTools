@@ -276,7 +276,7 @@ Interpreters by Edilbert Kirk.
 
 Countless people have contributed directly or indirectly to this project. While I am not able to name them all, I'd like to thank you from the bottom of my heart. Without you lighting my path, none of this would exist now. Special thanks to Infocom for being a constant inspiration, to Graham Nelson for his work on Inform 6, to Fredrik Ramsberg and Johan Berntsson for creating PunyInform, to Andrew Plotkin for all he does for the community. I'd also like to thank Hugo Labrande, who was so kind to act a beta tester for the Puddle BuildTools.
 
-This release is dedicated to John Wilson, better known as Rochdale Balrog, legendary founder of Zenobi Software. In the shimmering, glowing night sky that was the vibrant UK adventure scene, you were the North Star. And even you may be gone now, your light still shines for us, guides us. Until we meet again at the end of time.
+This release is dedicated to John Wilson, better known as Rochdale Balrog, legendary founder of Zenobi Software. In the shimmering, glowing night sky that was the vibrant UK adventure scene, you were the North Star. And even though you may be gone now, your light still shines for us, guides us. Until we meet again at the end of time.
 
 ## Disclaimer and license
 
