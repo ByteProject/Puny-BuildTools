@@ -188,7 +188,7 @@ Note that two targets don't have their own script. The Atari 8-bit disk image is
 
 ## Creating a modern PC version
 
-I've added a script that allows you to generate a modern PC version (using Parchment). Linux users will be disappointed now but it is Windows Powershell based, so it won't work under Linux. It also invokes Andrew Plotkin's `ifsitegen.py` which uses an existing Inform 7 installation and ideally an updated Parchment somewhere in the Inform 7 resources. In my humble opinion generating modern PC versions is beyond the scope of this project but since I already had something, I wanted to include it anyway. If you're only distributing the Z-machine files for modern computers, nuke the script and delete any references from the `bundle.sh` that add the `Modern` folder located in the `Releases` dir, which is where the `modern.ps1` will produce its output files.
+I've added a script that allows you to generate a modern PC version (using Parchment). I't a Powershell script and I have only tested it under Windows, but I've been told that Powershell also exists for Linux, so it might work for you. It invokes Andrew Plotkin's `ifsitegen.py` which uses an existing Inform 7 installation and ideally an updated Parchment somewhere in the Inform 7 resources. In my humble opinion generating modern PC versions is beyond the scope of this project but since I already had something, I wanted to include it anyway. If you're only distributing the Z-machine files for modern computers, nuke the script and delete any references from the `bundle.sh` that add the `Modern` folder located in the `Releases` dir, which is where the `modern.ps1` will produce its output files.
 
 ## Testing games / configuring emulators
 
