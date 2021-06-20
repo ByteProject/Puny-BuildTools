@@ -17,7 +17,9 @@ ${WRAPPER} ${STORY}.inf
 #prepare story 
 cp ${STORY}.z3 STORY.DAT
 
-#place story on disk image
+#place autostart and story on disk image
+echo -e "INTERPRE.COM\r" >PROFILE.SUB
+idsk ${STORY}.dsk -i PROFILE.SUB -t 0
 idsk ${STORY}.dsk -i STORY.DAT -t 0
 
 #place loader and resources
@@ -29,6 +31,7 @@ cp ./Resources/PAL ./
 idsk ${STORY}.dsk -i PAL -t 1 -c a000
 
 #post cleanup
+rm PROFILE.SUB
 rm STORY.DAT
 rm DISC
 rm SCREEN
