@@ -47,7 +47,7 @@ main()
 
 usage()
 {
-	echo "PUDDLE BUILDTOOLS FOR PUNYINFORM V1.0"
+	echo "PUDDLE BUILDTOOLS FOR PUNYINFORM V1.1"
 	echo "Usage: puny game.inf"
 	echo "       puny [-5] game.inf"
 	echo ""
