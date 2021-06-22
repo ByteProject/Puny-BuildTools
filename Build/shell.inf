@@ -15,7 +15,7 @@ Array UUID_ARRAY string "UUID://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx//";
 #Ifdef UUID_ARRAY; #Endif;
 
 Switches e; ! Use Economize mode
-Include ">abbrvs_generic.h";
+!Include ">abbrvs_generic.h";
 
 Constant Story "A SHELL AT THE SEASIDE";
 Constant Headline "^An interactive Skeleton by Your Name^\
@@ -31,8 +31,8 @@ Constant OPTIONAL_FULL_SCORE;
 Constant OBJECT_SCORE = 3;
 Constant ROOM_SCORE = 3;
 Constant MAX_SCORE 10;
-Constant OPTIONAL_MANUAL_REACTIVE;
-Constant OPTIONAL_MANUAL_SCOPE;
+!Constant OPTIONAL_MANUAL_REACTIVE;
+!Constant OPTIONAL_MANUAL_SCOPE;
 Constant INITIAL_LOCATION_VALUE = Seashore;
 #ifV5;
 Constant OPTIONAL_PROVIDE_UNDO; ! undo opcode is only supported in Z-machine v5 spec
@@ -43,7 +43,9 @@ Constant RUNTIME_ERRORS = 0;
 
 ! routine overrides
 Replace PronounNotice;
-!Replace SmellSub;
+#ifV5;
+Replace DrawStatusLine; ! replace Puny's routine for Infocom interpreter compatibility
+#endif;
 
 Include "globals.h";
 
@@ -67,7 +69,7 @@ Constant MESS_LANDMARK "You don't need to refer to doors and exits here.";
 Constant MESS_GO_LANDMARK "You decide to take a closer look and ";
 
 ! messages (lib-overrides)
-Constant MSG_PROMPT 1000; 
+Constant MSG_PROMPT 1000;
 Constant MSG_TAKE_ANIMATE 1001;
 Constant MSG_EAT_ANIMATE 1002;
 Constant MSG_PARSER_NO_INPUT 1003;
@@ -76,11 +78,11 @@ Constant MSG_PARSER_CANT_SEE_SUCH_THING 1005;
 Constant MSG_PARSER_DONT_UNDERSTAND_WORD 1006;
 Constant MSG_LOOK_BEFORE_ROOMNAME 1007;
 Constant MSG_FILL_NO_WATER 1008;
-Constant MSG_INSERT_NOT_CONTAINER 1009; 
+Constant MSG_INSERT_NOT_CONTAINER 1009;
 Constant MSG_EMPTY_CANT_CONTAIN 1010;
 Constant MSG_OPEN_YOU_CANT 1011;
 [LibraryMessages p_msg p_arg_1 p_arg_2;
- switch(p_msg) { 
+ switch(p_msg) {
     MSG_PROMPT:
       print ">";
       p_arg_1 = p_arg_2;
@@ -101,7 +103,7 @@ Constant MSG_OPEN_YOU_CANT 1011;
       @new_line; ! mimics Inform style location texts, disable for Infocom style
     MSG_FILL_NO_WATER:
       "That doesn't seem to work. Are you referring to an object that can be filled with liquid? Please refer to the usage of the fill command by typing [fill object].";
-    MSG_INSERT_NOT_CONTAINER, 
+    MSG_INSERT_NOT_CONTAINER,
     MSG_EMPTY_CANT_CONTAIN:
       print_ret "Either this object can't contain any things or doing it won't help you progress in this game.";
     MSG_OPEN_YOU_CANT:
@@ -150,7 +152,7 @@ Object walls "walls"
           "You check the walls without gaining any new insights.";
       ],
       before [;
-          Attack: 
+          Attack:
             "There is surely a better way to deal with frustration.";
           Turn:
             "The walls? Are you serious?";
@@ -211,7 +213,7 @@ Object -> ocean,
   player.before = PlayerBefore; ! player.before override, see routine implementation
   player.parse_name = PlayerParseName; ! own routine that parses the player's name
   player.description = "There you are, a ghost in a shell, surrounded by a sea of shells.";
-  
+
   print "^^\
         And when he hath the kernel eat,^\
         who doth not fling away the shell?^\
@@ -248,6 +250,66 @@ Object -> ocean,
 	else if (p_object has neuter) itobj = p_object;
 	else himobj = p_object;
 ];
+
+#ifV5;
+! we use our own routine as Puny's might cause Infocom z5 terps to misbehave
+[ DrawStatusLine width posa s1 s2; !
+   @split_window 1; @set_window 1; @set_cursor 1 1; style reverse;
+   width = 0->33;
+   SpeedSpaces (width);
+   @set_cursor 1 2; _PrintObjName(location);
+   if (width > 76)
+   {
+	   s1 = NumWidth(status_field_1);
+	   s2 = NumWidth(status_field_2);
+	   posa = width-26;
+	   @set_cursor 1 posa;
+	   print " Score: ", status_field_1;
+	   SpeedSpaces(6-s1);
+       print "Moves: ", status_field_2;
+	   SpeedSpaces(6-s2);
+   }
+   else if (width > 39)
+   {
+	   s1 = NumWidth(status_field_1);
+	   s2 = NumWidth(status_field_2);
+	   posa = width - 9 - s1 - s2;
+	   @set_cursor 1 posa;
+	   print " Score: ", status_field_1, "/", status_field_2;
+	   @print_char ' ';
+   }
+   @set_cursor 1 1; style roman; @set_window 0;
+];
+
+[NumWidth num width;
+	width = 1;
+	if(num < 0) {
+		width++;
+		num = -num;
+	}
+	if(num >= 10)
+	{
+	   width++;
+	   if(num >= 100)
+	   {
+		   width++;
+		   if(num >= 1000)
+		   {
+			   width++;
+		   }
+	   }
+	}
+	return width;
+];
+
+[ SpeedSpaces p_spaces; ! stolen from Puny's ext_menu.h
+	while(p_spaces > 10) {
+		@print_table TenSpaces 10 1;
+		p_spaces = p_spaces - 10;
+	}
+	@print_table TenSpaces p_spaces 1;
+];
+#endif;
 
 [ AboutSub;
   print_ret (string)Story, " is copyright (c) 2021 by Your Name.^^You may freely distribute the game, but you have to link to <youramazingurl.com>. This work may not be sold or included in any for-profit collection without written permission from the author.^^Please send bug reports to ", "<me@@64","mymail.com>.^^For acknowledgements and credits, please type ~credits~.";
@@ -294,12 +356,12 @@ Object -> ocean,
   noun = false;
 ];
 
-! if not overridden by a before routine, TURN NOUN LEFT/RIGHT will invoke a regular TURN NOUN 
+! if not overridden by a before routine, TURN NOUN LEFT/RIGHT will invoke a regular TURN NOUN
 [ TurnLeftSub;
-  <<Turn noun>>; 
+  <<Turn noun>>;
 ];
 
-[ TurnRightSub; 
+[ TurnRightSub;
   <<Turn noun>>;
 ];
 
