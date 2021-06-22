@@ -4,7 +4,7 @@ If you're into classic 8-bit and 16-bit home computers and you love Infocom styl
 
 ## Current version
 
-The current version is `v1.0`.
+The current version is `v1.1`.
 
 ## Supported targets
 
@@ -133,9 +133,9 @@ Use Multipaint to create a Botticelli multicolor image. Name it to `picplus4.mb`
 
 **Commodore Amiga**
 
-Use a tool like [Grafx2](http://grafx2.chez.com/) to create a valid `.iff` file. If you really hail the past with every breath you make, you might of course do it in Deluxe Paint as well. Use an Amiga .adf disk image editor like `ADF Opus` (not included) to put the file on the `S-PIC` ADF disk image which you find in `Interpreters/Tools`. Optionally just use `xdftool` for putting the file on disk, which has been installed together with the FictionTools. Now fire up `Workbench` and open the AmigaDOS CLI and use the s-pic utility to transform your IFF image into a self-executing intro. Save the file as loader and put it on the template disk `amiga_ZIP_pic.adf` which you find in `Interpreters`. 
+Use a tool like [Grafx2](http://grafx2.chez.com/) to create a valid `.iff` file. If you really hail the past with every breath you make, you might of course do it in Deluxe Paint as well. Use an Amiga .adf disk image editor like `ADF Opus` (not included) to put the file on the `S-PIC` ADF disk image which you find in `Interpreters/Tools`. Optionally just use `xdftool` for putting the file on disk, which has been installed together with the FictionTools. Now fire up `Workbench` and open the AmigaDOS CLI and use the s-pic utility to transform your IFF image into a self-executing intro. Save the file as loader and put it on the template disk `amiga_ZIP_pic.adf` (Z-machine v3) or `amiga_Infocom_z5_pic.adf` (Z-machine v5), depending on which interpreter which you defined to use in the Amiga script. You find both templates in `Interpreters`.
 
-In case this is too cumbersome for you, which I can totally understand, just edit the `amiga.sh` script and replace all instances of `amiga_ZIP_pic.adf` with `amiga_ZIP.adf`. It's a second disk image I prepared that doesn't try to fire up a loader first but goes straight into your story. 
+In case this is too cumbersome for you, which I can totally understand, just edit the `amiga.sh` script and either replace all instances of `amiga_ZIP_pic.adf` with `amiga_ZIP.adf` or replace all instances of `amiga_Infocom_z5_pic.adf` with `amiga_Infocom_z5.adf`, again depending on the interpreter and Z-machine version (v3 or v5) you prefer. I prepared these disk images so that they go straight into your story. Learn more about the available Amiga interpreters in the interpreter section below.
 
 **Atari ST**
 
@@ -186,9 +186,23 @@ When all targets compile to your satisfaction, you may use the `all.sh` script t
 
 Note that two targets don't have their own script. The Atari 8-bit disk image is created every time when you build one of the other targets. That's because the Puny wrapper program creates the Atari 8-bit image itself. And the ZX Spectrum Next has native Z-machine support built-in, so you just put the z3 or z5 file on a SD card and you're able to play it, hence no script for the Next.
 
+## Going Z-machine v5 only as a design choice
+
+You might want to say now that targeting 25 systems is great, but what if I want to write a Z-machine version 5 game which, based on the [Z-machine specs](http://inform-fiction.org/zmachine/standards/z1point0/appd.html), would be an understandable design choice? Your story file may be much larger, you may include a ton of objects more in comparsion to z3, dictionary words are stored with a length of 9 characters, you may draw your own status line, absolutely everything is improved and less constrained with z5, giving you the freedom to fully focus on writing rather than counting bytes. The downside is that not every platform is capable of running a Z-machine v5 game, not only because of the lack of the proper interpreter but also in terms of performance. Still, you can target a fair good amount of machines if you want to go z5 for your game and choose freedom over system availability. 
+
+**What systems may I target with z5?**
+
+Commodore 64, Commodore Amiga, Atari ST, Spectrum Next, MS-DOS, BBC Micro, Acorn Electron, Commodore 128, Mega 65, Commodore Plus/4, classic Macintosh.
+
+Just in case you're counting now... that's 11 of 25.
+
+**How do I target z5?**
+
+Please keep in mind that this feature is meant for people whose story file will exceed the constraints of z3 so they intentionally choose to create a z5 game. Please **do not** alter the single build scripts in your project directory, like `amiga.sh` for example. Instead, you compile all your targets at once with just one script which is called `z5_all.sh`. So if you want to alter something, e.g. adding a loader image for example, do it in `z5_all.sh` instead.
+
 ## Creating a modern PC version
 
-I've added a script that allows you to generate a modern PC version (using Parchment). I't a Powershell script and I have only tested it under Windows, but I've been told that Powershell also exists for Linux, so it might work for you. It invokes Andrew Plotkin's `ifsitegen.py` which uses an existing Inform 7 installation and ideally an updated Parchment somewhere in the Inform 7 resources. In my humble opinion generating modern PC versions is beyond the scope of this project but since I already had something, I wanted to include it anyway. If you're only distributing the Z-machine files for modern computers, nuke the script and delete any references from the `bundle.sh` that add the `Modern` folder located in the `Releases` dir, which is where the `modern.ps1` will produce its output files.
+I've added a script that allows you to generate a modern PC version (using Parchment). I't a Powershell script and I have only tested it under Windows, but Powershell also exists for Linux, so it might work for you. It invokes Andrew Plotkin's `ifsitegen.py` which uses an existing Inform 7 installation and ideally an updated Parchment somewhere in the Inform 7 resources. In my humble opinion generating modern PC versions is beyond the scope of this project but since I already had something, I wanted to include it anyway. If you're only distributing the Z-machine files for modern computers, nuke the script and delete any references from the `bundle.sh` that add the `Modern` folder located in the `Releases` dir, which is where the `modern.ps1` will produce its output files.
 
 ## Testing games / configuring emulators
 
@@ -226,7 +240,23 @@ Ozmoo for Acorn by Steven Flintham.
 
 **Commodore Amiga**
 
-ZIP by Mark Howell, the author of the Amiga port is unknown. I stumbled upon this specific version on an old Amiga FTP server and from what I saw it's not preserved elsewhere. It's notably the only Amiga ZIP version I found that works without issues on all hardware, from the Amiga 500 to the 4000. It's also the only one I saw with a custom (black/white) color scheme.
+You may choose here between Z-machine v3 and v5. 
+
+The z3 interpreter is ZIP by Mark Howell, the author of the Amiga port though is unknown. I stumbled upon this specific version on an old Amiga FTP server and from what I saw it's not preserved elsewhere. It's notably the only Amiga ZIP version I found that works without issues on all hardware, from the Amiga 500 to the 4000. It's also the only one I saw with a custom (black/white) color scheme. This is a free interpreter so the BuildTools are configured to use it by default. You can however select Infocom's z3 interpreter as well. 
+
+If you choose z5 for the Amiga, then only Infocom's interpreter is available. But it's not a friend of Puny's way to draw the statusline. So if you want to use Infocom's z5 interpreter because z5 is the advanced Z-machine implementation, have a look at the `DrawStatusLine` code I've added to the `shell.inf` file and learn how to make the interpreter work for Puny z5 games. Apart from that it's a very nice interpreter. 
+
+Please have a look at the names of the Amiga interpreter disk images in the `Interpreters` directory and rename the values in the `amiga.sh` script accordingly. Please also make sure to edit the `#compile` and `#prepare story` parts of the script to the values seen below for z5 interpreter usage.
+
+```shell
+#compile
+${WRAPPER} -5 ${STORY}.inf
+
+#prepare story 
+cp ${STORY}.z5 Story.Data
+```
+
+Note that if you use the `z5_all.sh` script, the Amiga target gets compiled to Z-machine version 5 regardless of what you have specified in the `amiga.sh` script. `z5_all.sh` only compiles z5 capable targets and since you have more options on the Amiga, it automatically applies z5, which hopefully makes sense.  
 
 **Amstrad CPC / PCW**
 
