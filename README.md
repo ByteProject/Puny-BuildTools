@@ -4,7 +4,7 @@ If you're into classic 8-bit and 16-bit home computers and you love Infocom styl
 
 ## Current version
 
-The current version is `v1.1`.
+The current version is `v1.2`.
 
 ## Supported targets
 
@@ -12,7 +12,7 @@ Commodore 64, Amstrad CPC and PCW, Spectrum +3, Spectrum Next, Commodore Amiga, 
 
 ## Host system
 
-The Puddle BuildTools are designed to run in `WSL2` (the Windows Subsystem for Linux) on `Windows 10`. And since WSL is a full-featured Linux environment, you get this running out of the box on your favorite `Linux (64-bit)` distribution as well.
+The Puddle BuildTools are designed to run in `WSL2` (the Windows Subsystem for Linux) on `Windows 10` (or later). And since WSL is a full-featured Linux environment, you get this running out of the box on your favorite `Linux (64-bit)` distribution as well.
 
 Since the commandline tools included are distributed as binaries, you'd need to recompile these for making the Puddle BuildTools work on a MacOS or BSD, in theory it's possible though.
 
@@ -192,9 +192,9 @@ You might want to say now that targeting 25 systems is great, but what if I want
 
 **What systems may I target with z5?**
 
-Commodore 64, Commodore Amiga, Atari ST, Spectrum Next, MS-DOS, BBC Micro, Acorn Electron, Commodore 128, Mega 65, Commodore Plus/4, classic Macintosh.
+Commodore 64, Commodore Amiga, Atari ST, Spectrum Next, MS-DOS, BBC Micro, Acorn Electron, Apple II, Commodore 128, Mega 65, Commodore Plus/4, classic Macintosh.
 
-Just in case you're counting now... that's 11 of 25.
+Just in case you're counting now... that's 12 of 25.
 
 **How do I target z5?**
 
@@ -242,9 +242,11 @@ Ozmoo for Acorn by Steven Flintham.
 
 You may choose here between Z-machine v3 and v5. 
 
-The z3 interpreter is ZIP by Mark Howell, the author of the Amiga port though is unknown. I stumbled upon this specific version on an old Amiga FTP server and from what I saw it's not preserved elsewhere. It's notably the only Amiga ZIP version I found that works without issues on all hardware, from the Amiga 500 to the 4000. It's also the only one I saw with a custom (black/white) color scheme. This is a free interpreter so the BuildTools are configured to use it by default. You can however select Infocom's z3 interpreter as well. 
+The recommended z3 interpreter is ZIP by Mark Howell, the author of the Amiga port though is unknown. I stumbled upon this specific version on an old Amiga FTP server and from what I saw it's not preserved elsewhere. It's notably the only Amiga ZIP version I found that works without issues on all hardware, from the Amiga 500 to the 4000. It's also the only one I saw with a custom (black/white) color scheme. This is a free interpreter so the BuildTools are configured to use it by default. You can however select Infocom's z3 interpreter as well. 
 
-If you choose z5 for the Amiga, then only Infocom's interpreter is available. But it's not a friend of Puny's way to draw the statusline. So if you want to use Infocom's z5 interpreter because z5 is the advanced Z-machine implementation, have a look at the `DrawStatusLine` code I've added to the `shell.inf` file and learn how to make the interpreter work for Puny z5 games. Apart from that it's a very nice interpreter. 
+If you choose z5 for the Amiga, then Infocom's interpreter is the default. But it's not a friend of Puny's way to draw the statusline. So if you intentionally want to use z5 because of the advanced features, have a look at the `DrawStatusLine` code I've added to the `shell.inf` file and learn how to make the interpreter work for Puny z5 games. Apart from that it's a very nice interpreter. 
+
+You could also use Amiga Frotz, but I actually found it not working well on old machines so I am not recommending it. It has less columns than Infocom's interpreter and a few other issues. Nevertheless I am providing disk images for it, too. 
 
 Please have a look at the names of the Amiga interpreter disk images in the `Interpreters` directory and rename the values in the `amiga.sh` script accordingly. Please also make sure to edit the `#compile` and `#prepare story` parts of the script to the values seen below for z5 interpreter usage.
 
