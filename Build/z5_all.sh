@@ -1,6 +1,6 @@
 #!/bin/bash
 # builds all Z-machine v5 capable targets to z5:
-# Commodore 64, Commodore Amiga, Atari ST, Spectrum Next, MS-DOS, BBC Micro, 
+# Commodore 64, Commodore Amiga, Atari ST, Spectrum Next, MS-DOS, BBC Micro, Apple 2, 
 # Acorn Electron, Commodore 128, Mega 65, Commodore Plus/4, classic Macintosh.
 
 #read config file 
@@ -197,3 +197,16 @@ humount
 
 #post cleanup
 rm game.story
+
+############### Apple II ###############
+
+#cleanup
+rm ${STORY}_apple2_s1.dsk
+rm ${STORY}_apple2_s2.dsk
+
+#compile
+${WRAPPER} -5 ${STORY}.inf
+
+#create disk image
+interlz5 ./Interpreters/info5a.bin ${STORY}.z5 ${STORY}_apple2_s1.dsk
+interlz5 ./Interpreters/info5a.bin ${STORY}.z5 ${STORY}_apple2_s1.dsk ${STORY}_apple2_s2.nib
