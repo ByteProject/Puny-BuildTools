@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3 (work in progress)
+
+* upgrade to Inform 6 compiler v6.36 (dev), the new version comes with a much better abbreviations logic and saves bytes, thanks to @hlabrand
+
 ## 1.2
 
 * appended Apple II target to z5_all.sh
