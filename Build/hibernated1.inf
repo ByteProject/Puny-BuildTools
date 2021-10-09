@@ -2999,7 +2999,7 @@ Constant SPHEREERROR "Nothing happens. Maybe it doesn't work when you're that cl
 
 [ InvSub;
 	if(child(player) == 0) { PrintMsg(MSG_INVENTORY_EMPTY); rtrue; }
-    PrintMsg(MSG_INVENTORY_SUCCESS);
+    PrintMsg(MSG_INVENTORY_DEFAULT);
 	AfterRoutines();
 
   ! we override the InvSub so we can show a nice fancy upgrade status for Io.
@@ -3015,7 +3015,7 @@ Constant SPHEREERROR "Nothing happens. Maybe it doesn't work when you're that cl
   ! in space, no one hears you scream... err... smell
   if(spacesuit has worn) "In this spacesuit, you smell nothing but yourself.";
 	if(ObjectIsUntouchable(noun)) return;
-	PrintMsg(MSG_SMELL_SUCCESS);
+	PrintMsg(MSG_SMELL_DEFAULT);
 ];
 
 [ FillErrorSub;
