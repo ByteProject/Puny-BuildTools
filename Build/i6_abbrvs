@@ -1,0 +1,12 @@
+# !/bin/bash
+# creates optimized abbreviations for your story
+# using ZAbbrevMaker by Henrik Åsman
+
+#read config file 
+source config.sh
+
+#cleanup
+rm abbrvs.h
+
+#generate
+ZAbbrevMaker -cu -v -i > abbrvs.h
