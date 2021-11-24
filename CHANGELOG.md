@@ -1,8 +1,12 @@
 # Changelog
 
-## 1.3 (work in progress)
+## 1.3
 
-* upgrade to Inform 6 compiler v6.36 (dev), the new version comes with a much better abbreviations logic and saves bytes, thanks to @hlabrand
+* the line to include the generic abbreviations in shell.inf is no longer commented, which absolutely made no sense anyway
+* moved the abbreviations wrapper script to the build directory
+* added ZAbbrevMaker by Henrik Åsman @heasm66 as standard tool for generating optimized story abbreviations
+* fixed an error in the H1DC source that originated from a default message suffix change in PunyInform, thanks to @spacehobo for the pull request
+* upgrade to Inform 6 compiler v6.36 (dev) as the new version comes with a much better abbreviations logic
 
 ## 1.2
 

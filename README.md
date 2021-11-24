@@ -4,7 +4,7 @@ If you're into classic 8-bit and 16-bit home computers and you love Infocom styl
 
 ## Current version
 
-The current version is `v1.2`.
+The current version is `v1.3`.
 
 ## Supported targets
 
