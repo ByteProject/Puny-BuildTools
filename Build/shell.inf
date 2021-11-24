@@ -15,7 +15,7 @@ Array UUID_ARRAY string "UUID://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx//";
 #Ifdef UUID_ARRAY; #Endif;
 
 Switches e; ! Use Economize mode
-!Include ">abbrvs_generic.h";
+Include ">abbrvs_generic.h";
 
 Constant Story "A SHELL AT THE SEASIDE";
 Constant Headline "^An interactive Skeleton by Your Name^\
