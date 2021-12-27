@@ -19,3 +19,4 @@ bash c128.sh
 bash dos.sh
 bash sam_coupe.sh
 bash trs_coco_dragon64.sh
+bash a8bit.sh
