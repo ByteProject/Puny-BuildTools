@@ -1,10 +1,10 @@
-# Puddle BuildTools (for PunyInform and other libraries and compilers targeting the Infocom Z-machine)
+# Puddle BuildTools for PunyInform
 
 If you're into classic 8-bit and 16-bit home computers and you love Infocom style adventure games, we already have much in common and it's likely you appreciate a build environment, allowing you to target 25 retro systems. And what about transforming a single source file to 25 ready to use disk images in under 5 seconds? You'd like that? I have good news for you because that's essentially what the Puddle BuildTools are. The build environment runs out of the box with [PunyInform](https://github.com/johanberntsson/PunyInform), a lightweight but powerful [Inform 6](https://github.com/DavidKinder/Inform6) library, optimized to perform well on old hardware. The BuildTools are modular designed, so it would be very easy to add for support other libraries and compilers like ZILF for example. The only thing you'd need is a wrapper tool like the bundled one for Puny, which you even could use as a base. Whatever you come up with, I am looking forward to your pull requests!
 
 ## Current version
 
-The current version is `v1.3`.
+The current version is `v1.4`.
 
 ## Supported targets
 
@@ -184,7 +184,7 @@ When all targets compile to your satisfaction, you may use the `all.sh` script t
 
 **Is there something else to know?** 
 
-Note that two targets don't have their own script. The Atari 8-bit disk image is created every time when you build one of the other targets. That's because the Puny wrapper program creates the Atari 8-bit image itself. And the ZX Spectrum Next has native Z-machine support built-in, so you just put the z3 or z5 file on a SD card and you're able to play it, hence no script for the Next.
+Note that one target don't have its own script. The ZX Spectrum Next has native Z-machine support built-in, so you just put the z3 or z5 file on a SD card and you're able to play it, hence no script for the Next.
 
 ## Going Z-machine v5 only as a design choice
 
@@ -232,7 +232,11 @@ Frotz, originally by Stefan Jokisch, DOS port maintained by David Griffith. The 
 
 **Atari 8-bit**
 
-Infocom interpreter with a patched header by Thomas Cherryhomes. This version works on FujiNet, SIO2SD and real media.
+Various Infocom interpreters. By default, the BuildTools use the early Atari 8-bit interpreter, which expects both interpreter and story on a single disk. While this works well, it can become a problem when your game makes use of the full 128k a Z-machine version 3 game may hold, thus exceeding the size of a regular Atari 8-bit disk image (either 90k or 130k), because it's always story file plus interpreter. Infocom addressed the issue a long time ago by creating a two disk interpreter for the Atari 8-bit. It expects an altered story file with a different header and the story split at a certain offset for it to work.
+
+The BuildTools recover the ability to target the late Atari 8-bit Infocom interpreters (version B - G), so that the constraints of the Atari 8-bit disk won't affect you, and more importantly your game design. By default, the `a8bit.sh` build script bundles the early interpreter but you can invoke it with flag `-2` to create a two disk distribution using the final Atari 8-bit interpreter Infocom released, which is version G. The Atari build script has a disk creator utility embedded, which takes care of patching your story file, splitting it at the defined offset and then creating the two disks which allow you to play the game. In the build directory, fire the script like this `a8bit.sh -2` and the magic will happen. You may also want to change `all.sh` by adding the `-2` flag and please consider editing `bundle.sh` so that you make sure it will zip both disk files. 
+
+The BuildTools create Atari 8-bit disk images that work on FujiNet, SIO2SD and real hardware. Many thanks to Thomas Cherryhomes for his support.
 
 **BBC Micro / Acorn Electron**
 
