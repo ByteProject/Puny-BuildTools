@@ -21,7 +21,7 @@ Constant Story "HIBERNATED 1";
 Constant Headline "^This Place is Death (Director's Cut)^\
                    A Science Fiction Story by Stefan Vogt^\
                    First-time players should type ~about~^";
-Release 8;
+Release 10;
 
 ! game-specific defines
 !Constant DEBUG;
@@ -47,6 +47,9 @@ Constant RUNTIME_ERRORS = 0;
 Replace InvSub;
 Replace SmellSub;
 Replace PronounNotice;
+#ifV5;
+Replace DrawStatusLine; ! replace Puny's routine for Infocom interpreter compatibility
+#endif;
 
 Include "globals.h";
 
@@ -118,7 +121,7 @@ Constant MSG_OPEN_YOU_CANT 1011;
 
 [PrintRank; ! this uses Puny's PrintRank feature, as an addition to the score
   print ", earning you the rank: ";
-  if (score >= 311) "Alpha Centauri Survivor.";
+  if (score >= 314) "Alpha Centauri Survivor.";
   if (score >= 240) "Terran Export Hit.";
   if (score >= 120) "Curious Human.";
   "Cryogenic Sleeper.";
@@ -2813,6 +2816,66 @@ Object -> -> ->  silverdisc "silver disc"
 	else himobj = p_object;
 ];
 
+#ifV5;
+! we use our own routine as Puny's might cause Infocom z5 terps to misbehave
+[ DrawStatusLine width posa s1 s2; !
+   @split_window 1; @set_window 1; @set_cursor 1 1; style reverse;
+   width = 0->33;
+   SpeedSpaces (width);
+   @set_cursor 1 2; _PrintObjName(location);
+   if (width > 76)
+   {
+	   s1 = NumWidth(status_field_1);
+	   s2 = NumWidth(status_field_2);
+	   posa = width-26;
+	   @set_cursor 1 posa;
+	   print " Score: ", status_field_1;
+	   SpeedSpaces(6-s1);
+       print "Moves: ", status_field_2;
+	   SpeedSpaces(6-s2);
+   }
+   else if (width > 39)
+   {
+	   s1 = NumWidth(status_field_1);
+	   s2 = NumWidth(status_field_2);
+	   posa = width - 9 - s1 - s2;
+	   @set_cursor 1 posa;
+	   print " Score: ", status_field_1, "/", status_field_2;
+	   @print_char ' ';
+   }
+   @set_cursor 1 1; style roman; @set_window 0;
+];
+
+[NumWidth num width;
+	width = 1;
+	if(num < 0) {
+		width++;
+		num = -num;
+	}
+	if(num >= 10)
+	{
+	   width++;
+	   if(num >= 100)
+	   {
+		   width++;
+		   if(num >= 1000)
+		   {
+			   width++;
+		   }
+	   }
+	}
+	return width;
+];
+
+[ SpeedSpaces p_spaces; ! stolen from Puny's ext_menu.h
+	while(p_spaces > 10) {
+		@print_table TenSpaces 10 1;
+		p_spaces = p_spaces - 10;
+	}
+	@print_table TenSpaces p_spaces 1;
+];
+#endif;
+
 [ AboutSub;
   print_ret (string)Story, " is copyright (c) 2021 by Stefan Vogt and Puddle Software.^^You may freely distribute the game, but you have to link to <8bitgames.itch.io>, where the latest version is available and optional donations are welcome. This work may not be sold or included in any for-profit collection without written permission from the author.^^Your comments and Omega bug reports are appreciated at ", "<stefan@@64","8-bit.info>.^^For acknowledgements and credits, please type ~credits~.";
 ];
@@ -2827,7 +2890,7 @@ Object -> -> ->  silverdisc "silver disc"
 
 [ HelpSub;
   F_HELP = 1;
-  print_ret "The ", (string)Story, " package contains a PlayIF card that explains the basic gameplay and many synonyms will enhance what you read on it. There are a few extra verbs necessary but these will be introduced to you in advance. You never have to guess the verb.^^Conversations are not as complex as in Infocom titles. It is sufficient to type [talk to NPC] or [ask NPC].^^There are no cardinal directions in space, since these are bound to the poles of a planet. Instead, you navigate using the nautical terms: [fore], [aft], [port], [starboard].^^You have to operate computers in this game. You do that either by yourself [operate computer], or occassionally with Io's help [ask Io] and sometimes, you have to type a code to proceed [type 1234 on/into console].^^Use the [save] command to store your progress and [restore] to load it again.";
+  print_ret "The ", (string)Story, " package contains a PlayIF card that explains the basic gameplay and many synonyms will enhance what you read on it. There are a few extra verbs necessary but these will be introduced to you in advance. You never have to guess the verb.^^Conversations are not as complex as in Infocom titles. It is sufficient to type [talk to NPC] or [ask NPC].^^There are no cardinal directions in space, since these are bound to the poles of a planet. Instead, you navigate using the nautical terms: [fore], [aft], [port], [starboard].^^You have to operate computers in this game. You do that either by yourself [operate computer], or occasionally with Io's help [ask Io] and sometimes, you have to type a code to proceed [type 1234 on/into console].^^Use the [save] command to store your progress and [restore] to load it again.";
 ];
 
 [ XyzzySub;
