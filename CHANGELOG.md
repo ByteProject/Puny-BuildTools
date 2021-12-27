@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.4
+
+* added Atari 8-bit disk creator utility, which allows to bundle games using either the early Infocom interpreter (single disk) or the late Infocom interpreter (two disks) working around the constraints of Atari disks when having a large story file
+* added multiple binary template files used by the Atari 8-bit disk creator utility
+* added version B, E and G of the late Infocom Atari 8-bit interpreter, the creator utility uses version G by default
+* the puny wrapper tool no longer auto-generates Atari 8-bit images as the target has its own build script in the Build directory now (a8bit.sh)
+* updated documentation, added Atari 8-bit disk creator usage (see interpreters section)
+* updated the Hibernated 1 Director's Cut sources to R10
+
+
 ## 1.3
 
 * the line to include the generic abbreviations in shell.inf is no longer commented, which absolutely made no sense anyway
