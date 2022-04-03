@@ -21,7 +21,7 @@ Constant Story "HIBERNATED 1";
 Constant Headline "^This Place is Death (Director's Cut)^\
                    A Science Fiction Story by Stefan Vogt^\
                    First-time players should type ~about~^";
-Release 10;
+Release 12;
 
 ! game-specific defines
 !Constant DEBUG;
@@ -616,7 +616,7 @@ Character -> io "Io"
               if (io in StarshipBridge && navigator.talk_status == 0) "You try to say something but Io is faster. ~The navigator wants to talk to you, Olivia. Don't let him wait, his time has come to an end.~";
               if (io in StarshipBridge && datahub.starchart_updated == true && self.talk_status == 2) {
                 self.talk_status = 3;
-                print "~The star charts have been successfully updated, Olivia. We are ready to travel to Gyan, the homeworld of the alien masters, right in the heart of the Andromeda Galaxy.~^^You didn't expect that. ~Andromeda? They are not from the Milky Way?~^^Io projects a hologram showing the Andromeda galaxy into the air. The simulation zooms in to a red dwarf system, close to the galactic center. ~That's Gyan.~ he says. ~The journey takes only a few days. Do you want me to initite the hypertravel sequence?~ ";
+                print "~The star charts have been successfully updated, Olivia. We are ready to travel to Gyan, the homeworld of the alien masters, right in the heart of the Andromeda Galaxy.~^^You didn't expect that. ~Andromeda? They are not from the Milky Way?~^^Io projects a hologram showing the Andromeda galaxy into the air. The simulation zooms in to a red dwarf system, close to the galactic center. ~That's Gyan.~ he says. ~The journey takes only a few days. Do you want me to initiate the hypertravel sequence?~ ";
                 if (YesOrNo()) EndingSequence();
                 rtrue;
               }
@@ -654,7 +654,7 @@ Character -> io "Io"
               give io ~moved;
               give hatch open;
               scope_modified = true;
-              "You carefully put Io on the positronic mainframe. He flashes much faster than he usually does while endless streams of data flood him. It takes a few minutes until he pulsates softly, signalizing that he finally is synchronized with the alien spaceship.^^~The hatch to the navigator is now open for you, Oliva. Go, find your answers.";
+              "You carefully put Io on the positronic mainframe. He flashes much faster than he usually does while endless streams of data flood him. It takes a few minutes until he pulsates softly, signalizing that he finally is synchronized with the alien spaceship.^^~The hatch to the navigator is now open for you, Olivia. Go, find your answers.";
             }
             "You are certainly not going to leave Io here.";
       ],
@@ -773,7 +773,6 @@ Object -> -> vaccine "vaccine"
 Constant CUBE_CLOSING "The top of the cube is always open, you cannot close it.";
 
 Object ->  specimencube "specimen cube"
-
   with  name 'specimen' 'cube',
     description "The specimen cube is connected to the computer and meant for organic materials. Put something in, get magic out. So they say.",
     before [;
