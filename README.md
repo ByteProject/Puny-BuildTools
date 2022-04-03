@@ -4,11 +4,11 @@ If you're into classic 8-bit and 16-bit home computers and you love Infocom styl
 
 ## Current version
 
-The current version is `v1.4`.
+The current version is `v1.5`.
 
 ## Supported targets
 
-Commodore 64, Amstrad CPC and PCW, Spectrum +3, Spectrum Next, Commodore Amiga, Atari 8-bit, Atari ST, MS-DOS, Apple 2, BBC Micro, Acorn Electron, Commodore 128, Mega 65, TRS-80 Color Computer, Dragon64, MSX 1 and MSX 2, Oric, Commodore Plus/4, TI99/4a, Commodore VIC-20, Commodore PET, SAM Coupé, classic Macintosh.
+Commodore 64, Amstrad CPC and PCW, Spectrum +3, Spectrum Next, Commodore Amiga, Atari 8-bit, Atari ST, MS-DOS, Apple 2, BBC Micro, Acorn Electron, Commodore 128, Mega 65, TRS-80 Color Computer, TRS-80 Model 3, TRS-80 Model 4, Dragon64, MSX 1 and MSX 2, Oric, Commodore Plus/4, TI99/4a, Commodore VIC-20, Commodore PET, SAM Coupé, classic Macintosh, Kaypro, Osborne 1, DEC Rainbow.
 
 ## Host system
 
@@ -60,7 +60,7 @@ You probably notice that the WSL entries are hardcoded paths. You need to change
 
 I recommend using Visual Studio Code as your editor, as it comes with a server that allows connecting to WSL2. And it's a brilliant editor anyway. 
 
-Next edit the file `/etc/cpmtools/diskdefs` with an editor of choice. If you want to stay in the Terminal, you may use VIM, but you can also edit it with VSCode of course. Add the following definition to the file, it's going to teach the `cpmtools` package how to handle SAM Coupé Pro-DOS disk images.
+Next edit the file `/etc/cpmtools/diskdefs` with an editor of choice. If you want to stay in the Terminal, you may use VIM, but you can also edit it with VSCode of course. Add the following definition to the file, it's going to teach the `cpmtools` package how to handle SAM Coupé Pro-DOS and DEC Rainbow disk images.
 
 ```
 diskdef prodos
@@ -71,6 +71,18 @@ diskdef prodos
   blocksize 2048
   boottrk 1
   skew 0
+  os 2.2
+end
+
+# DEC2 DEC Rainbow - SSDD 96 tpi 5.25" - 512 x 10
+  diskdef dec2
+  seclen 512
+  tracks 80
+  sectrk 10
+  blocksize 2048
+  maxdir 128
+  skew 2
+  boottrk 2
   os 2.2
 end
 ```
@@ -97,7 +109,7 @@ Open the file `configure.sh` and edit it accordingly. You might want to leave th
 
 I also recommend editing the file `test.sh`. This is the script that you launch when you quickly want to test something after you changed the source code. It created z3 and z5 versions of your games and then automatically launches Frotz on Windows to test the z3 version. The path to Frotz is hardcoded and likely differs from your path, change it so that it fits. 
 
-Last file to edit for now would be `bundle.sh`, but only if you're not inside WSL2. If you're on Linux, you might want to change the `$windesk` variable to the path of your desktop. If you are using WSL2, you already defined `$windesk` in `.bashrc` and needn't worry about it in the bundle shell script. 
+Last file to edit for now would be `bundle.sh`, but only if you're not inside WSL2. If you're on Linux, you might want to change the `$windesk` variable to the path of your desktop. If you are using WSL2, you already defined `$windesk` in `.bashrc` and needn't worry about it in the bundled shell script. 
 
 ## Usage
 
@@ -192,9 +204,9 @@ You might want to say now that targeting 25 systems is great, but what if I want
 
 **What systems may I target with z5?**
 
-Commodore 64, Commodore Amiga, Atari ST, Spectrum Next, MS-DOS, BBC Micro, Acorn Electron, Apple II, Commodore 128, Mega 65, Commodore Plus/4, classic Macintosh.
+Commodore 64, Commodore Amiga, Commodore 128, Atari ST, Spectrum Next, MS-DOS, BBC Micro, Acorn Electron, Apple II, TRS-80 Model4, Mega 65, Commodore Plus/4, classic Macintosh.
 
-Just in case you're counting now... that's 12 of 25.
+Just in case you're counting now... that's 13 of 30.
 
 **How do I target z5?**
 
@@ -206,7 +218,7 @@ I've added a script that allows you to generate a modern PC version (using Parch
 
 ## Testing games / configuring emulators
 
-You probably will be disappointed now but I am not able to help you in setting up 25 emulators. I am also not able to teach you how to work with a certain 8-bit or 16-bit home computer. I hope you understand that this would go far beyond the scope of this project. If you need a starting point, just look at the `readme.txt` file you find in `Releases` as it comes at least with instructions how to load the game on every target.
+You probably will be disappointed now but I am not able to help you in setting up 30 emulators and for some systems like the DEC Rainbow you probably won't even find an emulator that does the job. I am also not able to teach you how to work with a certain 8-bit or 16-bit home computer. I hope you understand that this would go far beyond the scope of this project. If you need a starting point, just look at the `readme.txt` file you find in `Releases` as it comes at least with instructions how to load the game on every target.
 
 ## Hibernated 1 Director's Cut
 
@@ -214,7 +226,7 @@ What you also find in the project directory is the source of my award-winning ga
 
 ## Interpreters
 
-One thing to mention in advance: when targeting 25 classic systems at once, you have to go for the smallest common denominator, which means when using the BuildTools, your game design needs to conform to the constraints of Z-machine version 3, so the story file for instance may not exceed 128k. The BuildTools auto-generate a z5 story only for a few interpreters but mostly for cosmetical reasons. You could however do something fancy and enable UNDO for the z5 targets, see H1DC sources to learn how I did it.
+One thing to mention in advance: when targeting 30 classic systems at once, you have to go for the smallest common denominator, which means when using the BuildTools, your game design needs to conform to the constraints of Z-machine version 3, so the story file for instance may not exceed 128k. The BuildTools auto-generate a z5 story only for a few interpreters but mostly for cosmetical reasons. You could however do something fancy and enable UNDO for the z5 targets, see H1DC sources to learn how I did it.
 
 Here is a quick reference of the interpreters used. 
 
@@ -308,11 +320,31 @@ Interpreter by a person called Pere. I stumbled upon this in a Spanish forum.
 
 Interpreters by Edilbert Kirk.
 
+**TRS-80 Model 3**
+
+Infocom interpreter which comes with a few modifications to better support both the Z-machine standard and host system. Note that the Model 3 build script involves a Windows binary. Refer to the script itself for setting it up properly.
+
+**TRS-80 Model 4**
+
+M4ZVM by Shawn Sijnstra. The BuildTools by default create a Z-machine version 5 story file for this system. You could go version 3 but 5 works very well so apparently there is no reason to do so. Note that the Model 4 build script involves a Windows binary. Refer to the script itself for setting it up properly.
+
+**DEC Rainbow** 
+
+Infocom's standard DEC interpreter.
+
+**Osborne 1**
+
+The basis is an Infocom CP/M interpreter that had been modified to work with the Osborne's CP/M specs.
+
+**Kaypro**
+
+Infocom interpreter configured to work with the Kaypro. 
+
 ## Credits
 
 Countless people have contributed directly or indirectly to this project. While I am not able to name them all, I'd like to thank you from the bottom of my heart. Without you lighting my path, none of this would exist now. Special thanks to Infocom for being a constant inspiration, to Graham Nelson for his work on Inform 6, to Fredrik Ramsberg and Johan Berntsson for creating PunyInform, to Andrew Plotkin for all he does for the community. I'd also like to thank Hugo Labrande, who was so kind to act a beta tester for the Puddle BuildTools.
 
-This release is dedicated to John Wilson, better known as Rochdale Balrog, legendary founder of Zenobi Software. In the shimmering, glowing night sky that was the vibrant UK adventure scene, you were the North Star. And even though you may be gone now, your light still shines for us, guides us. Until we meet again at the end of time.
+This release is dedicated to John Wilson, better known as Rochdale Balrog, legendary founder of Zenobi Software. In the shimmering, glowing night sky that was the vibrant UK adventure scene, you were the North Star. And even though you may be gone now, your light still shines for us, guides us. Until we meet again when all cycles have come to end.
 
 ## Disclaimer and license
 
