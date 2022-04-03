@@ -20,3 +20,8 @@ bash dos.sh
 bash sam_coupe.sh
 bash trs_coco_dragon64.sh
 bash a8bit.sh
+bash decrainbow.sh
+bash kaypro.sh
+bash osborne1.sh
+bash trs80_m3.sh
+bash trs80_m4.sh
