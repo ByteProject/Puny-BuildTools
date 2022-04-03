@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.5
+
+* support for new target systems via additional build scripts: TRS-80 Model 3, TRS-80 Model 4, DEC Rainbow, Osborne 1, Kaypro
+* added sanitized disk images for the new target systems
+* updated readme template providing loading instructions in Releases dir
+* bundled Hibernated 1 Director's Cut source is now R12
+* added new targets to bundle script
+* updated gitignore sample, fixed Atari 8-bit 2-disk interpreter image ignores, added DOS directory to ignored paths
+* appended all.sh script with the new targets
+* bumped puny command line utility in FictionTools
+* documentation update
+
 ## 1.4
 
 * added Atari 8-bit disk creator utility, which allows to bundle games using either the early Infocom interpreter (single disk) or the late Infocom interpreter (two disks) working around the constraints of Atari disks when having a large story file
