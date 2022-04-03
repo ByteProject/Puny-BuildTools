@@ -3,7 +3,7 @@ Have you ever dreamed about a journey far beyond the known regions of the univer
 Hibernated 1 - This Place is Death (Director's Cut) is an Infocom style interactive fiction game. It's a complete rewrite of the classic, award-winning Hibernated game using Infocom's Z-machine standard, with tons of additional narrative content and riddles. If Infocom had been asked to recreate the classic Hibernated, the Director's Cut would have been the outcome.
 
 SYSTEMS
-The game is available for Commodore 64, Amstrad CPC and PCW, Spectrum +3, Spectrum Next, Commodore Amiga, Atari 8-bit, Atari ST, MS-DOS, Apple 2, BBC Micro, Acorn Electron, Commodore 128, Mega 65, MSX 1 and MSX 2, Oric, Commodore Plus/4, TI99/4a, Commodore VIC-20, Commodore PET, SAM Coupé, classic Macintosh and modern PC. In addition, there are z3 and z5 files provided, for playing the game in your Z-machine interpreter of choice. 
+The game is available for Commodore 64, Amstrad CPC and PCW, Spectrum +3, Spectrum Next, Commodore Amiga, Atari 8-bit, Atari ST, MS-DOS, Apple 2, BBC Micro, Acorn Electron, Commodore 128, Mega65, MSX 1 and MSX 2, Oric, Commodore Plus/4, TI99/4a, Commodore VIC-20, Commodore PET, SAM Coupé, TRS CoCo, TRS-80 Model III, TRS-80 Model 4, Osborne 1, Kaypro II, Kaypro 4, DEC Rainbow 100, Dragon64, classic Macintosh and modern PC. In addition, there are z3 and z5 files provided, for playing the game in your Z-machine interpreter of choice. 
 
 PHYSICAL RELEASE
 There's a physical release available and it comes in a box that resembles the original Infocom packaging back from the day. It can be ordered from my publisher Poly.Play: https://bit.ly/34NFaeX
@@ -135,6 +135,38 @@ TRS CoCo
 Insert the game disk
 type LOADM"GAME
 when the computer is ready type EXEC
+
+TRS-80 Model III
+Insert game disk
+Turn on your computer
+The game will auto-boot
+
+In case your computer was already turned on, you need to reset.
+
+TRS-80 Model 4
+Insert game disk
+Turn on your computer
+The game will auto-boot
+
+In case your computer was already turned on, you need to reset.
+
+Osborne 1
+Insert game disk
+type STORY to load the game
+
+Kaypro II
+Insert game disk
+type GAME to load the game
+
+Kaypro 4
+Insert game disk
+tape GAME to load the game
+
+Note: Your Kaypro 4 will boot into Kaypro II mode to run this game.
+
+DEC Rainbow 100
+Insert game disk
+type STORY to load the game
 
 Dragon64
 Insert game in disk drive 1
