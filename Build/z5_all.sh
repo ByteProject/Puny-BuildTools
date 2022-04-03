@@ -210,3 +210,32 @@ ${WRAPPER} -5 ${STORY}.inf
 #create disk image
 interlz5 ./Interpreters/info5a.bin ${STORY}.z5 ${STORY}_apple2_s1.dsk
 interlz5 ./Interpreters/info5a.bin ${STORY}.z5 ${STORY}_apple2_s1.dsk ${STORY}_apple2_s2.nib
+
+############### TRS-80 Model 4 ###############
+
+#cleanup
+rm ${STORY}_trs80_m4.dsk
+
+#compile
+${WRAPPER} -5 ${STORY}.inf
+
+#prepare story 
+cp ${STORY}.z5 STORY.DAT
+
+#copy disk template with interpreter
+cp Interpreters/TRS80_M4.dsk $toolswin
+
+#move story file on Windows partition
+mv STORY.DAT $toolswin
+
+#write story file on TRS-80 Model 3 (LDOS) disk image
+/mnt/c/Program\ Files/PowerShell/7/pwsh.exe -Command "C:/FictionTools/trswrite.exe C:/FictionTools/TRS80_M4.dsk C:/FictionTools/STORY.DAT"
+printf "\n" # only cosmetical
+/mnt/c/Program\ Files/PowerShell/7/pwsh.exe -Command "C:/FictionTools/trsread.exe -v C:/FictionTools/TRS80_M4.dsk"
+
+#grab prepared image from Windows partition and place it in project directory
+mv $toolswin/TRS80_M4.dsk .
+
+#post cleanup
+rm $toolswin/STORY.DAT
+mv TRS80_M4.dsk ${STORY}_trs80_m4.dsk
