@@ -16,7 +16,7 @@ main()
 
 usage()
 {
-	printf "PUDDLE BUILDTOOLS FOR PUNYINFORM V1.4\n"
+	printf "PUDDLE BUILDTOOLS FOR PUNYINFORM V1.5\n"
 	printf "Usage: puny game.inf\n"
 	printf "       puny [-5] game.inf\n\n"
 	printf "       -5 : create v5 release\n\n"
