@@ -1,3 +1,0 @@
-GenevaMono 7pt
-copyright (c) 1999 Andrew Owen
-- a Swiss style sans-serif family inspired by Susan Kare

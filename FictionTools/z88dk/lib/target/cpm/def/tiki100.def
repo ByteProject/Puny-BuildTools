@@ -1,8 +1,0 @@
-;
-; Extra definitions for the TIKI100
-;
-
-
-	defc		PORT_0C_COPY = $F04D
-
-	defc		CURSOR_BLINK_VECTOR = $f057		;JP e02c

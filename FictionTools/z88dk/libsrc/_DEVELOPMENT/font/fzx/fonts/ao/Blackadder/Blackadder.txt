@@ -1,3 +1,0 @@
-Blackadder 9pt
-copyright (c) 2009 Andrew Owen
-- a script font inspired by Bo Jangeborg

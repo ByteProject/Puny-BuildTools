@@ -1,9 +1,0 @@
-game_bonus.c
-game_bullet.c
-game_enemies.c
-game_hud.c
-game_mines.c
-game_player.c
-game_setup.c
-game_sound.c
-game_text.c

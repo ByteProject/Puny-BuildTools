@@ -1,3 +1,0 @@
-Jangeborg 7pt Roman
-copyright (c) 2009 Andrew Owen
-- a narrow monospaced font designed for The Artist III

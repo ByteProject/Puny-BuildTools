@@ -1,3 +1,0 @@
-OpenDyslexic 12pt Roman
-copyright (c) 2013 Andrew Owen
-- based on a work at http://dyslexicfonts.com

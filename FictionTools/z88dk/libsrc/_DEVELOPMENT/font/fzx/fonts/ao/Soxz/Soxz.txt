@@ -1,3 +1,0 @@
-Soxz 7pt Roman
-copyright (c) 2013 Andrew Owen
-- a small system font

@@ -1,6 +1,0 @@
-
-=====
-ALLOC
-=====
-
-Various memory allocators.

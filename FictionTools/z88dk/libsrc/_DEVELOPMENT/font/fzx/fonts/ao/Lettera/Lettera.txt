@@ -1,3 +1,0 @@
-Lettera 9pt Roman
-copyright (c) 2013 Andrew Owen
-- a monospaced font inspired by Olivetti typewriters

@@ -1,3 +1,0 @@
-Kaitaia 11pt Bold
-copyright (c) 2013 Andrew Owen
-- a headline font inspired by John Schaedler

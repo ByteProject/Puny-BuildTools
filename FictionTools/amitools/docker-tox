@@ -1,2 +1,0 @@
-#!/bin/sh
-exec docker run -it --rm -v $PWD:/src:ro amitools-tox tox "$@"

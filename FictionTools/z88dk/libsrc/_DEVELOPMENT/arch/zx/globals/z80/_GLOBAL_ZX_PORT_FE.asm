@@ -1,7 +1,0 @@
-SECTION data_arch
-
-PUBLIC _GLOBAL_ZX_PORT_FE
-
-_GLOBAL_ZX_PORT_FE:
-
-   defb 7

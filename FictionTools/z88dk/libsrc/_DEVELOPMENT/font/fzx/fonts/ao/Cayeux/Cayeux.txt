@@ -1,3 +1,0 @@
-Cayeux 18pt Roman
-copyright (c) 2013 Andrew Owen
-- an ornate serif font inspired by Freda Sack

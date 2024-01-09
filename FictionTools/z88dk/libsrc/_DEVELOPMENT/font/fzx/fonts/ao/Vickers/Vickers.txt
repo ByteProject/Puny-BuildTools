@@ -1,3 +1,0 @@
-Vickers 7pt Condensed
-copyright (c) 1996 Andrew Owen
-- a monospaced font inspired by Steve Vickers

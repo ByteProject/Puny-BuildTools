@@ -1,3 +1,0 @@
-Chloe 7pt Bold
-copyright (c) 2013 Andrew Owen
-- a narrow monospaced font designed for CRT displays

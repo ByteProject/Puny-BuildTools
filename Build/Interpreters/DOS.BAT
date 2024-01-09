@@ -1,1 +1,0 @@
-FROTZ -b 0 STORY.DAT
