@@ -1,2 +1,0 @@
-target/svi/svibios/obj/${TARGET}/*
-@target/msx/arch_msxbios.lst

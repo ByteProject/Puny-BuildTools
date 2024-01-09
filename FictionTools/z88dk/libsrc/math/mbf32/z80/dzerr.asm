@@ -1,4 +1,0 @@
-
-		PUBLIC	DZERR
-
-DZERR:	ret

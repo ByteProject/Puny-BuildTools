@@ -1,4 +1,0 @@
-
-		PUBLIC	BSERR
-
-BSERR:	ret

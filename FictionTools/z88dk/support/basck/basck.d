@@ -1,1 +1,0 @@
-basck.o: basck.c

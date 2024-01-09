@@ -1,4 +1,0 @@
-stdout:
-stderr:
-failed to write 5 bytes to file 'test.out'
-exit: 1

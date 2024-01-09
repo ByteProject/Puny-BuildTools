@@ -1,2 +1,0 @@
-stdlib/obj/${TYPE}/**/*.o
-stdlib/obj/${TARGET}/**/*.o

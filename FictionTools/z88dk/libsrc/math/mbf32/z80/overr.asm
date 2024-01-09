@@ -1,4 +1,0 @@
-
-		PUBLIC	OVERR
-
-OVERR:	ret

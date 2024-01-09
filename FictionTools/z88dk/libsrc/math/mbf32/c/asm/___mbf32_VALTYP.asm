@@ -1,4 +1,0 @@
-SECTION code_fp_mbf32
-PUBLIC ___mbf32_VALTYP
-EXTERN VALTYP
-defc ___mbf32_VALTYP = VALTYP

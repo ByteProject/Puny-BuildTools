@@ -1,4 +1,0 @@
-@stdio/stdio.lst
-target/rex/input8
-target/rex/output8
-@z80.lst

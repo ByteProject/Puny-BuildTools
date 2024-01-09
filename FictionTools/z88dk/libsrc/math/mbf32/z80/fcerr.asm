@@ -1,4 +1,0 @@
-
-		PUBLIC	FCERR
-
-FCERR:	ret
