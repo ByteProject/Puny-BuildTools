@@ -1,9 +1,9 @@
 splashline0 
-	!pet "Spacewhale", 0
+	!pet "Moonmist / ZZAP!64", 0
 splashline1
 	!pet "Interactive Fiction", 0
 splashline2
-	!pet "jpking.itch.io", 0
+	!pet "8bitgames.itch.io", 0
 splashline3
 	!pet "", 0
 splashline4
@@ -53,5 +53,5 @@ splashline7alt
 
 
 splash_index_col
-	!byte 15, 11, 13, 0, 0, 0, 0, 0
+	!byte 11, 11, 12, 0, 0, 0, 0, 0
 
