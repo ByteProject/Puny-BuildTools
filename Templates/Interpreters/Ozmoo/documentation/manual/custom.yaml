@@ -1,0 +1,15 @@
+title: Ozmoo
+toc: true
+include-before: |
+    **Ozmoo**
+
+    _A Z-machine interpreter for the Commodore 64_ and similar computers
+
+    Release 13: 18 July 2023
+
+    &nbsp;
+
+    &nbsp;
+
+    Ozmoo was conceived and designed by Johan Berntsson and Fredrik Ramsberg. Special thanks to howtophil, Retrofan,  Paul van der Laan, Jason Compton, Alessandro Morgantini, Thomas Bøvith, Eric Sherman, Paul Gardner-Stephen, Steve Flintham, Bart van Leeuwen, Karol Stasiak and Dennis Holmes for testing, code contributions and bug fixes.
+

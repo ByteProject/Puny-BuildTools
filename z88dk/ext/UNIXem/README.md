@@ -1,0 +1,2 @@
+# UNIXem
+UNIXem is a small and simple library that provides emulation of several popular Unix API functions on the Windows platform. Its primary purpose is to assist Windows programmers who are porting to Unix or are writing multi-platform code. API functions include opendir/readdir/closedir, glob/globfree, readv/writev, pathconf/realpath, mmap/munmap/msync, dlopen/dlclose/dlsym/dlerror, gettimeofday, and getpagesize.

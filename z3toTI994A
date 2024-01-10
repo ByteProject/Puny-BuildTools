@@ -1,0 +1,114 @@
+#!/usr/bin/env python
+###########################
+# Z3 to TI-99/4A
+# A small script to convert a z3 file into the format expected by the
+#    TI-99/4A interpreter
+# Written by Hugo Labrande
+# Based on Barry Boone's work and scripts, with assistance from Chris Schneider
+
+__author__ = "Hugo Labrande and Stefan Vogt"
+__version__ = "1.1"
+
+import os
+import sys
+
+# grab file name from import, check for file integrity, synopsis otherwise
+if len(sys.argv) == 2:
+    if os.path.isfile(sys.argv[1]):
+        zFile = sys.argv[1]
+    else:
+        print("File is not valid, operation aborted.\n")
+        exit()
+else:
+    print("[Z3 to TI-99/4A v1.1] by Hugo Labrande and Stefan Vogt")
+    print("synopsis: z3toTI994A storyfile.z3\n")
+    exit()
+
+# it is recommended leaving the basename as is
+basename = "stry"
+myfile = zFile
+
+# determine the number of 256-byte sectors
+myfilesize = os.stat(myfile).st_size
+#print(myfilesize)
+
+# file 1 has a 128 byte header and 90 sectors:
+#     88 sectors of game data + 2 sectors storing every 256th byte of game data
+file1_nbsectors = 90
+file1_size = 128 + file1_nbsectors*256
+if (myfilesize < file1_size):
+    print("z3 file too small; unsupported")
+    exit
+file2_nbsectors = (myfilesize // 256) - 88
+if (myfilesize % 256 != 0):
+    file2_nbsectors += 1
+file2_size = 128 + file2_nbsectors*256
+
+
+# We can now write the headers of the files
+header1_int = [0 for i in range(0,128)]
+temp = basename.upper() +"1"+"          "
+for i in range(0,10):
+    header1_int[i] = ord(temp[i])
+header1_int[13] = 1
+header1_int[14] = file1_nbsectors // 256
+header1_int[15] = file1_nbsectors % 256
+header1_int[17] = 255
+header1_int[18] = file1_nbsectors % 256
+header1_int[19] = file1_nbsectors // 256
+header1 = bytearray(header1_int)
+
+header2_int = [0 for i in range(0,128)]
+temp = basename.upper() +"2"+"          "
+for i in range(0,10):
+    header2_int[i] = ord(temp[i])
+header2_int[13] = 1
+header2_int[14] = file2_nbsectors // 256
+header2_int[15] = file2_nbsectors % 256
+header2_int[17] = 255
+header2_int[18] = file2_nbsectors % 256
+header2_int[19] = file2_nbsectors // 256
+header2 = bytearray(header2_int)
+
+# the rest of the first file
+file1 = bytearray([0 for i in range(0, (file1_nbsectors-2)*256)])
+# sector 89 and 90 of the first file
+array256 = bytearray([0 for i in range(0, 2*256)])
+# the rest of the second file
+file2 = bytearray([0 for i in range(0, file2_nbsectors*256)])
+
+
+f = open(myfile, "rb") # open a byte file
+sec = 0 # to know which position to write in the array
+for i in range(0, 88*256):
+    byte = f.read(1)
+    if ((i+1) % 256 == 0):
+        array256[sec] = byte[0]
+        sec += 1
+    else:
+        file1[i] = byte[0]
+        
+for i in range(0, file2_nbsectors*256):
+    byte = f.read(1)
+    if (byte):
+        if ((i+1) % 256 == 0):
+            array256[sec] = byte[0]
+            # the sector 89 itself has to have a blank 256th byte! so skip one
+            if (sec == 254):
+                sec += 2
+            else:
+                sec += 1
+        else:
+            file2[i] = byte[0]
+
+# Write all this and you're done!
+f1 = open(basename.upper()+"1", "wb")
+f1.write(header1)
+f1.write(file1)
+f1.write(array256)
+f1.close()
+f2 = open(basename.upper()+"2", "wb")
+f2.write(header2)
+f2.write(file2)
+f2.close()
+print("TI99/4A story chuncks successfully created.\n")

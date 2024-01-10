@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0 (work in progress)
+
+* project rebranded to 'The Puny BuildTools'
+
+
 ## 1.5
 
 * support for new target systems via additional build scripts: TRS-80 Model 3, TRS-80 Model 4, DEC Rainbow, Osborne 1, Kaypro

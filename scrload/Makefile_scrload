@@ -1,0 +1,21 @@
+DELETE=erase
+CC=zcc
+TARGET=+cpm
+VERBOSITY=-vn
+
+CFLAGS=$(TARGET) $(VERBOSITY) -c
+LDFLAGS=$(TARGET) $(VERBOSITY)
+
+OBJECTS = scrload.o
+EXEC = scrload
+
+%.o: %.c Makefile_scrload screen.bin
+	$(CC) $(CFLAGS) -o $@ $<
+
+all: $(EXEC)
+
+$(EXEC) : $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $(EXEC) -create-app
+
+clean:
+	$(DELETE) *.o *~

@@ -1,0 +1,183 @@
+#!/bin/bash
+# puny CLI - The Puny BuildTools command-line interface 
+# Copyright (c) 2023 Stefan Vogt
+
+#read config file
+if [ -f config.sh ] ; then
+  source config.sh
+fi
+
+do_compile()
+{
+  if ! [ -f config.sh ] ; then
+    echo -e "No config file found in current directory.\n"
+    exit 1
+  fi
+
+  if [ -f ${STORY}.z${ZVERSION} ] ; then
+    rm ${STORY}.z${ZVERSION}
+  fi
+
+  if ! [ -f ${STORY}.inf ] ; then
+    echo -e "'${STORY}.inf' not found. Operation aborted.\n" 
+    exit 1
+  fi
+
+  ${WRAPPER} -${ZVERSION} ${STORY}.inf
+  if ! [ -f ${STORY}.z${ZVERSION} ] ; then
+    echo -e "Inform 6 compiler error detected, no story file compiled.\n"
+    exit 1;
+  else
+    echo -e "Story file '${STORY}.z${ZVERSION}' successfully compiled.\n"
+  fi
+}
+
+echo -e "puny CLI 2.0\n"
+
+while getopts ':iectb:haosv' opt; do
+  case "$opt" in
+    i) # init project directory
+      echo -e "initializing project directory [...]\n"
+      if [ -f config.sh ] ; then
+        echo -e "Config file found in current directory. Aborting project init.\n"
+        exit 1
+      fi
+      echo "-> writing 'config.sh' file"
+      echo "-> writing 'Resources' directory"
+      cp -r ~/FictionTools/Templates/Resources .
+      mv Resources/config.sh .
+      echo "-> writing 'bundle.sh' and 'all.sh' scripts"
+      mv Resources/bundle.sh .
+      mv Resources/all.sh .
+      echo "-> writing 'Releases' directory"
+      mv Resources/Releases .
+      echo -e "\nDone.\nUse 'puny -e' to edit your project configuration.\n"
+      exit 0
+      ;;
+
+    a) # create optimized abbrevations > abbrvs.h
+      echo -e "writing abbreviations to abbrvs.h [...]\n"
+      ~/FictionTools/make_abbrvs.sh
+      echo
+      exit 0
+      ;;
+
+    e) # edit project config
+      if ! [ -f config.sh ] ; then
+        echo -e "No config file found in current directory.\n"
+        exit 1
+      fi
+      echo -e "launching config editor [...]"
+      echo -e "Done.\n"
+      ${CFGEDITOR} config.sh
+      exit 0
+      ;;
+
+    c) # project story file compilation
+      do_compile
+      exit 0
+      ;;
+
+    t) # project testing
+      echo -e "testing '${STORY}' in '${TESTTERP}', Z-machine version ${ZVERSION} [...]"
+      do_compile
+      echo -e "Launching ${TESTTERP} [...]"
+      echo -e "Done.\n"
+      ${TESTTERP} ${STORY}.z${ZVERSION}
+      exit 0
+      ;;
+
+    b) # target processing
+      if ! [ -f config.sh ] ; then
+        echo -e "No config file found in current directory.\n"
+        exit 1
+      fi
+      
+      zvalue="$ZVERSION"
+      if ! (( zvalue == 3 || zvalue == 5 )) ; then 
+        echo -e "Z-machine version ${zvalue} is not supported.\n";
+        exit 1
+      fi
+
+      target="$OPTARG" 
+      if ! [ -f ~/FictionTools/Templates/${target}.sh ] ; then
+        echo -e "'${target}' is not a valid target. Operation aborted.\n"
+        exit 1
+      fi
+      
+      echo -e "Processing target '${target}', Z-machine version ${zvalue}"
+      ~/FictionTools/Templates/${target}.sh
+      ;;
+
+    h) # help menu
+      echo -e "Synopsis: $(basename $0) [-switch] or [-build target]\n"
+      echo "[switches]"
+      echo "  -i       initialize project directory"
+      echo "  -e       edit project configuration"
+      echo "  -c       compile project to Z-machine story file"
+      echo "  -a       create optimized abbreviations"
+      echo "  -t       test project"
+      echo "  -o       see full range of target systems"
+      echo "  -s       show examples"
+      echo "  -v       version information"
+      echo -e "  -h       help menu\n"
+      echo "[build target]"
+      echo -e "  -b arg   create disk image for the system defined as argument\n"
+      exit 0
+      ;;
+
+    o) # target listing
+      echo "Target systems:"
+      echo "C64     [-b c64]        Amiga     [-b amiga]      ZX Spectrum  [-b speccy]"
+      echo "CPC/PCW [-b cpc_pcw]    Atari ST  [-b atari_st]   Atari 8-bit  [-b a8bit]"
+      echo "MS-DOS  [-b dos]        MSX       [-b msx]        BBC/Electron [-b bbc_acorn]"
+      echo "C128    [-b c128]       Plus/4    [-b plus4]      Apple II     [-b apple2]"
+      echo "SAM     [-b sam_coupe]  TRS M3    [-b trs80_m3]   TRS M4       [-b trs80_m4]"
+      echo "Mega65  [-b mega65]     Macintosh [-b macintosh]"
+      echo -e "\nDeprecated systems (only supporting Z-machine v3):"
+      echo "[-b vic20_pet]    [-b decrainbow]    [-b trs_coco_dragon64]    [-b osborne1]"
+      echo -e "[-b ti99]         [-b oric]          [-b kaypro]\n"
+      exit 0
+      ;;
+
+    s) # examples
+      echo "Examples:"
+      echo "puny -b c64"
+      echo -e "-> builds Commodore 64 target\n"
+      echo "puny -b dos -b msx -b amiga"
+      echo -e "-> builds DOS, MSX and Amiga targets\n"
+      exit 0
+      ;;
+
+    v) # version information
+      echo "the Puny BuildTools command-line interface"
+      echo "Copyright (c) 2023, Stefan Vogt"
+      echo "https://github.com/ByteProject/Puny-BuildTools"
+      echo -e "\n| component versions: |"
+      echo "[CLI 2.0] [pi6 3.0] [bundle.sh 2.0]"
+      echo "[makescr.sh 1.0] [ifftool.sh 1.2] [cpcscr.sh 1.0] [degaspi1.sh 1.0]"
+      echo -e "\n| module versions: |"
+      echo "[c64 2.0] [amiga 2.0] [speccy 2.5] [cpc_pcw 2.5] [atari_st 2.0] [a8bit 3.0]"
+      echo "[dos 2.0] [msx 2.5] [bbc_acorn 2.1] [c128 2.0] [plus4 2.0] [apple2 2.5]" 
+      echo "[sam_coupe 2.5] [trs80_m3 2.5] [trs80_m4 2.5] [mega65 2.0] [macintosh 2.0]"
+      echo "[vic20_pet 1.5] [decrainbow 1.0] [trs_coco_dragon64 1.5] [osborne1 1.0]"
+      echo -e "[ti99 1.5] [oric 1.5] [kaypro 1.0]\n"
+      exit 0
+      ;;
+
+    :)
+      echo -e "Option [-${OPTARG}] requires an argument.\n\nType: $(basename $0) [-h] for help.\n"
+      exit 1
+      ;;
+
+    ?)
+      echo -e "Invalid command option.\n\nType: $(basename $0) [-h] for help.\n"
+      exit 1
+      ;;
+  esac
+done
+
+if [ $OPTIND -eq 1 ]; then echo -e "Nothing to be done. No options passed. Use [-h] for help.\n"; fi
+shift "$(($OPTIND -1))"
+
+exit 0;

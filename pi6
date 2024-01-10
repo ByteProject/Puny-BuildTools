@@ -1,0 +1,58 @@
+#!/bin/bash
+# pi6 3.0 - the Inform 6 command-line wrapper
+# Puny Buildtools, (c) 2023 Stefan Vogt
+
+
+inform=~/FictionTools/inform
+lib=~/Projects/PunyInform/lib/
+custom=~/FictionTools/punycustom/
+v=-v5
+
+main()
+{
+	printf "pi6 - story file compilation started [...]\n"
+	$inform -d2esi $v +$custom,$lib $game
+	game=`basename $game .inf`
+	printf "\n"
+	exit 0
+}
+
+usage()
+{
+	printf "pi6 3.0 - the Inform 6 command-line wrapper\n"
+	printf "Puny BuildTools, (c) 2023 Stefan Vogt\n\n"
+	printf "Usage: pi6 game.inf\n"
+	printf "       pi6 [-3] game.inf\n"
+	printf "       pi6 [-5] game.inf\n\n"
+	printf "       -3 : create Z-machine v3 release\n"
+	printf "       -5 : create Z-machine v5 [XZIP] release\n\n"
+	printf "By default pi6 creates Z-machine v5 releases.\n\n"
+	exit 0
+}
+
+# Start of script
+
+if [ ! -z `echo $1 | grep '.inf'` ]; then
+	game=$1
+	main
+elif [ -z "$1" ]; then
+	usage
+fi	
+
+while getopts 53:h opts
+do
+	case $opts in
+		5) game=$2
+		   v=-v5
+		   main
+		;;
+		3) game=$2
+		   v=-v3
+		   main
+		;;
+		h) usage
+		;;
+		*) usage
+		;;
+	esac
+done

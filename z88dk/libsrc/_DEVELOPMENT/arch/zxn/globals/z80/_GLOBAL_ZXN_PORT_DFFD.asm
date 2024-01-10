@@ -1,0 +1,8 @@
+SECTION bss_arch
+
+PUBLIC _GLOBAL_ZXN_PORT_DFFD
+
+_GLOBAL_ZXN_PORT_DFFD:
+
+   defb 0
+
