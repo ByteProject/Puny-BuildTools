@@ -1,0 +1,12 @@
+# Puny BuildTools Bash resource file
+
+# environment variables
+export WINEDEBUG=-all
+
+# Puny BuildTools directories added at path
+export PATH="$HOME/FictionTools:$PATH"
+export PATH="$HOME/FictionTools/hfsutils:$PATH"
+export PATH="$HOME/FictionTools/z88dk/bin:$PATH"
+export PATH="$HOME/FictionTools/z88dk/lib:$PATH"
+export PATH="/sbin:$PATH"
+export ZCCCFG="$HOME/FictionTools/z88dk/lib/config"
