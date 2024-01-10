@@ -1,0 +1,33 @@
+
+
+
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+._func
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	ld	h,0
+	call	_ZXN_NEXTREG_0x50
+	ret
+
+
+
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+
+	GLOBAL	_func
+	GLOBAL	_ZXN_NEXTREG_0x50
+
+
+
+

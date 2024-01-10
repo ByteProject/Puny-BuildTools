@@ -1,0 +1,421 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	mathops_ieee_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function assign flags 0x00000200 __smallc 
+; double assign()
+._assign
+	ld	hl,0	;const
+	ld	de,16416
+	push	de
+	push	hl
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function assign2 flags 0x00000200 __smallc 
+; double assign2()
+._assign2
+	push	bc
+	push	bc
+	ld	hl,0	;const
+	add	hl,sp
+	xor	a
+	ld	(hl),a
+	inc	hl
+	ld	(hl),a
+	inc	hl
+	ld	(hl),+(16416 % 256)
+	inc	hl
+	ld	(hl),+(16416 / 256)
+	ld	hl,0	;const
+	add	hl,sp
+	call	l_glong
+	push	de
+	push	hl
+	call	_func
+	pop	bc
+	pop	bc
+	ld	hl,0	;const
+	add	hl,sp
+	call	l_glong
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function assign_via_pointer flags 0x00000200 __smallc 
+; double assign_via_pointer(double *a)
+; parameter 'double *a' at 2 size(2)
+._assign_via_pointer
+	ld	hl,2	;const
+	call	l_gintspsp	;
+	ld	hl,0	;const
+	ld	de,16672
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function funccall flags 0x00000200 __smallc 
+; double funccall(double a)
+; parameter 'double a' at 2 size(4)
+._funccall
+	ld	hl,2	;const
+	add	hl,sp
+	call	l_glong
+	push	de
+	push	hl
+	call	_func
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function funcptr flags 0x00000200 __smallc 
+; double funcptr(double a)
+; parameter 'double a' at 2 size(4)
+._funcptr
+	ld	hl,_func2
+	push	hl
+	push	hl
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong
+	ex	de,hl
+	ex	(sp),hl
+	push	de
+	push	hl
+	ld	hl,0	;const
+	ld	de,16256
+	ex	de,hl
+	ex	(sp),hl
+	push	de
+	call	l_jphl
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function add flags 0x00000200 __smallc 
+; double add(double a, double b)
+; parameter 'double b' at 2 size(4)
+; parameter 'double a' at 6 size(4)
+._add
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong2sp
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_add
+	ret
+
+
+
+; Function sub flags 0x00000200 __smallc 
+; double sub(double a, double b)
+; parameter 'double b' at 2 size(4)
+; parameter 'double a' at 6 size(4)
+._sub
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong2sp
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_sub
+	ret
+
+
+
+; Function mul flags 0x00000200 __smallc 
+; double mul(double a, double b)
+; parameter 'double b' at 2 size(4)
+; parameter 'double a' at 6 size(4)
+._mul
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong2sp
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_mul
+	ret
+
+
+
+; Function div flags 0x00000200 __smallc 
+; double div(double a, double b)
+; parameter 'double b' at 2 size(4)
+; parameter 'double a' at 6 size(4)
+._div
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong2sp
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_div
+	ret
+
+
+
+; Function eq flags 0x00000200 __smallc 
+; int eq(double a, double b)
+; parameter 'double b' at 2 size(4)
+; parameter 'double a' at 6 size(4)
+._eq
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong2sp
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_eq
+	ret
+
+
+
+; Function ne flags 0x00000200 __smallc 
+; int ne(double a, double b)
+; parameter 'double b' at 2 size(4)
+; parameter 'double a' at 6 size(4)
+._ne
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong2sp
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_ne
+	ret
+
+
+
+; Function lt flags 0x00000200 __smallc 
+; int lt(double a, double b)
+; parameter 'double b' at 2 size(4)
+; parameter 'double a' at 6 size(4)
+._lt
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong2sp
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_lt
+	ret
+
+
+
+; Function le flags 0x00000200 __smallc 
+; int le(double a, double b)
+; parameter 'double b' at 2 size(4)
+; parameter 'double a' at 6 size(4)
+._le
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong2sp
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_le
+	ret
+
+
+
+; Function gt flags 0x00000200 __smallc 
+; int gt(double a, double b)
+; parameter 'double b' at 2 size(4)
+; parameter 'double a' at 6 size(4)
+._gt
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong2sp
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_gt
+	ret
+
+
+
+; Function ge flags 0x00000200 __smallc 
+; int ge(double a, double b)
+; parameter 'double b' at 2 size(4)
+; parameter 'double a' at 6 size(4)
+._ge
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong2sp
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_ge
+	ret
+
+
+
+; Function neg flags 0x00000200 __smallc 
+; double neg(double a)
+; parameter 'double a' at 2 size(4)
+._neg
+	ld	hl,2	;const
+	add	hl,sp
+	call	l_glong
+	ld	a,d
+	xor	128
+	ld	d,a
+	ret
+
+
+
+; Function inverse flags 0x00000200 __smallc 
+; double inverse(double a)
+; parameter 'double a' at 2 size(4)
+._inverse
+	ld	hl,2	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_invf
+	ret
+
+
+
+; Function cschar flags 0x00000200 __smallc 
+; double cschar(char c)
+; parameter 'char c' at 2 size(1)
+._cschar
+	ld	hl,2	;const
+	add	hl,sp
+	call	l_gchar
+	call	l_f32_schar2f
+	ret
+
+
+
+; Function cuchar flags 0x00000200 __smallc 
+; double cuchar(unsigned char c)
+; parameter 'unsigned char c' at 2 size(1)
+._cuchar
+	ld	hl,2	;const
+	add	hl,sp
+	ld	l,(hl)
+	ld	h,0
+	call	l_f32_uchar2f
+	ret
+
+
+
+; Function csint flags 0x00000200 __smallc 
+; double csint(int i)
+; parameter 'int i' at 2 size(2)
+._csint
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	call	l_f32_sint2f
+	ret
+
+
+
+; Function cuint flags 0x00000200 __smallc 
+; double cuint(unsigned int i)
+; parameter 'unsigned int i' at 2 size(2)
+._cuint
+	pop	bc
+	pop	hl
+	push	hl
+	push	bc
+	call	l_f32_uint2f
+	ret
+
+
+
+; Function cslong flags 0x00000200 __smallc 
+; double cslong(long i)
+; parameter 'long i' at 2 size(4)
+._cslong
+	ld	hl,2	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_slong2f
+	ret
+
+
+
+; Function culong flags 0x00000200 __smallc 
+; double culong(unsigned long i)
+; parameter 'unsigned long i' at 2 size(4)
+._culong
+	ld	hl,2	;const
+	add	hl,sp
+	call	l_glong
+	call	l_f32_ulong2f
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_func
+	GLOBAL	_func2
+	GLOBAL	_assign
+	GLOBAL	_assign2
+	GLOBAL	_assign_via_pointer
+	GLOBAL	_funccall
+	GLOBAL	_funcptr
+	GLOBAL	_add
+	GLOBAL	_sub
+	GLOBAL	_mul
+	GLOBAL	_div
+	GLOBAL	_eq
+	GLOBAL	_ne
+	GLOBAL	_lt
+	GLOBAL	_le
+	GLOBAL	_gt
+	GLOBAL	_ge
+	GLOBAL	_neg
+	GLOBAL	_inverse
+	GLOBAL	_cschar
+	GLOBAL	_cuchar
+	GLOBAL	_csint
+	GLOBAL	_cuint
+	GLOBAL	_cslong
+	GLOBAL	_culong
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

@@ -1,0 +1,37 @@
+1     0000              ; Substitute for the z80 ldd instruction
+2     0000              ; Doesn't emulate the flags correctly
+3     0000              
+4     0000                    SECTION  code_crt0_sccz80
+5     0000                    PUBLIC   __z80asm__ldd
+6     0000              
+7     0000              __z80asm__ldd:
+8     0000  F5                push  af                ;Save incoming flags
+9     0001              IF __CPU_GBZ80__
+10    0001                    ld    a, (hl-)
+11    0001              ELSE
+12    0001  7E                ld    a, (hl)
+13    0002  2B                dec   hl
+14    0003              ENDIF
+15    0003  12                ld    (de), a
+16    0004  1B                dec   de
+17    0005  0B                dec   bc
+18    0006              IF !__CPU_GBZ80__
+19    0006                                            ; No point emualting pv on gbz80 since flag doesn't exist
+20    0006  E3                ex    (sp), hl          ;incoming af in hl, outgoing hl on stack
+21    0007  C5                push  bc                ;Save bc, we need a temporary
+22    0008  78                ld    a, b
+23    0009  B1                or    c
+24    000A  0E 04             ld    c, 4
+25    000C  20 02             jr    nz, set_pv
+26    000E  0E 00             ld    c, 0
+27    0010              set_pv:
+28    0010  7D                ld    a, l
+29    0011  E6 E9             and   @11101001         ;Knock out H + N flags as well
+30    0013  B1                or    c                 ;Add in PV flag required
+31    0014  6F                ld    l, a
+32    0015  C1                pop   bc
+33    0016  E3                ex    (sp), hl          ;Get hl back
+34    0017              ENDIF
+35    0017  F1                pop   af                ;And restore our modified af
+36    0018  C9                ret
+37    0019              

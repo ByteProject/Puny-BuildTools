@@ -1,0 +1,52 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_1062_array_init_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	data_compiler
+._font
+	defw	0
+	defw	1
+	defw	2
+	defw	3
+	SECTION	code_compiler
+	SECTION	data_compiler
+._font2
+	defb	0
+	defb	1
+	defb	2
+	defb	3
+	SECTION	code_compiler
+	SECTION	data_compiler
+._y
+	defb	1
+	defb	2
+	defb	3
+	SECTION	code_compiler
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_font
+	GLOBAL	_font2
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

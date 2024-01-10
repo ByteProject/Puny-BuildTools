@@ -1,0 +1,41 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_1361_const_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function constructItems flags 0x00000200 __smallc 
+; void constructItems()
+._constructItems
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+._array	defs	2
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_array
+	GLOBAL	_constructItems
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

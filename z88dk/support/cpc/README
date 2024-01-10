@@ -1,0 +1,24 @@
+$Id: README,v 1.5 2004-07-19 15:22:13 stefano Exp $
+
+Amstrad CPC
+(see also the notes on "z88dk/doc/cpc.txt")
+
+- Compile the program (optionally you can set another address for ORG)
+	zcc +cpc program.c
+- Prepare an empty snapshot with your preferred Amstrad emulator
+  (the snapshot format may be a bit different, but normally the locations
+   are the same)
+	memory &1fff  (BASIC command)
+- Save the snapshot and exit from the emulator
+- Insert the compiled code into the snapshot:
+	sna_mng i a.bin loader.sna 24576 30000
+- Re-run the emulator, load the modified snapshot and type:
+	call &6000
+
+As an alternative the XTI (Disk Image XTender) utility can be used; 
+this puts a binary file into a disk image.
+A valid location/version for XTI (when this document is been updated) is:
+ftp://ftp.lip6.fr/pub/amstrad/emu-uti/pcxti14.zip
+
+
+Enjoy !

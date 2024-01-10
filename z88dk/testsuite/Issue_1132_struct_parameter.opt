@@ -1,0 +1,116 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_1132_struct_parameter_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function func flags 0x00000200 __smallc 
+; void func(struct test x, int y)
+; parameter 'int y' at 2 size(2)
+; parameter 'struct test x' at 4 size(14)
+._func
+	ld	hl,14	;const
+	add	hl,sp
+	ld	de,10	;const
+	ex	de,hl
+	call	l_pint
+	ret
+
+
+
+; Function func_callee flags 0x00000240 __smallc __z88dk_callee 
+; void func_callee(struct test x, int y)
+; parameter 'int y' at 2 size(2)
+; parameter 'struct test x' at 4 size(14)
+._func_callee
+	ld	hl,14	;const
+	add	hl,sp
+	ld	de,10	;const
+	ex	de,hl
+	call	l_pint
+	pop	bc
+	ld	hl,16	;const
+	add	hl,sp
+	ld	sp,hl
+	push	bc
+	ret
+
+
+
+; Function func_calling flags 0x00000200 __smallc 
+; void func_calling()
+._func_calling
+	ld	hl,65522	;const
+	add	hl,sp
+	ld	sp,hl
+	ex	de,hl
+	ld	hl,65522	;const
+	add	hl,sp
+	ld	sp,hl
+	ex	de,hl
+	ld	bc,14
+	ldir
+	ld	hl,10	;const
+	push	hl
+	call	_func
+	ld	hl,30	;const
+	add	hl,sp
+	ld	sp,hl
+	ret
+
+
+
+; Function func_fptr flags 0x00000200 __smallc 
+; void func_fptr()
+._func_fptr
+	ld	hl,65522	;const
+	add	hl,sp
+	ld	sp,hl
+	ex	de,hl
+	ld	bc,(_fnptr)
+	ld	hl,65522	;const
+	add	hl,sp
+	ld	sp,hl
+	push	bc
+	ex	de,hl
+	ld	bc,14
+	ldir
+	pop	hl
+	call	l_jphl
+	ld	hl,28	;const
+	add	hl,sp
+	ld	sp,hl
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+._fnptr	defs	2
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_func
+	GLOBAL	_func_callee
+	GLOBAL	_func_calling
+	GLOBAL	_func_fptr
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

@@ -1,0 +1,126 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_489_variable_defn_in_forloop_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function func flags 0x00000200 __smallc 
+; void func()
+._func
+	push	bc
+	ld	hl,0	;const
+	push	hl
+	jp	i_4
+.i_2
+	pop	hl
+	inc	hl
+	push	hl
+.i_4
+	pop	hl
+	push	hl
+	ld	a,l
+	sub	10
+	ld	a,h
+	rla
+	ccf
+	rra
+	sbc	128
+	jp	nc,i_3
+	pop	hl
+	push	hl
+	push	hl
+	call	_func2
+	pop	bc
+	jp	i_2
+.i_3
+	pop	bc
+	ld	hl,100	;const
+	push	hl
+	call	_func2
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function func3 flags 0x00000200 __smallc 
+; int func3()
+._func3
+	push	bc
+	ld	hl,0	;const
+	ld	d,h
+	ld	e,l
+	push	de
+	push	hl
+	jp	i_7
+.i_5
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	call	l_inclong
+	pop	bc
+	call	l_plong
+.i_7
+	ld	hl,0	;const
+	add	hl,sp
+	call	l_glong
+	ld	a,l
+	sub	10
+	ld	a,h
+	sbc	0
+	ld	a,e
+	sbc	0
+	ld	a,d
+	rla
+	ccf
+	rra
+	sbc	128
+	jp	nc,i_6
+	ld	hl,0	;const
+	add	hl,sp
+	call	l_glong
+	push	hl
+	call	_func2
+	pop	bc
+	jp	i_5
+.i_6
+	pop	bc
+	pop	bc
+	ld	hl,100	;const
+	push	hl
+	call	_func2
+	pop	bc
+	pop	hl
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_func2
+	GLOBAL	_func
+	GLOBAL	_func3
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

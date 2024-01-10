@@ -1,0 +1,46 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_896_nested_struct_initialisation_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	data_compiler
+._rtc
+	defw	1
+	defw	2
+	defw	3
+	SECTION	code_compiler
+	SECTION	data_compiler
+._rtc2
+	defw	1
+	defb	2
+	defb	3
+	defw	4
+	defw	5
+	SECTION	code_compiler
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_rtc
+	GLOBAL	_rtc2
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

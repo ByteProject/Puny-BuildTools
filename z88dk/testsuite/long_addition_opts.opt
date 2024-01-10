@@ -1,0 +1,413 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	long_addition_opts_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function func flags 0x00000200 __smallc 
+; void func(long l)
+; parameter 'long l' at 2 size(4)
+._func
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	call	l_inclong
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function func2 flags 0x00000200 __smallc 
+; void func2(long l)
+; parameter 'long l' at 2 size(4)
+._func2
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	ld	bc,2
+	add	hl,bc
+	jr	nc,ASMPC+3
+	inc	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function func3 flags 0x00000200 __smallc 
+; void func3(long l)
+; parameter 'long l' at 2 size(4)
+._func3
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	ld	bc,3
+	add	hl,bc
+	jr	nc,ASMPC+3
+	inc	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function func4 flags 0x00000200 __smallc 
+; void func4(long l)
+; parameter 'long l' at 2 size(4)
+._func4
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	ld	bc,4
+	add	hl,bc
+	jr	nc,ASMPC+3
+	inc	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function funcx flags 0x00000200 __smallc 
+; void funcx(long l)
+; parameter 'long l' at 2 size(4)
+._funcx
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	ld	bc,10
+	add	hl,bc
+	jr	nc,ASMPC+3
+	inc	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function func65536 flags 0x00000200 __smallc 
+; void func65536(long l)
+; parameter 'long l' at 2 size(4)
+._func65536
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	inc	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function func65536_2 flags 0x00000200 __smallc 
+; void func65536_2(long l)
+; parameter 'long l' at 2 size(4)
+._func65536_2
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	inc	de
+	inc	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function func65536_3 flags 0x00000200 __smallc 
+; void func65536_3(long l)
+; parameter 'long l' at 2 size(4)
+._func65536_3
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	inc	de
+	inc	de
+	inc	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function func65536_4 flags 0x00000200 __smallc 
+; void func65536_4(long l)
+; parameter 'long l' at 2 size(4)
+._func65536_4
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	inc	de
+	inc	de
+	inc	de
+	inc	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function func65536_x flags 0x00000200 __smallc 
+; void func65536_x(long l)
+; parameter 'long l' at 2 size(4)
+._func65536_x
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	ex	de,hl
+	ld	bc,10
+	add	hl,bc
+	ex	de,hl
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function func65537 flags 0x00000200 __smallc 
+; void func65537(long l)
+; parameter 'long l' at 2 size(4)
+._func65537
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	ld	bc,1
+	add	hl,bc
+	jr	nc,ASMPC+3
+	inc	de
+	inc	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function funcm1 flags 0x00000200 __smallc 
+; void funcm1(long l)
+; parameter 'long l' at 2 size(4)
+._funcm1
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	call	l_declong
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function funcm2 flags 0x00000200 __smallc 
+; void funcm2(long l)
+; parameter 'long l' at 2 size(4)
+._funcm2
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	ld	bc,65534
+	add	hl,bc
+	jr	c,ASMPC+3
+	dec	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function funcm3 flags 0x00000200 __smallc 
+; void funcm3(long l)
+; parameter 'long l' at 2 size(4)
+._funcm3
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	ld	bc,65533
+	add	hl,bc
+	jr	c,ASMPC+3
+	dec	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function funcm4 flags 0x00000200 __smallc 
+; void funcm4(long l)
+; parameter 'long l' at 2 size(4)
+._funcm4
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	ld	bc,65532
+	add	hl,bc
+	jr	c,ASMPC+3
+	dec	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function funcmx flags 0x00000200 __smallc 
+; void funcmx(long l)
+; parameter 'long l' at 2 size(4)
+._funcmx
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	ld	bc,65526
+	add	hl,bc
+	jr	c,ASMPC+3
+	dec	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function funcm65536 flags 0x00000200 __smallc 
+; void funcm65536(long l)
+; parameter 'long l' at 2 size(4)
+._funcm65536
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	dec	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function funcm65536_2 flags 0x00000200 __smallc 
+; void funcm65536_2(long l)
+; parameter 'long l' at 2 size(4)
+._funcm65536_2
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	dec	de
+	dec	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function funcm65536_3 flags 0x00000200 __smallc 
+; void funcm65536_3(long l)
+; parameter 'long l' at 2 size(4)
+._funcm65536_3
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	dec	de
+	dec	de
+	dec	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function funcm65536_4 flags 0x00000200 __smallc 
+; void funcm65536_4(long l)
+; parameter 'long l' at 2 size(4)
+._funcm65536_4
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	dec	de
+	dec	de
+	dec	de
+	dec	de
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; Function funcm65536_x flags 0x00000200 __smallc 
+; void funcm65536_x(long l)
+; parameter 'long l' at 2 size(4)
+._funcm65536_x
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_glong
+	ex	de,hl
+	ld	bc,65526
+	add	hl,bc
+	ex	de,hl
+	pop	bc
+	call	l_plong
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_func
+	GLOBAL	_func2
+	GLOBAL	_func3
+	GLOBAL	_func4
+	GLOBAL	_funcx
+	GLOBAL	_func65536
+	GLOBAL	_func65536_2
+	GLOBAL	_func65536_3
+	GLOBAL	_func65536_4
+	GLOBAL	_func65536_x
+	GLOBAL	_func65537
+	GLOBAL	_funcm1
+	GLOBAL	_funcm2
+	GLOBAL	_funcm3
+	GLOBAL	_funcm4
+	GLOBAL	_funcmx
+	GLOBAL	_funcm65536
+	GLOBAL	_funcm65536_2
+	GLOBAL	_funcm65536_3
+	GLOBAL	_funcm65536_4
+	GLOBAL	_funcm65536_x
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

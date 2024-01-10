@@ -1,0 +1,27 @@
+1     0000              ; Substitute for the z80 add de,a instruction
+2     0000              ; no flags are affected
+3     0000              ; CPU   Min T Max T
+4     0000              ; 8080  74    74
+5     0000              ; 8085  73    73
+6     0000              ; gbz80 72    72
+7     0000              ; r2k   52    52
+8     0000              ; z180  69    69
+9     0000              ; z80   71    71
+10    0000              ; z80n   8     8
+11    0000              
+12    0000                    SECTION  code_crt0_sccz80
+13    0000                    PUBLIC   __z80asm__add_de_a
+14    0000              
+15    0000              __z80asm__add_de_a:
+16    0000  F5                push  af
+17    0001              
+18    0001  83                add   a, e
+19    0002  5F                ld    e, a
+20    0003              
+21    0003  7A                ld    a, d
+22    0004  CE 00             adc   a, 0
+23    0006  57                ld    d, a
+24    0007              
+25    0007  F1                pop   af
+26    0008  C9                ret
+27    0009              

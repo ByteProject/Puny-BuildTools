@@ -1,0 +1,2258 @@
+
+;;
+;; sdcc integer primitives made callee
+;;
+
+	call	__divschar
+	pop	af
+=
+	call	__divschar_callee
+
+	call	__divschar
+	ex	(sp),hl
+=
+	call	__divschar_callee
+	push	hl
+
+	call	__divschar
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__divschar_callee
+	ld	hl,%1
+	push	hl
+
+	call	__divsint
+	pop	af
+	pop	af
+=
+	call	__divsint_callee
+
+	call	__divsint
+	pop	af
+	ex	(sp),hl
+=
+	call	__divsint_callee
+	push	hl
+
+	call	__divsint
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__divsint_callee
+	ld	hl,%1
+	push	hl
+
+	call	__divslong
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	__divslong_callee
+
+	call	__divslong
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	__divslong_callee
+
+	call	__divslong
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	__divslong_callee
+
+	call	__divslong
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	__divslong_callee
+	push	hl
+
+	call	__divslong
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	__divslong_callee
+	push	hl
+
+	call	__divslong
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	__divslong_callee
+	push	hl
+
+	call	__divslong
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__divslong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__divslong
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__divslong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__divslong
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__divslong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__divslonglong
+	ld	hl,%"[ \t]*"918
+	add	hl,%"[ \t]*"8sp
+	ld	sp,%"[ \t]*"7hl
+=
+	call	__divslonglong_callee
+
+	call	__divsuchar
+	pop	af
+=
+	call	__divsuchar_callee
+
+	call	__divsuchar
+	ex	(sp),hl
+=
+	call	__divsuchar_callee
+	push	hl
+
+	call	__divsuchar
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__divsuchar_callee
+	ld	hl,%1
+	push	hl
+
+	call	__divuchar
+	pop	af
+=
+	call	__divuchar_callee
+
+	call	__divuchar
+	ex	(sp),hl
+=
+	call	__divuchar_callee
+	push	hl
+
+	call	__divuchar
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__divuchar_callee
+	ld	hl,%1
+	push	hl
+
+	call	__divuint
+	pop	af
+	pop	af
+=
+	call	__divuint_callee
+
+	call	__divuint
+	pop	af
+	ex	(sp),hl
+=
+	call	__divuint_callee
+	push	hl
+
+	call	__divuint
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__divuint_callee
+	ld	hl,%1
+	push	hl
+
+	call	__divulong
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	__divulong_callee
+
+	call	__divulong
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	__divulong_callee
+
+	call	__divulong
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	__divulong_callee
+
+	call	__divulong
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	__divulong_callee
+	push	hl
+
+	call	__divulong
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	__divulong_callee
+	push	hl
+
+	call	__divulong
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	__divulong_callee
+	push	hl
+
+	call	__divulong
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__divulong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__divulong
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__divulong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__divulong
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__divulong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__divulonglong
+	ld	hl,%"[ \t]*"918
+	add	hl,%"[ \t]*"8sp
+	ld	sp,%"[ \t]*"7hl
+=
+	call	__divulonglong_callee
+
+	call	__divuschar
+	pop	af
+=
+	call	__divuschar_callee
+
+	call	__divuschar
+	ex	(sp),hl
+=
+	call	__divuschar_callee
+	push	hl
+
+	call	__divuschar
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__divuschar_callee
+	ld	hl,%1
+	push	hl
+
+	call	__modschar
+	pop	af
+=
+	call	__modschar_callee
+
+	call	__modschar
+	ex	(sp),hl
+=
+	call	__modschar_callee
+	push	hl
+
+	call	__modschar
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__modschar_callee
+	ld	hl,%1
+	push	hl
+
+	call	__modsint
+	pop	af
+	pop	af
+=
+	call	__modsint_callee
+
+	call	__modsint
+	pop	af
+	ex	(sp),hl
+=
+	call	__modsint_callee
+	push	hl
+
+	call	__modsint
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__modsint_callee
+	ld	hl,%1
+	push	hl
+
+	call	__modslong
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	__modslong_callee
+
+	call	__modslong
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	__modslong_callee
+	push	hl
+
+	call	__modslong
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__modslong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__modslonglong
+	ld	hl,%"[ \t]*"918
+	add	hl,%"[ \t]*"8sp
+	ld	sp,%"[ \t]*"7hl
+=
+	call	__modslonglong_callee
+
+	call	__modsuchar
+	pop	af
+=
+	call	__modsuchar_callee
+
+	call	__modsuchar
+	ex	(sp),hl
+=
+	call	__modsuchar_callee
+	push	hl
+
+	call	__modsuchar
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__modsuchar_callee
+	ld	hl,%1
+	push	hl
+
+	call	__moduchar
+	pop	af
+=
+	call	__moduchar_callee
+
+	call	__moduchar
+	ex	(sp),hl
+=
+	call	__moduchar_callee
+	push	hl
+
+	call	__moduchar
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__moduchar_callee
+	ld	hl,%1
+	push	hl
+
+	call	__moduint
+	pop	af
+	pop	af
+=
+	call	__moduint_callee
+
+	call	__moduint
+	pop	af
+	ex	(sp),hl
+=
+	call	__moduint_callee
+	push	hl
+
+	call	__moduint
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__moduint_callee
+	ld	hl,%1
+	push	hl
+
+	call	__modulong
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	__modulong_callee
+
+	call	__modulong
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	__modulong_callee
+
+	call	__modulong
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	__modulong_callee
+
+	call	__modulong
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	__modulong_callee
+	push	hl
+
+	call	__modulong
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	__modulong_callee
+	push	hl
+
+	call	__modulong
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	__modulong_callee
+	push	hl
+
+	call	__modulong
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__modulong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__modulong
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__modulong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__modulong
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__modulong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__modulonglong
+	ld	hl,%"[ \t]*"918
+	add	hl,%"[ \t]*"8sp
+	ld	sp,%"[ \t]*"7hl
+=
+	call	__modulonglong_callee
+
+	call	__moduschar
+	pop	af
+=
+	call	__moduschar_callee
+
+	call	__moduschar
+	ex	(sp),hl
+=
+	call	__moduschar_callee
+	push	hl
+
+	call	__moduschar
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__moduschar_callee
+	ld	hl,%1
+	push	hl
+
+	call	__mulint
+	pop	af
+	pop	af
+=
+	call	__mulint_callee
+
+	call	__mulint
+	pop	af
+	ex	(sp),hl
+=
+	call	__mulint_callee
+	push	hl
+
+	call	__mulint
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__mulint_callee
+	ld	hl,%1
+	push	hl
+
+	call	__mullong
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	__mullong_callee
+
+	call	__mullong
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	__mullong_callee
+
+	call	__mullong
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	__mullong_callee
+
+	call	__mullong
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	__mullong_callee
+	push	hl
+
+	call	__mullong
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	__mullong_callee
+	push	hl
+
+	call	__mullong
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	__mullong_callee
+	push	hl
+
+	call	__mullong
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__mullong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__mullong
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__mullong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__mullong
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__mullong_callee
+	ld	hl,%1
+	push	hl
+
+	call	__mullonglong
+	ld	hl,%"[ \t]*"918
+	add	hl,%"[ \t]*"8sp
+	ld	sp,%"[ \t]*"7hl
+=
+	call	__mullonglong_callee
+
+	call	__mulschar
+	pop	af
+=
+	call	__mulschar_callee
+
+	call	__mulschar
+	ex	(sp),hl
+=
+	call	__mulschar_callee
+	push	hl
+
+	call	__mulschar
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__mulschar_callee
+	ld	hl,%1
+	push	hl
+
+	call	__mulsuchar
+	pop	af
+=
+	call	__mulsuchar_callee
+
+	call	__mulsuchar
+	ex	(sp),hl
+=
+	call	__mulsuchar_callee
+	push	hl
+
+	call	__mulsuchar
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__mulsuchar_callee
+	ld	hl,%1
+	push	hl
+
+	call	__muluschar
+	pop	af
+=
+	call	__muluschar_callee
+
+	call	__muluschar
+	ex	(sp),hl
+=
+	call	__muluschar_callee
+	push	hl
+
+	call	__muluschar
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	__muluschar_callee
+	ld	hl,%1
+	push	hl
+
+	call	__rlslonglong
+	ld	hl,%"[ \t]*"911
+	add	hl,%"[ \t]*"8sp
+	ld	sp,%"[ \t]*"7hl
+=
+	call	__rlslonglong_callee
+
+	call	__rlulonglong
+	ld	hl,%"[ \t]*"911
+	add	hl,%"[ \t]*"8sp
+	ld	sp,%"[ \t]*"7hl
+=
+	call	__rlulonglong_callee
+
+	call	__rrslonglong
+	ld	hl,%"[ \t]*"911
+	add	hl,%"[ \t]*"8sp
+	ld	sp,%"[ \t]*"7hl
+=
+	call	__rrslonglong_callee
+
+	call	__rrulonglong
+	ld	hl,%"[ \t]*"911
+	add	hl,%"[ \t]*"8sp
+	ld	sp,%"[ \t]*"7hl
+=
+	call	__rrulonglong_callee
+
+;;
+;; sdcc float primitives made callee
+;;
+
+	call	___fs2schar
+	pop	af
+	pop	af
+=
+	call	___fs2schar_callee
+
+	call	___fs2schar
+	pop	af
+	ex	(sp),hl
+=
+	call	___fs2schar_callee
+	push	hl
+
+	call	___fs2schar
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fs2schar_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fs2sint
+	pop	af
+	pop	af
+=
+	call	___fs2sint_callee
+
+	call	___fs2sint
+	pop	af
+	ex	(sp),hl
+=
+	call	___fs2sint_callee
+	push	hl
+
+	call	___fs2sint
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fs2sint_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fs2slong
+	pop	af
+	pop	af
+=
+	call	___fs2slong_callee
+
+	call	___fs2slong
+	pop	af
+	ex	(sp),hl
+=
+	call	___fs2slong_callee
+	push	hl
+
+	call	___fs2slong
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fs2slong_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fs2slonglong
+	pop	af
+	pop	af
+	pop	af
+=
+	call	___fs2slonglong_callee
+
+	call	___fs2slonglong
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	___fs2slonglong_callee
+	push	hl
+
+	call	___fs2slonglong
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fs2slonglong_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fs2uchar
+	pop	af
+	pop	af
+=
+	call	___fs2uchar_callee
+
+	call	___fs2uchar
+	pop	af
+	ex	(sp),hl
+=
+	call	___fs2uchar_callee
+	push	hl
+
+	call	___fs2uchar
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fs2uchar_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fs2uint
+	pop	af
+	pop	af
+=
+	call	___fs2uint_callee
+
+	call	___fs2uint
+	pop	af
+	ex	(sp),hl
+=
+	call	___fs2uint_callee
+	push	hl
+
+	call	___fs2uint
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fs2uint_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fs2ulong
+	pop	af
+	pop	af
+=
+	call	___fs2ulong_callee
+
+	call	___fs2ulong
+	pop	af
+	ex	(sp),hl
+=
+	call	___fs2ulong_callee
+	push	hl
+
+	call	___fs2ulong
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fs2ulong_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fs2ulonglong
+	pop	af
+	pop	af
+	pop	af
+=
+	call	___fs2ulonglong_callee
+
+	call	___fs2ulonglong
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	___fs2ulonglong_callee
+	push	hl
+
+	call	___fs2ulonglong
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fs2ulonglong_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsadd
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	___fsadd_callee
+
+	call	___fsadd
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	___fsadd_callee
+
+	call	___fsadd
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	___fsadd_callee
+
+	call	___fsadd
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	___fsadd_callee
+	push	hl
+
+	call	___fsadd
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	___fsadd_callee
+	push	hl
+
+	call	___fsadd
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	___fsadd_callee
+	push	hl
+
+	call	___fsadd
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsadd_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsadd
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsadd_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsadd
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsadd_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsdiv
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	___fsdiv_callee
+
+	call	___fsdiv
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	___fsdiv_callee
+
+	call	___fsdiv
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	___fsdiv_callee
+
+	call	___fsdiv
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	___fsdiv_callee
+	push	hl
+
+	call	___fsdiv
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	___fsdiv_callee
+	push	hl
+
+	call	___fsdiv
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	___fsdiv_callee
+	push	hl
+
+	call	___fsdiv
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsdiv_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsdiv
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsdiv_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsdiv
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsdiv_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fseq
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	___fseq_callee
+
+	call	___fseq
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	___fseq_callee
+
+	call	___fseq
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	___fseq_callee
+
+	call	___fseq
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	___fseq_callee
+	push	hl
+
+	call	___fseq
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	___fseq_callee
+	push	hl
+
+	call	___fseq
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	___fseq_callee
+	push	hl
+
+	call	___fseq
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fseq_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fseq
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fseq_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fseq
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fseq_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsgt
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	___fsgt_callee
+
+	call	___fsgt
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	___fsgt_callee
+
+	call	___fsgt
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	___fsgt_callee
+
+	call	___fsgt
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	___fsgt_callee
+	push	hl
+
+	call	___fsgt
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	___fsgt_callee
+	push	hl
+
+	call	___fsgt
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	___fsgt_callee
+	push	hl
+
+	call	___fsgt
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsgt_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsgt
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsgt_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsgt
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsgt_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fslt
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	___fslt_callee
+
+	call	___fslt
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	___fslt_callee
+
+	call	___fslt
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	___fslt_callee
+
+	call	___fslt
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	___fslt_callee
+	push	hl
+
+	call	___fslt
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	___fslt_callee
+	push	hl
+
+	call	___fslt
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	___fslt_callee
+	push	hl
+
+	call	___fslt
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fslt_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fslt
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fslt_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fslt
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fslt_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsmul
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	___fsmul_callee
+
+	call	___fsmul
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	___fsmul_callee
+
+	call	___fsmul
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	___fsmul_callee
+
+	call	___fsmul
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	___fsmul_callee
+	push	hl
+
+	call	___fsmul
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	___fsmul_callee
+	push	hl
+
+	call	___fsmul
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	___fsmul_callee
+	push	hl
+
+	call	___fsmul
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsmul_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsmul
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsmul_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsmul
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsmul_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsneq
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	___fsneq_callee
+
+	call	___fsneq
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	___fsneq_callee
+
+	call	___fsneq
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	___fsneq_callee
+
+	call	___fsneq
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	___fsneq_callee
+	push	hl
+
+	call	___fsneq
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	___fsneq_callee
+	push	hl
+
+	call	___fsneq
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	___fsneq_callee
+	push	hl
+
+	call	___fsneq
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsneq_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsneq
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsneq_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fsneq
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fsneq_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fssub
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	___fssub_callee
+
+	call	___fssub
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	___fssub_callee
+
+	call	___fssub
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	___fssub_callee
+
+	call	___fssub
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	___fssub_callee
+	push	hl
+
+	call	___fssub
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	___fssub_callee
+	push	hl
+
+	call	___fssub
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	___fssub_callee
+	push	hl
+
+	call	___fssub
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fssub_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fssub
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fssub_callee
+	ld	hl,%1
+	push	hl
+
+	call	___fssub
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___fssub_callee
+	ld	hl,%1
+	push	hl
+
+	call	___schar2fs
+	inc	sp
+=
+	call	___schar2fs_callee
+
+	call	___sint2fs
+	pop	af
+=
+	call	___sint2fs_callee
+
+	call	___sint2fs
+	ex	(sp),hl
+=
+	call	___sint2fs_callee
+	push	hl
+
+	call	___sint2fs
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___sint2fs_callee
+	ld	hl,%1
+	push	hl
+
+	call	___slong2fs
+	pop	af
+	pop	af
+=
+	call	___slong2fs_callee
+
+	call	___slong2fs
+	pop	af
+	ex	(sp),hl
+=
+	call	___slong2fs_callee
+	push	hl
+
+	call	___slong2fs
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___slong2fs_callee
+	ld	hl,%1
+	push	hl
+
+	call	___slonglong2fs
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	___slonglong2fs_callee
+
+	call	___slonglong2fs
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	___slonglong2fs_callee
+
+	call	___slonglong2fs
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	___slonglong2fs_callee
+
+	call	___slonglong2fs
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	___slonglong2fs_callee
+	push	hl
+
+	call	___slonglong2fs
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	___slonglong2fs_callee
+	push	hl
+
+	call	___slonglong2fs
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	___slonglong2fs_callee
+	push	hl
+
+	call	___slonglong2fs
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___slonglong2fs_callee
+	ld	hl,%1
+	push	hl
+
+	call	___slonglong2fs
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___slonglong2fs_callee
+	ld	hl,%1
+	push	hl
+
+	call	___slonglong2fs
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___slonglong2fs_callee
+	ld	hl,%1
+	push	hl
+
+	call	___uchar2fs
+	inc	sp
+=
+	call	___uchar2fs_callee
+
+	call	___uint2fs
+	pop	af
+=
+	call	___uint2fs_callee
+
+	call	___uint2fs
+	ex	(sp),hl
+=
+	call	___uint2fs_callee
+	push	hl
+
+	call	___uint2fs
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___uint2fs_callee
+	ld	hl,%1
+	push	hl
+
+	call	___ulong2fs
+	pop	af
+	pop	af
+=
+	call	___ulong2fs_callee
+
+	call	___ulong2fs
+	pop	af
+	ex	(sp),hl
+=
+	call	___ulong2fs_callee
+	push	hl
+
+	call	___ulong2fs
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___ulong2fs_callee
+	ld	hl,%1
+	push	hl
+
+	call	___ulonglong2fs
+	pop	af
+	pop	af
+	pop	af
+	pop	af
+=
+	call	___ulonglong2fs_callee
+
+	call	___ulonglong2fs
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+=
+	call	___ulonglong2fs_callee
+
+	call	___ulonglong2fs
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+=
+	call	___ulonglong2fs_callee
+
+	call	___ulonglong2fs
+	pop	af
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	___ulonglong2fs_callee
+	push	hl
+
+	call	___ulonglong2fs
+	pop	bc
+	pop	bc
+	pop	bc
+	ex	(sp),hl
+=
+	call	___ulonglong2fs_callee
+	push	hl
+
+	call	___ulonglong2fs
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ex	(sp),hl
+=
+	call	___ulonglong2fs_callee
+	push	hl
+
+	call	___ulonglong2fs
+	pop	af
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___ulonglong2fs_callee
+	ld	hl,%1
+	push	hl
+
+	call	___ulonglong2fs
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___ulonglong2fs_callee
+	ld	hl,%1
+	push	hl
+
+	call	___ulonglong2fs
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	inc	sp
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	___ulonglong2fs_callee
+	ld	hl,%1
+	push	hl
+
+;;
+;; sdcc failed built-ins made callee
+;;
+
+	call	_memcpy
+	pop	af
+	pop	af
+	pop	af
+=
+	call	_memcpy_callee
+
+	call	_memcpy
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	_memcpy_callee
+	push	hl
+
+	call	_memcpy
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	_memcpy_callee
+	ld	hl,%1
+	push	hl
+
+	call	_memcpy
+	ld	hl,%"[ \t]*"96
+	add	hl,%"[ \t]*"8sp
+	ld	sp,%"[ \t]*"7hl
+=
+	call	_memcpy_callee
+
+	call	_strcpy
+	pop	af
+	pop	af
+=
+	call	_strcpy_callee
+
+	call	_strcpy
+	pop	af
+	ex	(sp),hl
+=
+	call	_strcpy_callee
+	push	hl
+
+	call	_strcpy
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	_strcpy_callee
+	ld	hl,%1
+	push	hl
+
+	call	_strncpy
+	pop	af
+	pop	af
+	pop	af
+=
+	call	_strncpy_callee
+
+	call	_strncpy
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	_strncpy_callee
+	push	hl
+
+	call	_strncpy
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	_strncpy_callee
+	ld	hl,%1
+	push	hl
+
+	call	_strncpy
+	ld	hl,%"[ \t]*"96
+	add	hl,%"[ \t]*"8sp
+	ld	sp,%"[ \t]*"7hl
+=
+	call	_strncpy_callee
+
+	call	_strchr
+	pop	af
+	pop	af
+=
+	call	_strchr_callee
+
+	call	_strchr
+	pop	af
+	ex	(sp),hl
+=
+	call	_strchr_callee
+	push	hl
+
+	call	_strchr
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	_strchr_callee
+	ld	hl,%1
+	push	hl
+
+	call	_memset
+	pop	af
+	pop	af
+	pop	af
+=
+	call	_memset_callee
+
+	call	_memset
+	pop	af
+	pop	af
+	ex	(sp),hl
+=
+	call	_memset_callee
+	push	hl
+
+	call	_memset
+	pop	af
+	pop	af
+	ld	hl,%1
+	ex	(sp),hl
+=
+	call	_memset_callee
+	ld	hl,%1
+	push	hl
+
+	call	_memset
+	ld	hl,%"[ \t]*"96
+	add	hl,%"[ \t]*"8sp
+	ld	sp,%"[ \t]*"7hl
+=
+	call	_memset_callee
+
+;;
+;; reduce size of function stubs
+;;
+
+;	---------------------------------
+; Function %0
+; ---------------------------------
+%1:
+	ret
+=
+;	---------------------------------
+; Function %0 is a stub
+; ---------------------------------
+EXTERN l_ret
+defc %1 = l_ret
+
+;	---------------------------------
+; Function %0
+; ---------------------------------
+%1:
+	ld	hl,0x0000
+	ret
+=
+;	---------------------------------
+; Function %0 is a stub returning hl=0x0000
+; ---------------------------------
+EXTERN error_znc
+defc %1 = error_znc
+
+;	---------------------------------
+; Function %0
+; ---------------------------------
+%1:
+	push	ix
+	ld	ix,0
+	add	ix,sp
+	ld	hl,0x0000
+	pop	ix
+	ret
+=
+;	---------------------------------
+; Function %0 is a stub returning hl=0x0000
+; ---------------------------------
+EXTERN error_znc
+defc %1 = error_znc
+
+;	---------------------------------
+; Function %0
+; ---------------------------------
+%1:
+	call	___sdcc_enter_ix
+	ld	hl,0x0000
+	pop	ix
+	ret
+=
+;	---------------------------------
+; Function %0 is a stub returning hl=0x0000
+; ---------------------------------
+EXTERN error_znc
+defc %1 = error_znc
+
+;	---------------------------------
+; Function %0
+; ---------------------------------
+%1:
+	ld	hl,0xFFFF
+	ret
+=
+;	---------------------------------
+; Function %0 is a stub returning hl=0xFFFF
+; ---------------------------------
+EXTERN error_mnc
+defc %1 = error_mnc
+
+;	---------------------------------
+; Function %0
+; ---------------------------------
+%1:
+	push	ix
+	ld	ix,0
+	add	ix,sp
+	ld	hl,0xFFFF
+	pop	ix
+	ret
+=
+;	---------------------------------
+; Function %0 is a stub returning hl=0xFFFF
+; ---------------------------------
+EXTERN error_mnc
+defc %1 = error_mnc
+
+;	---------------------------------
+; Function %0
+; ---------------------------------
+%1:
+	call	___sdcc_enter_ix
+	ld	hl,0xFFFF
+	pop	ix
+	ret
+=
+;	---------------------------------
+; Function %0 is a stub returning hl=0xFFFF
+; ---------------------------------
+EXTERN error_mnc
+defc %1 = error_mnc

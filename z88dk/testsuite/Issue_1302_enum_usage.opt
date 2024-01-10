@@ -1,0 +1,32 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:25 2020
+
+
+
+	MODULE	Issue_1302_enum_usage_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_func
+	GLOBAL	_func2
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

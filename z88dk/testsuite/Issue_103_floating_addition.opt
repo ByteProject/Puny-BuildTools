@@ -1,0 +1,780 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_103_floating_addition_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function add_int flags 0x00000200 __smallc 
+; double add_int()
+._add_int
+	ld	hl,i_2+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dldpsh
+	ld	hl,2	;const
+	ld	de,0
+	call	float
+	call	dadd
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function add_int_longform flags 0x00000200 __smallc 
+; double add_int_longform()
+._add_int_longform
+	ld	hl,i_2+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dldpsh
+	ld	hl,2	;const
+	ld	de,0
+	call	float
+	call	dadd
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function add_int_longform2 flags 0x00000200 __smallc 
+; double add_int_longform2()
+._add_int_longform2
+	ld	hl,i_2+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dldpsh
+	ld	hl,2	;const
+	ld	de,0
+	call	float
+	call	dadd
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function add_double flags 0x00000200 __smallc 
+; double add_double()
+._add_double
+	ld	hl,i_2+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dldpsh
+	ld	hl,i_3+0
+	call	dload
+	call	dadd
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function sub_int flags 0x00000200 __smallc 
+; double sub_int()
+._sub_int
+	ld	hl,i_3+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dldpsh
+	ld	hl,1	;const
+	ld	de,0
+	call	float
+	call	dsub
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function sub_int_longform flags 0x00000200 __smallc 
+; double sub_int_longform()
+._sub_int_longform
+	ld	hl,i_3+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dldpsh
+	ld	hl,1	;const
+	ld	de,0
+	call	float
+	call	dsub
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function sub_int_longform2 flags 0x00000200 __smallc 
+; double sub_int_longform2()
+._sub_int_longform2
+	ld	hl,i_3+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dldpsh
+	ld	hl,1	;const
+	ld	de,0
+	call	float
+	call	dswap
+	call	dsub
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function sub_double flags 0x00000200 __smallc 
+; double sub_double()
+._sub_double
+	ld	hl,i_3+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dldpsh
+	ld	hl,i_2+0
+	call	dload
+	call	dsub
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function mult_int flags 0x00000200 __smallc 
+; double mult_int()
+._mult_int
+	ld	hl,i_2+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dldpsh
+	ld	hl,i_3+0
+	call	dload
+	call	dmul
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function mult_double flags 0x00000200 __smallc 
+; double mult_double()
+._mult_double
+	ld	hl,i_2+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dldpsh
+	ld	hl,i_3+0
+	call	dload
+	call	dmul
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function mult_double_longform flags 0x00000200 __smallc 
+; double mult_double_longform()
+._mult_double_longform
+	ld	hl,i_2+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dload
+	ld	a,1
+	call	l_f48_ldexp
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function mult_double_longform2 flags 0x00000200 __smallc 
+; double mult_double_longform2()
+._mult_double_longform2
+	ld	hl,i_2+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dload
+	ld	a,1
+	call	l_f48_ldexp
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function div_int flags 0x00000200 __smallc 
+; double div_int()
+._div_int
+	ld	hl,i_2+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dload
+	ld	a,-1
+	call	l_f48_ldexp
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function div_double flags 0x00000200 __smallc 
+; double div_double()
+._div_double
+	ld	hl,i_2+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dload
+	ld	a,-1
+	call	l_f48_ldexp
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function div_double_longform flags 0x00000200 __smallc 
+; double div_double_longform()
+._div_double_longform
+	ld	hl,i_2+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dload
+	ld	a,-1
+	call	l_f48_ldexp
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function div_double_longform2 flags 0x00000200 __smallc 
+; double div_double_longform2()
+._div_double_longform2
+	ld	hl,i_3+0
+	call	dldpsh
+	ld	hl,0	;const
+	add	hl,sp
+	push	hl
+	call	dldpsh
+	ld	hl,1	;const
+	ld	de,0
+	call	float
+	call	dswap
+	call	ddiv
+	pop	hl
+	call	dstore
+	ld	hl,0	;const
+	add	hl,sp
+	call	dload
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+
+; Function main flags 0x00000000 __stdc 
+; int main()
+._main
+	ld	hl,i_1+0
+	push	hl
+	call	_add_int
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+12
+	push	hl
+	call	_add_int_longform
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+33
+	push	hl
+	call	_add_int_longform2
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+55
+	push	hl
+	call	_add_double
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+70
+	push	hl
+	call	_sub_int
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+82
+	push	hl
+	call	_sub_int_longform
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+103
+	push	hl
+	call	_sub_double
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+118
+	push	hl
+	call	_sub_int_longform2
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+140
+	push	hl
+	call	_mult_int
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+153
+	push	hl
+	call	_mult_double
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+169
+	push	hl
+	call	_mult_double_longform
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+194
+	push	hl
+	call	_mult_double_longform2
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+220
+	push	hl
+	call	_div_int
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+232
+	push	hl
+	call	_div_double
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+247
+	push	hl
+	call	_div_double_longform
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ld	hl,i_1+271
+	push	hl
+	call	_div_double_longform2
+	call	dpush
+	ld	a,4
+	call	printf
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
+
+
+	SECTION	rodata_compiler
+.i_1
+	defm	"add_int %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"add_int_longform %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"add_int_longform2 %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"add_double %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"sub_int %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"sub_int_longform %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"sub_double %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"sub_int_longform2 %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"mult_int %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"mult_double %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"mult_double_longform %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"mult_double_longform2 %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"div_int %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"div_double %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"div_double_longform %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+	defm	"div_double_longform2 %f"
+	defb	10
+
+	defm	""
+	defb	0
+
+.i_2
+	;1.000000
+	defb	0x00,0x00,0x00,0x00,0x00,0x81
+.i_3
+	;2.000000
+	defb	0x00,0x00,0x00,0x00,0x00,0x82
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	open
+	GLOBAL	creat
+	GLOBAL	close
+	GLOBAL	read
+	GLOBAL	write
+	GLOBAL	lseek
+	GLOBAL	readbyte
+	GLOBAL	writebyte
+	GLOBAL	getcwd
+	GLOBAL	chdir
+	GLOBAL	getwd
+	GLOBAL	rmdir
+	GLOBAL	_RND_BLOCKSIZE
+	GLOBAL	rnd_loadblock
+	GLOBAL	rnd_saveblock
+	GLOBAL	rnd_erase
+	GLOBAL	__FOPEN_MAX
+	GLOBAL	__sgoioblk
+	GLOBAL	__sgoioblk_end
+	GLOBAL	fopen_zsock
+	GLOBAL	fopen
+	GLOBAL	freopen
+	GLOBAL	fdopen
+	GLOBAL	_freopen1
+	GLOBAL	fmemopen
+	GLOBAL	funopen
+	GLOBAL	fclose
+	GLOBAL	fflush
+	GLOBAL	closeall
+	GLOBAL	fgets
+	GLOBAL	fputs
+	GLOBAL	fputc
+	GLOBAL	fputs_callee
+	GLOBAL	fputc_callee
+	GLOBAL	fgetc
+	GLOBAL	ungetc
+	GLOBAL	feof
+	GLOBAL	ferror
+	GLOBAL	puts
+	GLOBAL	ftell
+	GLOBAL	fgetpos
+	GLOBAL	fseek
+	GLOBAL	fread
+	GLOBAL	fwrite
+	GLOBAL	gets
+	GLOBAL	printf
+	GLOBAL	fprintf
+	GLOBAL	sprintf
+	GLOBAL	snprintf
+	GLOBAL	vfprintf
+	GLOBAL	vsnprintf
+	GLOBAL	printn
+	GLOBAL	scanf
+	GLOBAL	fscanf
+	GLOBAL	sscanf
+	GLOBAL	vfscanf
+	GLOBAL	vsscanf
+	GLOBAL	getarg
+	GLOBAL	fchkstd
+	GLOBAL	fgetc_cons
+	GLOBAL	fgetc_cons_inkey
+	GLOBAL	fputc_cons
+	GLOBAL	fgets_cons
+	GLOBAL	puts_cons
+	GLOBAL	fabandon
+	GLOBAL	fdtell
+	GLOBAL	fdgetpos
+	GLOBAL	rename
+	GLOBAL	remove
+	GLOBAL	getk
+	GLOBAL	getk_inkey
+	GLOBAL	printk
+	GLOBAL	perror
+	GLOBAL	_add_int
+	GLOBAL	_add_int_longform
+	GLOBAL	_add_int_longform2
+	GLOBAL	_add_double
+	GLOBAL	_sub_int
+	GLOBAL	_sub_int_longform
+	GLOBAL	_sub_int_longform2
+	GLOBAL	_sub_double
+	GLOBAL	_mult_int
+	GLOBAL	_mult_double
+	GLOBAL	_mult_double_longform
+	GLOBAL	_mult_double_longform2
+	GLOBAL	_div_int
+	GLOBAL	_div_double
+	GLOBAL	_div_double_longform
+	GLOBAL	_div_double_longform2
+	GLOBAL	_main
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

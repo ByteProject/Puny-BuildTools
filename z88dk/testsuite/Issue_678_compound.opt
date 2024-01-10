@@ -1,0 +1,151 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:26 2020
+
+
+
+	MODULE	Issue_678_compound_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function test flags 0x00000200 __smallc 
+; void test(unsigned long ptr)
+; parameter 'unsigned long ptr' at 2 size(4)
+._test
+	ld	a,(_version)
+	sub	4
+	jp	nc,i_3
+	ld	hl,(_mem_size)
+	ld	de,(_mem_size+2)
+	push	de
+	push	hl
+	ld	hl,0	;const
+	ld	de,1
+	call	l_long_eq
+	jr	c,i_4_i_3
+.i_3
+	jp	i_2
+.i_4_i_3
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_gint
+	ld	de,0
+	pop	bc
+	call	l_plong
+.i_2
+	ret
+
+
+
+; Function test_or flags 0x00000200 __smallc 
+; void test_or(unsigned long ptr)
+; parameter 'unsigned long ptr' at 2 size(4)
+._test_or
+	ld	a,(_version)
+	sub	4
+	jp	c,i_6
+	ld	hl,(_mem_size)
+	ld	de,(_mem_size+2)
+	push	de
+	push	hl
+	ld	hl,0	;const
+	ld	de,1
+	call	l_long_eq
+	jp	nc,i_5
+.i_6
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_gint
+	ld	de,0
+	pop	bc
+	call	l_plong
+.i_5
+	ret
+
+
+
+; Function test_value flags 0x00000200 __smallc 
+; void test_value(unsigned long ptr)
+; parameter 'unsigned long ptr' at 2 size(4)
+._test_value
+	ld	a,(_version)
+	sub	4
+	jp	c,i_9
+	ld	hl,(_mem_size)
+	ld	de,(_mem_size+2)
+	ld	a,h
+	or	l
+	or	d
+	or	e
+	jp	z,i_8
+.i_9
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_gint
+	ld	de,0
+	pop	bc
+	call	l_plong
+.i_8
+	ret
+
+
+
+; Function test_value_and flags 0x00000200 __smallc 
+; void test_value_and(unsigned long ptr)
+; parameter 'unsigned long ptr' at 2 size(4)
+._test_value_and
+	ld	a,(_version)
+	sub	4
+	jp	nc,i_12
+	ld	hl,(_mem_size)
+	ld	de,(_mem_size+2)
+	ld	a,h
+	or	l
+	or	d
+	or	e
+	jr	nz,i_13_i_12
+.i_12
+	jp	i_11
+.i_13_i_12
+	ld	hl,2	;const
+	add	hl,sp
+	push	hl
+	call	l_gint
+	ld	de,0
+	pop	bc
+	call	l_plong
+.i_11
+	ret
+
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+._version	defs	1
+._mem_size	defs	4
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	_test
+	GLOBAL	_test_or
+	GLOBAL	_test_value
+	GLOBAL	_test_value_and
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

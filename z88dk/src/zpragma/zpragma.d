@@ -1,0 +1,1 @@
+zpragma.o: zpragma.c

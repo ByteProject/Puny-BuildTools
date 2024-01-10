@@ -1,0 +1,378 @@
+;* * * * *  Small-C/Plus z88dk * * * * *
+;  Version: 16001-8b55fd9-20200203
+;
+;	Reconstructed for z80 Module Assembler
+;
+;	Module compile time: Sun Dec  6 12:52:25 2020
+
+
+
+	MODULE	Issue_188_builtins_c
+
+
+	INCLUDE "z80_crt0.hdr"
+
+
+	SECTION	code_compiler
+
+; Function strchr1 flags 0x00000200 __smallc 
+; void strchr1(char *ptr, int c)
+; parameter 'int c' at 2 size(2)
+; parameter 'char *ptr' at 4 size(2)
+._strchr1
+	ld	hl,4	;const
+	call	l_gintspsp	;
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_gint	;
+	ex	de,hl
+	pop	hl
+.i_2
+	ld	a,(hl)
+	cp	e
+	jr	z,i_3
+	and	a
+	inc	hl
+	jr	nz,i_2
+	ld	h,a
+	ld	l,h
+.i_3
+	ret
+
+
+
+; Function strchr2 flags 0x00000200 __smallc 
+; void strchr2(char *ptr, int c)
+; parameter 'int c' at 2 size(2)
+; parameter 'char *ptr' at 4 size(2)
+._strchr2
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_gint	;
+	ld	e,97
+.i_4
+	ld	a,(hl)
+	cp	e
+	jr	z,i_5
+	and	a
+	inc	hl
+	jr	nz,i_4
+	ld	h,a
+	ld	l,h
+.i_5
+	ret
+
+
+
+; Function memset1 flags 0x00000200 __smallc 
+; void memset1(char *ptr, int c, int s)
+; parameter 'int s' at 2 size(2)
+; parameter 'int c' at 4 size(2)
+; parameter 'char *ptr' at 6 size(2)
+._memset1
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_gint	;
+	push	hl
+	ld	e,0
+	ld	b,13
+.i_6
+	ld	(hl),e
+	inc	hl
+	djnz	i_6
+	pop	hl
+	ret
+
+
+
+; Function memset2 flags 0x00000200 __smallc 
+; void memset2(char *ptr, int c, int s)
+; parameter 'int s' at 2 size(2)
+; parameter 'int c' at 4 size(2)
+; parameter 'char *ptr' at 6 size(2)
+._memset2
+	ld	hl,6	;const
+	call	l_gintspsp	;
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_gint	;
+	ex	de,hl
+	pop	hl
+	push	hl
+	ld	b,13
+.i_7
+	ld	(hl),e
+	inc	hl
+	djnz	i_7
+	pop	hl
+	ret
+
+
+
+; Function memset3 flags 0x00000200 __smallc 
+; void memset3(char *ptr, int c, int s)
+; parameter 'int s' at 2 size(2)
+; parameter 'int c' at 4 size(2)
+; parameter 'char *ptr' at 6 size(2)
+._memset3
+	ld	hl,6	;const
+	call	l_g2intspsp	;
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_gint	;
+	push	hl
+	call	memset_callee
+	ret
+
+
+
+; Function strcpy1 flags 0x00000200 __smallc 
+; void strcpy1(char *a, char *b)
+; parameter 'char *b' at 2 size(2)
+; parameter 'char *a' at 4 size(2)
+._strcpy1
+	ld	hl,4	;const
+	add	hl,sp
+	ld	e,(hl)
+	inc	hl
+	ld	d,(hl)
+	ld	hl,i_1+0
+	push	de
+	xor	a
+.i_8
+	cp	(hl)
+	ldi
+	jr	nz,i_8
+	pop	hl
+	ret
+
+
+
+; Function strcpy2 flags 0x00000200 __smallc 
+; void strcpy2(char *a, char *b)
+; parameter 'char *b' at 2 size(2)
+; parameter 'char *a' at 4 size(2)
+._strcpy2
+	ld	hl,4	;const
+	call	l_gintspsp	;
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_gint	;
+	pop	de
+	push	de
+	xor	a
+.i_9
+	cp	(hl)
+	ldi
+	jr	nz,i_9
+	pop	hl
+	ret
+
+
+
+; Function memcpy1 flags 0x00000200 __smallc 
+; void memcpy1(char *a, char *b)
+; parameter 'char *b' at 2 size(2)
+; parameter 'char *a' at 4 size(2)
+._memcpy1
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_gint	;
+	push	hl
+	ex	de,hl
+	ld	hl,1000
+	ld	bc,10
+	ldir
+	pop	hl
+	ret
+
+
+
+; Function memcpy2 flags 0x00000200 __smallc 
+; void memcpy2(char *a, char *b)
+; parameter 'char *b' at 2 size(2)
+; parameter 'char *a' at 4 size(2)
+._memcpy2
+	ld	hl,4	;const
+	call	l_gintspsp	;
+	ld	hl,4	;const
+	add	hl,sp
+	call	l_gint	;
+	pop	de
+	push	de
+	ld	bc,10
+	ldir
+	pop	hl
+	ret
+
+
+
+; Function memcpy3 flags 0x00000200 __smallc 
+; void memcpy3(char *a, char *b, int n)
+; parameter 'int n' at 2 size(2)
+; parameter 'char *b' at 4 size(2)
+; parameter 'char *a' at 6 size(2)
+._memcpy3
+	ld	hl,6	;const
+	call	l_g2intspsp	;
+	ld	hl,6	;const
+	add	hl,sp
+	call	l_gint	;
+	push	hl
+	call	memcpy_callee
+	ret
+
+
+	SECTION	rodata_compiler
+.i_1
+	defm	"hello"
+	defb	0
+
+
+; --- Start of Static Variables ---
+
+	SECTION	bss_compiler
+	SECTION	code_compiler
+
+
+; --- Start of Scope Defns ---
+
+	GLOBAL	bcmp
+	GLOBAL	bcmp_callee
+	GLOBAL	bcopy
+	GLOBAL	bcopy_callee
+	GLOBAL	bzero
+	GLOBAL	bzero_callee
+	GLOBAL	index
+	GLOBAL	index_callee
+	GLOBAL	rindex
+	GLOBAL	rindex_callee
+	GLOBAL	strset
+	GLOBAL	strset_callee
+	GLOBAL	strnset
+	GLOBAL	strnset_callee
+	GLOBAL	rawmemchr
+	GLOBAL	rawmemchr_callee
+	GLOBAL	_memlwr_
+	GLOBAL	_memlwr__callee
+	GLOBAL	_memstrcpy_
+	GLOBAL	_memstrcpy__callee
+	GLOBAL	_memupr_
+	GLOBAL	_memupr__callee
+	GLOBAL	_strrstrip_
+	GLOBAL	ffs
+	GLOBAL	ffsl
+	GLOBAL	memccpy
+	GLOBAL	memccpy_callee
+	GLOBAL	memchr
+	GLOBAL	memchr_callee
+	GLOBAL	memcmp
+	GLOBAL	memcmp_callee
+	GLOBAL	memcpy
+	GLOBAL	memcpy_callee
+	GLOBAL	memmem
+	GLOBAL	memmem_callee
+	GLOBAL	memmove
+	GLOBAL	memmove_callee
+	GLOBAL	memrchr
+	GLOBAL	memrchr_callee
+	GLOBAL	memset
+	GLOBAL	memset_callee
+	GLOBAL	memswap
+	GLOBAL	memswap_callee
+	GLOBAL	stpcpy
+	GLOBAL	stpcpy_callee
+	GLOBAL	stpncpy
+	GLOBAL	stpncpy_callee
+	GLOBAL	strcasecmp
+	GLOBAL	strcasecmp_callee
+	GLOBAL	strcat
+	GLOBAL	strcat_callee
+	GLOBAL	strchr
+	GLOBAL	strchr_callee
+	GLOBAL	strchrnul
+	GLOBAL	strchrnul_callee
+	GLOBAL	strcmp
+	GLOBAL	strcmp_callee
+	GLOBAL	strcoll
+	GLOBAL	strcoll_callee
+	GLOBAL	strcpy
+	GLOBAL	strcpy_callee
+	GLOBAL	strcspn
+	GLOBAL	strcspn_callee
+	GLOBAL	strdup
+	GLOBAL	strerror
+	GLOBAL	stricmp
+	GLOBAL	stricmp_callee
+	GLOBAL	strlcat
+	GLOBAL	strlcat_callee
+	GLOBAL	strlcpy
+	GLOBAL	strlcpy_callee
+	GLOBAL	strlen
+	GLOBAL	strlwr
+	GLOBAL	strncasecmp
+	GLOBAL	strncasecmp_callee
+	GLOBAL	strncat
+	GLOBAL	strncat_callee
+	GLOBAL	strnchr
+	GLOBAL	strnchr_callee
+	GLOBAL	strncmp
+	GLOBAL	strncmp_callee
+	GLOBAL	strncpy
+	GLOBAL	strncpy_callee
+	GLOBAL	strndup
+	GLOBAL	strndup_callee
+	GLOBAL	strnicmp
+	GLOBAL	strnicmp_callee
+	GLOBAL	strnlen
+	GLOBAL	strnlen_callee
+	GLOBAL	strpbrk
+	GLOBAL	strpbrk_callee
+	GLOBAL	strrchr
+	GLOBAL	strrchr_callee
+	GLOBAL	strrcspn
+	GLOBAL	strrcspn_callee
+	GLOBAL	strrev
+	GLOBAL	strrspn
+	GLOBAL	strrspn_callee
+	GLOBAL	strrstrip
+	GLOBAL	strsep
+	GLOBAL	strsep_callee
+	GLOBAL	strspn
+	GLOBAL	strspn_callee
+	GLOBAL	strstr
+	GLOBAL	strstr_callee
+	GLOBAL	strstrip
+	GLOBAL	strtok
+	GLOBAL	strtok_callee
+	GLOBAL	strtok_r
+	GLOBAL	strtok_r_callee
+	GLOBAL	strupr
+	GLOBAL	strxfrm
+	GLOBAL	strxfrm_callee
+	GLOBAL	strrstr
+	GLOBAL	strrstr_callee
+	GLOBAL	memopi
+	GLOBAL	memopi_callee
+	GLOBAL	memopd
+	GLOBAL	memopd_callee
+	GLOBAL	__builtin_memset
+	GLOBAL	__builtin_memcpy
+	GLOBAL	__builtin_strcpy
+	GLOBAL	__builtin_strchr
+	GLOBAL	_strchr1
+	GLOBAL	_strchr2
+	GLOBAL	_memset1
+	GLOBAL	_memset2
+	GLOBAL	_memset3
+	GLOBAL	_strcpy1
+	GLOBAL	_strcpy2
+	GLOBAL	_memcpy1
+	GLOBAL	_memcpy2
+	GLOBAL	_memcpy3
+
+
+; --- End of Scope Defns ---
+
+
+; --- End of Compilation ---

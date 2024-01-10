@@ -1,0 +1,8 @@
+$Id: README,v 1.2 2002-04-17 21:30:26 dom Exp $
+
+Sord M5 non ANSI Libs by Stefano Bodrato.
+
+This platform is a mixture between a PRE-MSX machine and a Sinclair machine.
+I tested the thing under SORDEMU + ROM BASIC.
+Found the calls by looking into the disassembled ROM!
+

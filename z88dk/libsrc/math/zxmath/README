@@ -1,0 +1,14 @@
+$Id: README,v 1.2 2015-08-10 08:52:12 stefano Exp $
+
+
+
+ZX ROM based math library - Stefano Bodrato - 24/3/2003
+
+This library is much smaller than the default one but it is slower, less precise and slightly less complete.
+
+
+
+The "TINYMODE" flag cuts away the long integers handling and the precision parameter handling of the atof function (BTW leading zeroes are not displayed also with the full version).
+
+
+
