@@ -1,0 +1,19 @@
+# Puny BuildTools WSL resource file
+
+# Get the username from windows
+export USERNAME=`cmd.exe /c echo %username%`
+alias explorer='/mnt/c/windows/explorer.exe'
+alias powershell='/mnt/c/windows/System32/WindowsPowerShell/v1.0/powershell.exe'
+powershell2=$powershell
+alias code='/mnt/c/Users/$USERNAME/AppData/Local/Programs/Microsoft\ VS\ Code/code.exe'
+# Get the desktop path
+export windesk=`$powershell2 -c [Environment]::GetFolderPath\(\"Desktop\"\).ToLower\(\)`
+
+# add mnt to the front of the path
+export windesk="/mnt/$windesk"
+
+# remove the colon
+export windesk=`$powershell -c Write-Output \(\"$windesk\" -replace \':\' , \'\'\)`
+
+# replace backslash with forward slash
+export windesk="${windesk//\\//}"
