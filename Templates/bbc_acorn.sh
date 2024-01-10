@@ -5,7 +5,7 @@
 #read config file 
 source config.sh
 
-echo -e "\nbbc_acorn.sh 2.1 - BBC Micro/Acorn Electron disk builder"
+echo -e "\nbbc_acorn.sh 2.2 - BBC Micro/Acorn Electron disk builder"
 echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
 
 #story check / arrangement
@@ -34,6 +34,7 @@ fi
 cp ${STORY}.z${ZVERSION} ~/FictionTools/Templates/Interpreters/beebOzmoo/
 cd ~/FictionTools/Templates/Interpreters/beebOzmoo
 python make-acorn.py -v ${LOADSCRFLAG}--title "${STORY}" --subtitle "${SUBTITLE}" --default-fg-colour 7 --default-bg-colour 0 --default-mode-7-status-colour 6 ${STORY}.z${ZVERSION}
+rm ${STORY}.z${ZVERSION}
 
 #cleanup
 mv ${STORY}.ssd ${STORY}_bbc_elk.ssd
