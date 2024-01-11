@@ -32,7 +32,7 @@ do_compile()
   fi
 }
 
-echo -e "puny CLI 2.0\n"
+echo -e "puny CLI 2.0 | Event Horizon\n"
 
 while getopts ':iectb:haosv' opt; do
   case "$opt" in
