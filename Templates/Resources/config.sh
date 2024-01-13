@@ -4,7 +4,7 @@
 
 # --- project settings: --------------------------------------------------
 
-# your inform source file without .inf suffix
+# your Inform source or story file without .inf/.z3/.z5 suffix 
 STORY="myproject"
 
 # Z-machine version this project compiles to, 3 and 5 supported
@@ -18,7 +18,6 @@ SUBTITLE="8bitgames.itch.io"
 
 # the label you want to release your software under, e.g. Infocom
 LABEL="Moonmist / ZZAP!64"
-
 
 # --- system settings (don't touch unless you know what you do): ---------
 
