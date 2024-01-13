@@ -1,7 +1,8 @@
 # Puny BuildTools Bash resource file
 
-# environment variables
+# Wine related
 export WINEDEBUG=-all
+export WINEARCH=win32
 
 # Puny BuildTools directories added at path
 export PATH="$HOME/FictionTools:$PATH"
