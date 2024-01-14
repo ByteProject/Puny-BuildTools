@@ -2,9 +2,9 @@
 # Puny-Wan Kenobi - Updater & Permissions Editor 
 # Puny BuildTools, (c) 2023 Stefan Vogt
 #
-# version 1.0
+# version 1.1
 
-echo "Puny-Wan Kenobi 1.0 - the update is strong with this one"
+echo "Puny-Wan Kenobi 1.1 - the update is strong with this one"
 echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
 
 if ! [ -d ~/FictionTools ]; then
@@ -16,7 +16,7 @@ while getopts ':puh' opts
 do
 	case $opts in
 		u)  # update
-            echo -e "Initiating Puny BuildTools update [...]\n"
+            echo -e "initiating Puny BuildTools update [...]\n"
             workingDir=$(pwd)
             cd ~/FictionTools
             git pull
@@ -26,7 +26,7 @@ do
 		    ;;
 
 		p)  # set permissions
-            echo -e "Setting permissions may take a while [...]\n"
+            echo -e "setting permissions may take a while [...]\n"
             workingDir=$(pwd)
             cd ~/FictionTools
             echo "-> applying permissions to directories..."
