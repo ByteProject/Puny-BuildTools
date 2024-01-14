@@ -154,7 +154,7 @@ while getopts ':iectb:haosv' opt; do
       echo "Copyright (c) 2023, Stefan Vogt"
       echo "https://github.com/ByteProject/Puny-BuildTools"
       echo -e "\n| component versions: |"
-      echo "[CLI 2.0] [pi6 3.0] [bundle.sh 2.0]"
+      echo "[CLI 2.0] [pi6 3.0] [bundle.sh 2.0] [Puny-Wan Kenobi 1.0]"
       echo "[makescr.sh 1.0] [ifftool.sh 1.2] [cpcscr.sh 1.0] [degaspi1.sh 1.0]"
       echo -e "\n| module versions: |"
       echo "[c64 2.0] [amiga 2.0] [speccy 2.5] [cpc_pcw 2.5] [atari_st 2.0] [a8bit 3.0]"
