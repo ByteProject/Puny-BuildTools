@@ -102,6 +102,9 @@ do
             find . -name "*.256" -exec chmod 0644 {} \;
             find . -name "*.seq" -exec chmod 0644 {} \;
             find . -name "*.APP" -exec chmod 0644 {} \;
+            chmod 644 .punyrc
+            chmod 644 .punywsl
+            chmod 644 .gitignore
             echo -e "-> done.\n"
             cd "${workingDir}"
             exit 0
