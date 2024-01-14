@@ -16,17 +16,17 @@ while getopts ':puh' opts
 do
 	case $opts in
 		u)  # update
-            echo -e "Initiating update process [...]\n"
+            echo -e "Initiating Puny BuildTools update [...]\n"
             workingDir=$(pwd)
             cd ~/FictionTools
-            #git pull
+            git pull
             cd "${workingDir}"
             echo
             exit 0
 		    ;;
 
 		p)  # set permissions
-            echo -e "Setting permissions [...]\n"
+            echo -e "Setting permissions may take a while [...]\n"
             workingDir=$(pwd)
             cd ~/FictionTools
             echo "-> applying permissions to directories..."
