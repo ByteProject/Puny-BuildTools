@@ -1,38 +1,65 @@
 # The Puny BuildTools
 
-CAUTION THIS IS CURRENTLY WORK IN PROGRESS AND WILL BE UPDATED VERY SOON!
-
-If you're into classic 8-bit and 16-bit home computers and you love Infocom style adventure games, we already have much in common and it's likely you appreciate a build environment, allowing you to target 25 retro systems. And what about transforming a single source file to 25 ready to use disk images in under 5 seconds? You'd like that? I have good news for you because that's essentially what the Puddle BuildTools are. The build environment runs out of the box with [PunyInform](https://github.com/johanberntsson/PunyInform), a lightweight but powerful [Inform 6](https://github.com/DavidKinder/Inform6) library, optimized to perform well on old hardware. The BuildTools are modular designed, so it would be very easy to add for support other libraries and compilers like ZILF for example. The only thing you'd need is a wrapper tool like the bundled one for Puny, which you even could use as a base. Whatever you come up with, I am looking forward to your pull requests!
+Welcome brave adventurer! If you're still into classic 8-bit / 16-bit home computers and Infocom style adventure games you may want to rest here for a while. The Puny BuildTools provide a command-line interface to [PunyInform](https://github.com/johanberntsson/PunyInform), a lightweight but powerful [Inform 6](https://github.com/DavidKinder/Inform6) library, optimized to perform well on old hardware. The Puny BuildTools assist interactive fiction authors as a project management solution for Infocom Z-machine games. They make the whole process of development fast, streamlined and accessible, from structuring your project to compilation, testing, building disk images for retro systems, converting images to pixel art compatible with classic targets and bundling your releases for distribution.
 
 ## Current version
 
-The current version is `v1.5`.
+`2.0` (Helix Nebula)
 
-## Supported targets
+## Build Targets
 
-Commodore 64, Amstrad CPC and PCW, Spectrum +3, Spectrum Next, Commodore Amiga, Atari 8-bit, Atari ST, MS-DOS, Apple 2, BBC Micro, Acorn Electron, Commodore 128, Mega 65, TRS-80 Color Computer, TRS-80 Model 3, TRS-80 Model 4, Dragon64, MSX 1 and MSX 2, Oric, Commodore Plus/4, TI99/4a, Commodore VIC-20, Commodore PET, SAM Coupé, classic Macintosh, Kaypro, Osborne 1, DEC Rainbow.
+The following targets support Z-machine version 5 (XZIP) and Z-machine version 3 (ZIP) story files:
 
-## Host system
+**C64, Amiga, ZX Spectrum, Amstrad CPC/PCW, Atari ST, Atari 8-bit, MS-DOS, MSX, BBC Micro/Acorn Electron, C128, Plus/4, Apple II, SAM Coupe, TRS80 Model 3, TRS 80 Model 4, Mega65, classic Macintosh, modern PC.**
 
-The Puddle BuildTools are designed to run in `WSL2` (the Windows Subsystem for Linux) on `Windows 10` (or later). And since WSL is a full-featured Linux environment, you get this running out of the box on your favorite `Linux (64-bit)` distribution as well.
+There are also a few deprecated targets available, only supporting Z-machine version 3:
 
-Since the commandline tools included are distributed as binaries, you'd need to recompile these for making the Puddle BuildTools work on a MacOS or BSD, in theory it's possible though.
+**VIC20/PET, DEC Rainbow, TRS CoCo/Dragon64, Osborne1, Ti99/4a, Oric, Kaypro.**
+
+Note that Puny BuildTools projects by default are configured to target Z-machine v5 and it's strongly recommended to keep it that way. The format is less restrictive and offers more options.
+
+You can use the built-in feature to compile your story from source but the project workflow allows to skip this step and use any given story file.
+
+## Host
+
+The Puny BuildTools are designed for `Linux (64-bit)` systems. They've been developed and extensively tested on `Ubuntu` and `Debian` but any derivate of the latter should be fine. 
+
+If you're on `Windows 10` (or later) you can run the Puny BuildTools via [WSL2](https://learn.microsoft.com/en-us/windows/wsl/about).
+
+If you work on a Mac, I can't recommend [OrbStack](https://orbstack.dev/) enough. Make sure you set up an Ubuntu machine with Intel architecture.
 
 ## Installation
 
-Note that the installation requires knowledge about Unix-like operating systems. Make sure you have `WLS2` (the Windows Subystem for Linux) installed, as described in [this guide](https://docs.microsoft.com/en-us/windows/wsl/install-win10). Go for `Debian`. It is the recommended distro as it will give you a very stable system in turn. You can optionally go for `Ubuntu`, which is Debian based.
+Below instructions are intended for `Debian` based systems like `Ubuntu` and may vary if you are using a different distro.
 
-(Linux users don't need to care about WSL of course since they are already working from a Linux environment.)
+Open a Bash terminal. In your home directory, create a folder named `FictionTools` with `mkdir ~/FictionTools`
 
-Once the prerequisites are met, switch to a Bash terminal and follow these steps.
-
-Use the APT package manager to install these dependendcies: 
+The Puny BuildTools require some dependencies. Install these via a single command: 
 
 ```
-cpmtools 2.20-2+b1 amd64
-dosfstools 4.1-2 amd64
-git 2.20.1-2+deb10u3 amd64
-ruby 2.5.1 amd64
+sudo apt update && sudo apt install frotz cpmtools dosfstools mtools git ruby imagemagick
+```
+When prompted to install additional dependencies, type `Y` to confirm.
+
+Switch to the folder you created and use git to fetch the newest version from GitHub (the )
+
+```
+cd ~/FictionTools
+git clone https://github.com/ByteProject/Puny-BuildTools.git .
+
+```
+
+Add this entry to your `.bashrc` file (in your home directory)
+
+```foo```
+
+then blah
+
+```
+sudo apt install wine
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install wine32
 ```
 
 GIT clone the Puddle BuildTools repository so that you have all the content locally on your machine. This will also make it easy for you to update to new versions when they are rolled out. 

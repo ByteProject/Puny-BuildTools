@@ -1,0 +1,128 @@
+#!/bin/bash
+# Puny-Wan Kenobi - Updater & Permissions Editor 
+# Puny BuildTools, (c) 2023 Stefan Vogt
+#
+# version 1.0
+
+echo "Puny-Wan Kenobi 1.0 - the update is strong with this one"
+echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
+
+if ! [ -d ~/FictionTools ]; then
+    echo -e "'FictionTools' folder not found in home directory. Aborting program.\n"
+    exit 1
+fi
+
+while getopts ':puh' opts
+do
+	case $opts in
+		u)  # update
+            echo -e "Initiating update process [...]\n"
+            workingDir=$(pwd)
+            cd ~/FictionTools
+            #git pull
+            cd "${workingDir}"
+            echo
+            exit 0
+		    ;;
+
+		p)  # set permissions
+            echo -e "Setting permissions [...]\n"
+            workingDir=$(pwd)
+            cd ~/FictionTools
+            echo "-> applying permissions to directories..."
+            find . -type d -exec chmod 0755 {} \;
+            echo "-> applying permissions to binaries and scripts..."
+            find . -type f -exec chmod 0755 {} \;
+            echo "-> applying permissions to files..."
+            find . -name "LICENSE" -exec chmod 0644 {} \;
+            find . -name "README" -exec chmod 0644 {} \;
+            find . -name "*.txt" -exec chmod 0644 {} \;
+            find . -name "*.md" -exec chmod 0644 {} \;
+            find . -name "*.c" -exec chmod 0644 {} \;
+            find . -name "*.h" -exec chmod 0644 {} \;
+            find . -name "*.asm" -exec chmod 0644 {} \;
+            find . -name "*.fnt" -exec chmod 0644 {} \;
+            find . -name "*.bin" -exec chmod 0644 {} \;
+            find . -name "*.dsk" -exec chmod 0644 {} \;
+            find . -name "*.DSK" -exec chmod 0644 {} \;
+            find . -name "*.cpm" -exec chmod 0644 {} \;
+            find . -name "*.adf" -exec chmod 0644 {} \;
+            find . -name "*.d64" -exec chmod 0644 {} \;
+            find . -name "*.d71" -exec chmod 0644 {} \;
+            find . -name "*.d81" -exec chmod 0644 {} \;
+            find . -name "*.EXE" -exec chmod 0644 {} \;
+            find . -name "*.BAS" -exec chmod 0644 {} \;
+            find . -name "*.bas" -exec chmod 0644 {} \;
+            find . -name "*.CFG" -exec chmod 0644 {} \;
+            find . -name "*.BIN" -exec chmod 0644 {} \;
+            find . -name "*.BAT" -exec chmod 0644 {} \;
+            find . -name "*.bat" -exec chmod 0644 {} \;
+            find . -name "*.def" -exec chmod 0644 {} \;
+            find . -name "z3-*" -exec chmod 0644 {} \;
+            find . -name "*.png" -exec chmod 0644 {} \;
+            find . -name "*.dot" -exec chmod 0644 {} \;
+            find . -name "*.pdf" -exec chmod 0644 {} \;
+            find . -name "*.z3" -exec chmod 0644 {} \;
+            find . -name "*.z5" -exec chmod 0644 {} \;
+            find . -name "*.inf" -exec chmod 0644 {} \;
+            find . -name "*.info" -exec chmod 0644 {} \;
+            find . -name "*.zasm" -exec chmod 0644 {} \;
+            find . -name "*.rec" -exec chmod 0644 {} \;
+            find . -name "*.gif" -exec chmod 0644 {} \;
+            find . -name "*.out*" -exec chmod 0644 {} \;
+            find . -name "*.inc" -exec chmod 0644 {} \;
+            find . -name "*.yaml" -exec chmod 0644 {} \;
+            find . -name "*.transcript" -exec chmod 0644 {} \;
+            find . -name "*.yml" -exec chmod 0644 {} \;
+            find . -name "*.man" -exec chmod 0644 {} \;
+            find . -name "*.html" -exec chmod 0644 {} \;
+            find . -name "*.l" -exec chmod 0644 {} \;
+            find . -name "*.pu" -exec chmod 0644 {} \;
+            find . -name "*.lst" -exec chmod 0644 {} \;
+            find . -name "makefile" -exec chmod 0644 {} \;
+            find . -name "Makefile" -exec chmod 0644 {} \;
+            find . -name "*.dsp" -exec chmod 0644 {} \;
+            find . -name "*.svg" -exec chmod 0644 {} \;
+            find . -name "*.cpp" -exec chmod 0644 {} \;
+            find . -name "*.cmd" -exec chmod 0644 {} \;
+            find . -name "*.mingw" -exec chmod 0644 {} \;
+            find . -name "*.ans" -exec chmod 0644 {} \;
+            find . -name "*.bak" -exec chmod 0644 {} \;
+            find . -name "*.tmp" -exec chmod 0644 {} \;
+            find . -name "*.COM" -exec chmod 0644 {} \;
+            find . -name "*.com" -exec chmod 0644 {} \;
+            find . -name "*.old" -exec chmod 0644 {} \;
+            find . -name "*.OLD" -exec chmod 0644 {} \;
+            find . -name "*.vdk" -exec chmod 0644 {} \;
+            find . -name "dragondos_header" -exec chmod 0644 {} \;
+            find . -name "dragon_bytefill" -exec chmod 0644 {} \;
+            find . -name "*.prg" -exec chmod 0644 {} \;
+            find . -name "*.PRG" -exec chmod 0644 {} \;
+            find . -name "*.16" -exec chmod 0644 {} \;
+            find . -name "*.256" -exec chmod 0644 {} \;
+            find . -name "*.seq" -exec chmod 0644 {} \;
+            find . -name "*.APP" -exec chmod 0644 {} \;
+            echo -e "-> done.\n"
+            cd "${workingDir}"
+            exit 0
+		    ;;
+
+        h) 
+            echo -e "Provides updates via Git and uses the force to edit permissions.\n"  
+            echo -e "Switches:"
+            echo -e "   [kenobi -u] -> initate update"
+            echo -e "   fetches the latest changes from the Puny BuildTools repository\n"
+            echo -e "   [kenobi -p] -> edit permissions"
+            echo -e "   sets and fixes permissions for all bundled applications\n"
+            echo -e "   [kenobi -h] -> show this help menu\n"
+            ;;
+
+		*)
+            echo -e "Wrong argument passed.\nType: $(basename $0) [-h] for help.\n"
+            exit 0
+		    ;;
+	esac
+done
+
+if [ $OPTIND -eq 1 ]; then echo -e "Nothing to be done. No options passed. Use [-h] for help.\n"; fi
+shift "$(($OPTIND -1))"

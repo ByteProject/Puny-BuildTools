@@ -1,8 +1,9 @@
 # Changelog
 
-## 2.0 (work in progress)
+## 2.0 (Helix Nebula)
 
 * project rebranded to 'The Puny BuildTools'
+* a billion other things I probably forgot to mention here
 
 
 ## 1.5
