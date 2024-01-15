@@ -2,9 +2,8 @@
 # pi6 3.0 - the Inform 6 command-line wrapper
 # Puny Buildtools, (c) 2023 Stefan Vogt
 
-
+source ~/FictionTools/.pi6rc
 inform=~/FictionTools/inform
-lib=~/Projects/PunyInform/lib/
 custom=~/FictionTools/punycustom/
 v=-v5
 
