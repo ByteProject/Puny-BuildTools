@@ -1,0 +1,4 @@
+# Puny BuildTools pi6 resource file
+
+# path to the PunyInform library files. if your path contains whitespaces, you need to provide it as an escaped string. The slash at the end of the path statement is mandatory.
+lib=~/Projects/PunyInform/lib/
