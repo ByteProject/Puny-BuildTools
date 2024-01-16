@@ -1,8 +1,10 @@
 # Changelog
 
-## 2.0 (Helix Nebula)
+## 2.0 (Helix Nebula) - WORK IN PROGRESS!
 
 * project rebranded to 'The Puny BuildTools'
+* added dedicated updater and permissions editor 'Puny-Wan Kenobi'
+* latest Inform compiler changes from Zarf's branch integrated
 * a billion other things I probably forgot to mention here
 
 
