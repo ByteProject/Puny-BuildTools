@@ -32,7 +32,11 @@ If you work on `MacOS`, I can't recommend [OrbStack](https://orbstack.dev/) enou
 
 Below instructions are intended for `Debian` based systems like `Ubuntu` and may vary if you are using a different distro.
 
-Open a Bash terminal. In your home directory, create a folder named `FictionTools` with `mkdir ~/FictionTools`
+Open a Bash terminal. In your home directory, create a folder named `FictionTools` with 
+
+```
+mkdir ~/FictionTools
+```
 
 The Puny BuildTools require some dependencies. Install these via a single command: 
 
@@ -47,11 +51,16 @@ cd ~/FictionTools && git clone https://github.com/ByteProject/Puny-BuildTools.gi
 
 Let's use `Puny-Wan Kenobi` to make sure the Puny BuildTools have sufficient permissions to run on your system by typing:
 ```
-cd ~/FictionTools && chmod 755 kenobi && kenobi -p
+cd ~/FictionTools && chmod 755 kenobi && ./kenobi -p
 ```
 This may take some time. Should you ever need to fix permissions, simply run `kenobi -p` again.
 
-Next, you need to make sure all environment variables and paths are properly set on your system. Launch `nano` to edit your Bash resource file via `nano ~/.bashrc` and add this entry:
+Next, you need to make sure all environment variables and paths are properly set on your system. Launch `nano` to edit your Bash resource file via 
+
+```
+nano ~/.bashrc
+```
+and add this entry:
 
 ```
 source ~/FictionTools/.punyrc
@@ -99,19 +108,26 @@ end
   os 2.2
 end
 ```
-For making the Amiga target work, you need to install the `amitools` Python package and its dependencies:
+For making the Amiga target work, you need to install the `amitools` Python package. But first install its dependencies:
 ```
-pipx install cython machine68k
-pipx install git+https://github.com/cnvogelg/machine68k.git
-pipx install git+https://github.com/cnvogelg/amitools.git
+pipx install cython && pipx install git+https://github.com/cnvogelg/machine68k.git
 ```
 You might get a notification that no package is associated with `machine68k`, which you can ignore.
 
+Now install `amitools`:
+```
+pipx install git+https://github.com/cnvogelg/amitools.git
+```
+
 One final step remains: providing the Puny BuildTools with the path to your PunyInform installation. In case you haven't installed PunyInform yet, do so now. You'll find it [here](https://github.com/johanberntsson/PunyInform). 
 
-Type `nano ~/FictionTools/.pi6rc` and enter the path to your PunyInform installation, then save. 
+Type below command and enter the path to your PunyInform installation, then save.
 
-That's it. You've completed the setup.
+```
+nano ~/FictionTools/.pi6rc
+```
+
+You've completed the setup.
 
 ## Working with the Puny BuildTools
 
