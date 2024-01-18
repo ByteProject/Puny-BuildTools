@@ -2,9 +2,9 @@
 # Puny-Wan Kenobi - Updater & Permissions Editor 
 # Puny BuildTools, (c) 2023 Stefan Vogt
 #
-# version 1.1
+# version 1.3
 
-echo "Puny-Wan Kenobi 1.1 - the update is strong with this one"
+echo "Puny-Wan Kenobi 1.3 - the update is strong with this one"
 echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
 
 if ! [ -d ~/FictionTools ]; then
@@ -12,7 +12,7 @@ if ! [ -d ~/FictionTools ]; then
     exit 1
 fi
 
-while getopts ':puh' opts
+while getopts ':puhc' opts
 do
 	case $opts in
 		u)  # update
@@ -20,6 +20,39 @@ do
             workingDir=$(pwd)
             cd ~/FictionTools
             git pull
+            cd "${workingDir}"
+            echo
+            exit 0
+		    ;;
+
+		c)  # check permissions
+            echo -e "checking component permissions [...]\n"
+            workingDir=$(pwd)
+            cd ~/FictionTools
+            printf "puny CLI ->     "
+            [ -x puny ] && printf "okay... executable bit is set\n" || printf "error... not executable\n"
+            printf "pi6 ->          "
+            [ -x pi6 ] && printf "okay... executable bit is set\n" || printf "error... not executable\n"
+            printf "bundle.sh ->    "
+            [ -x Templates/Resources/bundle.sh ] && printf "okay... executable bit is set\n" || printf "error... not executable\n"
+            printf "ifftool.sh ->   "
+            [ -x ifftool.sh ] && printf "okay... executable bit is set\n" || printf "error... not executable\n"
+            printf "cpcscr.sh ->    "
+            [ -x cpcscr.sh ] && printf "okay... executable bit is set\n" || printf "error... not executable\n"
+            printf "degaspi1.sh ->  "
+            [ -x degaspi1.sh ] && printf "okay... executable bit is set\n" || printf "error... not executable\n"
+            printf "makescr.sh ->   "
+            [ -x scrload/makescr.sh ] && printf "okay... executable bit is set\n" || printf "error... not executable\n"
+            
+            echo -e "\nchecking a few module permissions [...]\n"
+            printf "dos.sh ->       "
+            [ -x Templates/dos.sh ] && printf "okay... executable bit is set\n" || printf "error... not executable\n"
+            printf "amiga.sh ->     "
+            [ -x Templates/amiga.sh ] && printf "okay... executable bit is set\n" || printf "error... not executable\n"
+            printf "all.sh ->       "
+            [ -x Templates/Resources/all.sh ] && printf "okay... executable bit is set\n" || printf "error... not executable\n"
+            echo -e "\nShould you notice errors here or encounter issues regarding permissions"
+            echo -e "when working with the Puny BuildTools, run 'kenobi -p' to fix them."
             cd "${workingDir}"
             echo
             exit 0
@@ -51,6 +84,7 @@ do
             find . -name "*.d71" -exec chmod 0644 {} \;
             find . -name "*.d81" -exec chmod 0644 {} \;
             find . -name "*.EXE" -exec chmod 0644 {} \;
+            find . -name "*.exe" -exec chmod 0644 {} \;
             find . -name "*.BAS" -exec chmod 0644 {} \;
             find . -name "*.bas" -exec chmod 0644 {} \;
             find . -name "*.CFG" -exec chmod 0644 {} \;
@@ -106,6 +140,7 @@ do
             chmod 644 .punyrc
             chmod 644 .punywsl
             chmod 644 .gitignore
+            chmod 644 Templates/Resources/config.sh
             echo -e "-> done.\n"
             cd "${workingDir}"
             exit 0
@@ -116,6 +151,8 @@ do
             echo -e "Switches:"
             echo -e "   [kenobi -u] -> initate update"
             echo -e "   fetches the latest changes from the Puny BuildTools repository\n"
+            echo -e "   [kenobi -c] -> check permissions"
+            echo -e "   checks if the bundled applications have the right permissions\n"
             echo -e "   [kenobi -p] -> edit permissions"
             echo -e "   sets and fixes permissions for all bundled applications\n"
             echo -e "   [kenobi -h] -> show this help menu\n"
