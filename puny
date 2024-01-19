@@ -142,10 +142,14 @@ while getopts ':iectb:haosv' opt; do
 
     s) # examples
       echo "Examples:"
+      echo "puny -e"
+      echo -e "-> edit project config file\n"
+      echo "puny -c"
+      echo -e "-> compile your project source to Z-machine story\n"
       echo "puny -b c64"
-      echo -e "-> builds Commodore 64 target\n"
+      echo -e "-> build Commodore 64 target\n"
       echo "puny -b dos -b msx -b amiga"
-      echo -e "-> builds DOS, MSX and Amiga targets\n"
+      echo -e "-> build DOS, MSX and Amiga targets\n"
       exit 0
       ;;
 
