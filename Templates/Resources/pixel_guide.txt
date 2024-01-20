@@ -1,8 +1,7 @@
 # Puny BuildTools, Copyright (c) 2023 Stefan Vogt
-# Resources directory README file
+# PIXEL ARTWORK / LOADING SCREEN GUIDE
 
-puny CLI will create the disk image with a loading screen when it finds
-a file in the right format and named as seen below in this directory.
+puny CLI will create the disk image with a loading screen when it finds a file in the right format and named as seen below in this directory.
 
 # C64            |      # ZX Spectrum      |      # Commodore Amiga
 loadpic.kla      |      SCRLOAD.COM        |      loader
@@ -22,46 +21,26 @@ screen256.iff    |
 
 Format notes / how to create the screens:
 ------------------------------------------------------------------------- 
-C64         -> Koala multicolor image, 16 colors. Paint the screen in
-Multipaint and save it directly as .kla file.
+C64         -> Koala multicolor image, 16 colors. Paint the screen in Multipaint and save it directly as .kla file.
 ------------------------------------------------------------------------- 
-Plus/4      -> Botticelli multicolor image,up to 121 colors. Paint the 
-screen in Multipaint and save it directly as .mb file.
+Plus/4      -> Botticelli multicolor image,up to 121 colors. Paint the screen in Multipaint and save it directly as .mb file.
 ------------------------------------------------------------------------- 
 MSX         -> MSX mode2 image, 16 colors. Paint the screen in
 Multipaint and save it directly as .SC2 file.
 ------------------------------------------------------------------------- 
-Atari ST    -> Degas PI1 image, 16 colors from a self-defined palette.
-Paint the screen in Multipaint but save it as a .PNG file. Now use
-degaspi1.sh to convert your .PNG image to .PI1. This works around some
-issues regarding compatibility with .PI1 files saved from Multipaint.
+Atari ST    -> Degas PI1 image, 16 colors from a self-defined palette. Paint the screen in Multipaint but save it as a .PNG file. Now use degaspi1.sh to convert your .PNG image to .PI1. This works around some issues regarding compatibility with .PI1 files saved from Multipaint.
 ------------------------------------------------------------------------- 
-BBC/Elk     -> BBC screen, 8 colors. Use BBC Micro Image Converter.
-Open an image in one of the many supported formats, like .PNG for 
-example, then save it as BBC screen. You get the best results when 
-importing a screen with a reduced palette and chunky pixels. 
+BBC/Elk     -> BBC screen, 8 colors. Use BBC Micro Image Converter. Open an image in one of the many supported formats, like .PNG for example, then save it as BBC screen. You get the best results when importing a screen with a reduced palette and chunky pixels. 
 ------------------------------------------------------------------------- 
 MS-DOS      -> PNG image (320x200, 256 colors), use any image editor.
 -------------------------------------------------------------------------
-ZX Spectrum -> Spectrum SCR converted into a CPM+ .COM format. Create it
-as follows. Paint your screen using Multipaint. Save SCR as TAPE. Load 
-.TAP file in FUSE. Create a raw screen binary file, called "screen.bin" by
-using the export display buffer option in FUSE, starts at 0x4000 and has 
-a length 0x1B00. Copy "screen.bin" to ~/FictionTools/scrload directory.
-In scrload dir, execute ./makescr.sh and SCRLOAD.COM will be the output.
+ZX Spectrum -> Spectrum SCR converted into a CPM+ .COM format. Create it as follows. Paint your screen using Multipaint. Save SCR as TAPE. Load .TAP file in FUSE. Create a raw screen binary file, called "screen.bin" by using the export display buffer option in FUSE, starts at 0x4000 and has a length 0x1B00. Copy "screen.bin" to ~/FictionTools/scrload directory. In scrload dir, execute ./makescr.sh and SCRLOAD.COM will be the output.
 -------------------------------------------------------------------------
-Amiga       -> .IFF image with 320x256 resolution and 32 colors. This
-format is recommended as it is compatible with both OCS and ECS Amigas.
-Paint your screen in Multipaint, then save it as .PNG file. Now use the
-ifftool.sh to convert the .PNG image to an Amiga loader executable. 
+Amiga       -> .IFF image with 320x256 resolution and 32 colors. This format is recommended as it is compatible with both OCS and ECS Amigas. Paint your screen in Multipaint, then save it as .PNG file. Now use the ifftool.sh to convert the .PNG image to an Amiga loader executable. 
 -------------------------------------------------------------------------
-Amstrad CPC -> Amstrad CPC Mode 0 screen. Paint the screen in Multipaint
-and then save it as .PNG file. Now use the cpcscr.sh utility and convert
-the .PNG image to a CPC screen, a CPC palette file and a BASIC loader.           
+Amstrad CPC -> Amstrad CPC Mode 0 screen. Paint the screen in Multipaint and then save it as .PNG file. Now use the cpcscr.sh utility and convert the .PNG image to a CPC screen, a CPC palette file and a BASIC loader.           
 -------------------------------------------------------------------------
-MEGA65      -> .IFF image with 320x200 resolution and 16 or 256 colors.
-Use the ifftool.sh and create the MEGA65 loading screen by converting a
-.PNG image with either the 16 or 256 color option.
+MEGA65      -> .IFF image with 320x200 resolution and 16 or 256 colors. Use the ifftool.sh and create the MEGA65 loading screen by converting a .PNG image with either the 16 or 256 color option.
 -------------------------------------------------------------------------
 
 References (only linking software not bundled with the Puny BuildTools):
