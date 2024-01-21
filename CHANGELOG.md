@@ -30,7 +30,7 @@
 * CLI feature: list target systems and valid build arguments
 * CLI feature: version information for all bundled components and modules
 * CLI feature: disk image factory
-* auto-build disk images loading screen when pixel artwork is found in the project's 'Resources' folder
+* auto-build disk images with loading screen when pixel artwork is found in the project's 'Resources' folder
 * pixel artwork guide for all targets supporting loading screens
 * 'An Author's Guide to the Galaxy' as a real-life example of how you would work with the Puny BuildTools
 * added 'pi6', a super accessible Inform 6 compiler wrapper, preconfigured to use PunyInform as library (doesn't need a project structure)
