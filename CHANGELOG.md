@@ -19,7 +19,7 @@
 * Atari 8-bit XZIP target now built on improved disk image: Single-Sided, Double-Density, 180kb capacity (1050 and XF551 disk drives)
 * countless interpreter and disk template updates (really, I lost track)
 * default target architecture now Z-machine version 5 since all available targets do support now both .z5 and .z3: C64, Amiga, ZX Spectrum, Amstrad CPC/PCW, Atari ST, Atari 8-bit, MS-DOS, MSX, BBC Micro/Acorn Electron, C128, Plus/4, Apple II, SAM Coupe, TRS80 Model 3, TRS 80 Model 4, Mega65, classic Macintosh
-* the following targets have been deprecated and considered unsupported but are still available for Z-machine v3 only: IC20/PET, DEC Rainbow, TRS CoCo/Dragon64, Osborne1, Ti99/4a, Oric, Kaypro
+* the following targets have been deprecated and considered unsupported but are still available for Z-machine v3 only: VIC20/PET, DEC Rainbow, TRS CoCo/Dragon64, Osborne1, Ti99/4a, Oric, Kaypro
 * environment variables and paths sourced out in '.punyrc', '.punywsl' and '.pi6rc'
 * added dedicated command-line interface 'Puny CLI'
 * CLI feature: project initialization
