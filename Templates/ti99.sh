@@ -1,12 +1,12 @@
 #!/bin/bash
 # ti99.sh - TI99/4a disk builder
-# Puny BuildTools, (c) 2023 Stefan Vogt
+# Puny BuildTools, (c) 2024 Stefan Vogt
 
 #read config file 
 source config.sh
 
 echo -e "\nti99.sh 1.0 - TI99/4a disk builder"
-echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
+echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 # Z-machine version check
 if ! [[ $ZVERSION == 3 ]] ; then

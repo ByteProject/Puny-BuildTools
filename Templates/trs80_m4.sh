@@ -1,12 +1,12 @@
 #!/bin/bash
 # trs80_m4.sh - TRS80 Model 4 disk builder
-# Puny BuildTools, (c) 2023 Stefan Vogt
+# Puny BuildTools, (c) 2024 Stefan Vogt
 
 #read config file 
 source config.sh
 
 echo -e "\ntrs80_m4.sh 2.5 - TRS80 Model 4 disk builder"
-echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
+echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 #story check / arrangement
 if ! [ -f ${STORY}.z${ZVERSION} ] ; then

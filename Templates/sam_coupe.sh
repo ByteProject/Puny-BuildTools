@@ -1,12 +1,12 @@
 #!/bin/bash
 # sam_coupe.sh - SAM Coupe disk builder
-# Puny BuildTools, (c) 2023 Stefan Vogt
+# Puny BuildTools, (c) 2024 Stefan Vogt
 
 #read config file 
 source config.sh
 
 echo -e "\nsam_coupe.sh 2.5 - SAM Coupe disk builder"
-echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
+echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 #story check / arrangement
 if ! [ -f ${STORY}.z${ZVERSION} ] ; then

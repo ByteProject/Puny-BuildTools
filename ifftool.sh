@@ -1,10 +1,10 @@
 #!/bin/bash
 # ifftool.sh - Commodore Amiga/MEGA65 IFF screen maker
-# Puny BuildTools, (c) 2023 Stefan Vogt
+# Puny BuildTools, (c) 2024 Stefan Vogt
 # NOTE: Requires ImageMagick at path
 
 echo "ifftool.sh 1.2 - Commodore Amiga/MEGA65 IFF screen maker"
-echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
+echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 while getopts ':l:m:a:c:h' opts
 do

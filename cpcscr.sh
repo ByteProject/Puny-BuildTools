@@ -1,9 +1,9 @@
 #!/bin/bash
 # cpcscr.sh - Amstrad CPC screen maker
-# Puny BuildTools, (c) 2023 Stefan Vogt
+# Puny BuildTools, (c) 2024 Stefan Vogt
 
 echo "cpcscr 1.0 - Amstrad CPC screen maker"
-echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
+echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 while getopts ':c:h' opts
 do

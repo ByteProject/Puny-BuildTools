@@ -1,12 +1,12 @@
 #!/bin/bash
 # decrainbow.sh - DEC Rainbow 100 disk builder
-# Puny BuildTools, (c) 2023 Stefan Vogt
+# Puny BuildTools, (c) 2024 Stefan Vogt
 
 #read config file 
 source config.sh
 
 echo -e "\ndecrainbow.sh 1.0 - DEC Rainbow 100 disk builder"
-echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
+echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 # Z-machine version check
 if ! [[ $ZVERSION == 3 ]] ; then

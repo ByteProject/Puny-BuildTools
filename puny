@@ -1,6 +1,6 @@
 #!/bin/bash
 # puny CLI - The Puny BuildTools command-line interface 
-# Copyright (c) 2023 Stefan Vogt
+# Copyright (c) 2024 Stefan Vogt
 
 #read config file
 if [ -f config.sh ] ; then

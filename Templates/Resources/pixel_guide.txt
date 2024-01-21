@@ -1,4 +1,4 @@
-# Puny BuildTools, Copyright (c) 2023 Stefan Vogt
+# Puny BuildTools, Copyright (c) 2024 Stefan Vogt
 # PIXEL ARTWORK / LOADING SCREEN GUIDE
 
 puny CLI will disk images with a loading screen when it finds a file in the right format and named as seen below in this directory (Resources).

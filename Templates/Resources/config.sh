@@ -1,6 +1,6 @@
 #!/bin/bash
 # config.sh - project configuration file
-# Puny BuildTools 2.0, (c) 2023 Stefan Vogt
+# Puny BuildTools 2.0, (c) 2024 Stefan Vogt
 
 # --- project settings: --------------------------------------------------
 

@@ -1,12 +1,12 @@
 #!/bin/bash
 # msx.sh - MSX1/MSX2 disk builder
-# Puny BuildTools, (c) 2023 Stefan Vogt
+# Puny BuildTools, (c) 2024 Stefan Vogt
 
 #read config file 
 source config.sh
 
 echo -e "\nmsx.sh 2.5 - MSX1/MSX2 disk builder"
-echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
+echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 #story check / arrangement
 if ! [ -f ${STORY}.z${ZVERSION} ] ; then

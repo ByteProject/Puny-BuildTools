@@ -1,10 +1,10 @@
 #!/bin/bash
 # degaspi1.sh - Atari ST (Degas .PI1) screen maker
-# Puny BuildTools, (c) 2023 Stefan Vogt
+# Puny BuildTools, (c) 2024 Stefan Vogt
 # NOTE: Requires ImageMagick at path
 
 echo "degaspi1.sh - Atari ST (Degas .PI1) screen maker"
-echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
+echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 while getopts ':c:h' opts
 do

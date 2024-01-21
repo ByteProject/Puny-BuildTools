@@ -1,12 +1,12 @@
 #!/bin/bash
 # a8bit.sh - Atari 8-bit disk builder
-# Puny BuildTools, (c) 2023 Stefan Vogt
+# Puny BuildTools, (c) 2024 Stefan Vogt
 
 #read config file 
 source config.sh
 
  echo -e "\na8bit.sh 3.0 - Atari 8-bit disk builder"
- echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
+ echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 #story check / arrangement
 if ! [ -f ${STORY}.z${ZVERSION} ] ; then

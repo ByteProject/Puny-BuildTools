@@ -1,7 +1,7 @@
 #!/bin/bash
 # Puny BuildTools v2.0
 # bundle.sh - the game release archiver
-# (c) 2023 Stefan Vogt
+# (c) 2024 Stefan Vogt
 
 # bundles your game files and places them in an archive at a given path
 
@@ -9,7 +9,7 @@
 source config.sh
 
 echo "bundle.sh 2.0 - the game release archiver"
-echo -e "Puny BuildTools 2.0, (c) 2023 Stefan Vogt\n"
+echo -e "Puny BuildTools 2.0, (c) 2024 Stefan Vogt\n"
 
 while getopts ':t:h' opt; do
   case "$opt" in

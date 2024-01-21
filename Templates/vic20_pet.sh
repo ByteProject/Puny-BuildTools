@@ -1,12 +1,12 @@
 #!/bin/bash
 # vic20_pet.sh - VIC20/PET disk builder
-# Puny BuildTools, (c) 2023 Stefan Vogt
+# Puny BuildTools, (c) 2024 Stefan Vogt
 
 #read config file 
 source config.sh
 
 echo -e "\nvic20_pet.sh 1.0 - Commodore VIC20/PET disk builder"
-echo -e "Puny BuildTools, (c) 2023 Stefan Vogt\n"
+echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 # Z-machine version check
 if ! [[ $ZVERSION == 3 ]] ; then
