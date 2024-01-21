@@ -155,7 +155,7 @@ while getopts ':iectb:haosv' opt; do
 
     v) # version information
       echo "the Puny BuildTools command-line interface"
-      echo "Copyright (c) 2023, Stefan Vogt"
+      echo "Copyright (c) 2024, Stefan Vogt"
       echo "https://github.com/ByteProject/Puny-BuildTools"
       echo -e "\n| component versions: |"
       echo "[CLI 2.0] [pi6 3.0] [bundle.sh 2.0] [Puny-Wan Kenobi 1.3]"
