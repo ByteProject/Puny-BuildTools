@@ -1,8 +1,0 @@
-	transfer_routine	= $205d	; ?
-	in_c65_mode	= $2041	; unused
-	in_c64_mode	= $204f	; ?
-	dmalist_dst_msb	= $3d5	; ?
-	program_start	= $2021	; unused
-	end_of_wrapper	= $20b9	; ?
-	basic_header	= $2001	; unused
-	dmalist	= $3cb	; ?
