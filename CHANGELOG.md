@@ -8,6 +8,7 @@
 * host system now Linux 64-bit only, optimized for Debian/Ubuntu
 * preconfigured to be compatible with WSL2 (Windows) and OrbStack (MacOS)
 * project structure and logic completely redesigned
+* version system implemented for all components and modules
 * centralized interpreters and disk image templates
 * former build scripts heavily improved and refactored to CLI modules
 * added 'bundle.sh' release archiver
