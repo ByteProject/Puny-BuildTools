@@ -1,11 +1,47 @@
 # Changelog
 
-## 2.0 (Helix Nebula) - WORK IN PROGRESS!
+## 2.0 (Helix Nebula)
 
 * project rebranded to 'The Puny BuildTools'
-* added dedicated updater and permissions editor 'Puny-Wan Kenobi'
+* documentation has been completely rewritten
+* simplified and accessible installation process
+* host system now Linux 64-bit only, optimized for Debian/Ubuntu
+* preconfigured to be compatible with WSL2 (Windows) and OrbStack (MacOS)
+* project structure and logic completely redesigned
+* centralized interpreters and disk image templates
+* former build scripts heavily improved and refactored to CLI modules
+* added 'bundle.sh' release archiver
+* configuration file format update
+* integrated Vezza interpreter by Shawn Sijnstra as standard for a broad range of targets
+* integrated Jindroush's Atari 8-bit interpreter for z5 targets
+* countless interpreter and disk template updates (really, I lost track)
+* default target architecture now Z-machine version 5 since all available targets do support now .z5 and .z5: C64, Amiga, ZX Spectrum, Amstrad CPC/PCW, Atari ST, Atari 8-bit, MS-DOS, MSX, BBC Micro/Acorn Electron, C128, Plus/4, Apple II, SAM Coupe, TRS80 Model 3, TRS 80 Model 4, Mega65, classic Macintosh
+* the following targets have been deprecated and considered unsupported but are still available for Z-machine v3 only: IC20/PET, DEC Rainbow, TRS CoCo/Dragon64, Osborne1, Ti99/4a, Oric, Kaypro
+* environment variables and paths sourced out in '.punyrc', '.punywsl' and '.pi6rc'
+* added dedicated command-line interface 'Puny CLI'
+* CLI feature: project initialization
+* CLI feature: configuration file editor
+* CLI feature: project compilation
+* CLI feature: create optimized abbrevations for project (uses ZAbbrevMaker by Henrik Åsman)
+* CLI feature: test project (compile and run)
+* CLI feature: list target systems and valid build arguments
+* CLI feature: version information for all bundled components and modules
+* CLI feature: disk image factory
+* auto-build disk images loading screen when pixel artwork is found in the project's 'Resources' folder
+* pixel artwork guide for all targets supporting loading screens
+* 'An Author's Guide to the Galaxy' as a real-life example of how you would work with the Puny BuildTools
+* added 'pi6', a super accessible Inform 6 compiler wrapper, preconfigured to use PunyInform as library (doesn't need a project structure)
+* added updater and permissions editor 'Puny-Wan Kenobi'
+* Kenobi feature: update local Puny BuildTools installation
+* Kenobi feature: check if Puny BuildTools have sufficient permissions
+* Kenobi feature: fix permissions of existing Puny BuildTools installations
+* added 'ifftool.sh', a Commodore Amiga/MEGA65 IFF screen maker, which converts .PNG images to .IFF images in Amiga and Mega65 resolutions, can also compile .PNG images to executable Amiga binaries
+* added 'cpcscr.sh', an Amstrad CPC screen maker, which converts .PNG images to CPC loading screens, palette files and BASIC loaders, using 'martine' as backend
+* added 'degaspi1.sh', an Atari ST (Degas .PI1) screen maker, which converts .PNG images to Degas .PI1 format
+* added 'makescr.sh' a ZX Spectrum CP/M+ loading screen maker
+* 'punycustom' folder feature, which will use files placed in there in favor of Puny library files and extensions
 * latest Inform compiler changes from Zarf's branch integrated
-* a billion other things I probably forgot to mention here
+* a billion other things I am confident I forgot to mention here
 
 
 ## 1.5
