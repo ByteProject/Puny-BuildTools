@@ -1,6 +1,6 @@
 # The Puny BuildTools
 
-Welcome brave adventurer! If you're still into classic 8-bit / 16-bit home computers and Infocom style adventure games you may want to rest here for a while. The Puny BuildTools provide a command-line interface to [PunyInform](https://github.com/johanberntsson/PunyInform), a lightweight but powerful [Inform 6](https://github.com/DavidKinder/Inform6) library, optimized to perform well on old hardware. The Puny BuildTools assist interactive fiction authors as a project management solution for Infocom Z-machine games. They make the whole process of development fast, streamlined and accessible, from structuring your project to compilation, testing, building disk images for retro systems, converting images to pixel art compatible with classic targets and bundling your releases for distribution.
+Welcome brave adventurer! If you're still into classic 8-bit / 16-bit home computers and Infocom style adventure games you may want to rest here for a while. The Puny BuildTools provide a command-line interface to [PunyInform](https://github.com/johanberntsson/PunyInform), a lightweight but powerful [Inform 6](https://github.com/DavidKinder/Inform6) library, optimized to perform well on old hardware. The Puny BuildTools assist interactive fiction authors as a project management solution for Infocom Z-machine games. They make the whole process of development fast, streamlined and accessible, from structuring your project to compilation, testing, building disk images for retro systems, converting pixel artworks to loading screens compatible with classic targets and bundling your releases for distribution.
 
 ## Current version
 
@@ -255,7 +255,7 @@ There is one more thing to know. You probably noticed the `Resources` folder tha
 
 This part of the documentation aims to give you a real-life example of how one would work with the Puny BuildTools. Let's assume for a moment you have that great vision for your next best-selling interactive fiction epos called "The Galaxy".
 
-The first thing you'll need to take care of is creating a project directory, then navigate to it via `mkdir Galaxy && cd Galaxy`.
+The first thing you'll need to take care of is creating a project directory and navigate to it via `mkdir Galaxy && cd Galaxy`.
 
 Next, initiate the project directory: `puny -i`. Afterwards, edit the configuration file with `puny -e`. In the editor view, change the STORY setting to `"galaxy"` and adjust SUBTITLE and LABEL to desired values. Save your changes.
 
@@ -373,10 +373,10 @@ So what does it do? Let's assume for a moment that you want to replace a PunyInf
 
 ## Credits
 
-This is still work in progress.
+Special thanks to Shawn Sijnstra, Fredrik Ramsberg, Johan Berntsson, Andrew Plotkin, Graham Nelson, Marco Innocenti, the community on the Puny Discord server, the authors of all the free and open-sourced utilities being used in the backend of the Puny BuildTools, those great individuals who directly or indirectly contributed to this project, Sebastian Bach from PolyPlay, Ant Stiller, the ZZAP!64 crew, Jason Scott and most importantly the great masters themselves, once known as Infocom.
 
-## Disclaimer and license
+## License
 
-Do with the Puddle BuildTools what you want but whatever may happen as a result, the responsibility is all yours. Yes, even if a planet full of cute little kittens explodes.
+The Puny BuildTools are released under a modified BSD 2-clause license. I strongly encourage you to read the file `LICENSE.md` before you start working with the project.
 
-I strongly encourage you to read the file `LICENSE` before you start working with the project.
+Any free or open-sourced software distributed with the Puny BuildTools not written by Stefan Vogt, retains the copyright and license under which it had been released.
