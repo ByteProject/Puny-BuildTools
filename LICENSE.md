@@ -1,6 +1,6 @@
 # The Puny BuildTools
-#### A PunyInform CLI and retro disk image factory for Infocom Z-machine games
-#### Copyright (C) 2024 Stefan Vogt
+### A PunyInform CLI and retro disk image factory for Infocom Z-machine games
+### Copyright (C) 2024 Stefan Vogt
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
