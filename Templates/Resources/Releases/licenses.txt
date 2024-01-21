@@ -2,7 +2,7 @@ The contents of this archive have been created/bundled using:
 
 The Puny BuildTools
 PunyInform CLI and retro disk image factory for Infocom Z-machine games
-Copyright (c) 2023, Stefan Vogt
+Copyright (c) 2024, Stefan Vogt
 https://github.com/ByteProject/Puny-BuildTools
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
