@@ -41,7 +41,7 @@ mkdir ~/FictionTools
 The Puny BuildTools require some dependencies. Install these via a single command: 
 
 ```
-sudo apt update && sudo apt install frotz cpmtools dosfstools mtools git ruby imagemagick zip pipx
+sudo apt update && sudo apt install frotz cpmtools dosfstools mtools git ruby imagemagick zip
 ```
 
 When prompted to install additional dependencies, type `Y` to confirm. Switch to the folder you created and use Git to load the newest version from GitHub:
@@ -127,15 +127,13 @@ end
 For making the Amiga target work, you need to install the `amitools` Python package. But first install its dependencies:
 
 ```
-pipx install cython && pipx install git+https://github.com/cnvogelg/machine68k.git
+pip3 install cython --break-system-packages && pip3 install -U git+https://github.com/cnvogelg/machine68k.git --break-system-packages
 ```
-
-You might get a notification that no package is associated with `machine68k`, which you can ignore.
 
 Now install `amitools`:
 
 ```
-pipx install git+https://github.com/cnvogelg/amitools.git
+pip3 install -U git+https://github.com/cnvogelg/amitools.git --break-system-packages
 ```
 
 One final step remains: providing the Puny BuildTools with the path to your PunyInform installation. In case you haven't installed PunyInform yet, do so now. You'll find it [here](https://github.com/johanberntsson/PunyInform). 
