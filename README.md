@@ -192,7 +192,7 @@ Compile your project to a Z-machine story file. Inform source file and Z-machine
 
 #### puny -a
 
-Create highly optimized abbrevations. While this feature is optional, it's recommended to make use of it. Abbrevations are tokens of text compression. The better the compression, the smaller the story file, the higher the performance on retro computers. Please refer to the [abbrevations chapter](https://github.com/johanberntsson/PunyInform/wiki/manual#abbreviations) of the PunyInform manual to learn more about it. The optimized abbrevations are written to a file named `abbrvs.h` in the project directory, which you can import by adding `Include ">abbrvs.h";` to your Inform source file. You also need to add these lines of code at the very beginning of your source file:
+Create highly optimized abbrevations. While this feature is optional, it's recommended to make use of it. Abbrevations are tokens of text compression. The better the compression, the smaller the story file, the higher the performance on retro computers. Please refer to the [abbrevations chapter](https://github.com/johanberntsson/PunyInform/wiki/manual#abbreviations) of the PunyInform manual to learn more about it. The optimized abbrevations are written to a file named `abbrvs.h` in the project directory, which you can import by adding `Include ">abbrvs.h";` to your Inform source file. Do so very early in your source as the Inform compiler is a one pass compiler, meaning strings found in your code before you include the abbreviatons won't be compressed. You also need to add these lines of code at the very beginning of your source file:
 
 ```
 !% $MAX_ABBREVS=96
