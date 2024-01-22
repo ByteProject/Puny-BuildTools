@@ -97,7 +97,7 @@ sudo apt update && sudo apt install wine32
 
 It's recommended to close all Terminal windows now and then open a new Bash instance. The changes you've made to `.bashrc` have now been applied.
 
-Next, teach `cpmtools` to handle disk images for SAM Coupe and DEC Rainbow. In your Bash prompt, type `nano ~/etc/cpmtools/diskdefs` and add the following code:
+Next, teach `cpmtools` to handle disk images for SAM Coupe and DEC Rainbow. In your Bash prompt, type `sudo nano /etc/cpmtools/diskdefs` and add the following code:
 
 ```
 diskdef prodos
