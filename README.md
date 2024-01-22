@@ -30,7 +30,7 @@ If you work on `MacOS`, I can't recommend [OrbStack](https://orbstack.dev/) enou
 
 ## Installation
 
-Below instructions are intended for `Debian` based systems like `Ubuntu` and may vary if you are using a different distro.
+Below instructions are intended for `Debian` based systems like `Ubuntu` and may vary if you are using a different distro. The recommended system is `Ubuntu`.
 
 Open a Bash terminal. In your home directory, create a folder named `FictionTools` with 
 
