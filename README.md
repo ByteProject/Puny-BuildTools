@@ -4,7 +4,7 @@ Welcome brave adventurer! If you're still into classic 8-bit / 16-bit home compu
 
 ## Current version
 
-`2.0` Helix Nebula
+`2.0.1` Helix Nebula
 
 ## Build Targets
 
@@ -368,6 +368,13 @@ mkdir ~/FictionTools/punycustom
 ```
 
 So what does it do? Let's assume for a moment that you want to replace a PunyInform library file. Not just a few routines but the whole file. That's what it is for. Every file you place in `punycustom` that has the same name as a PunyInform library file, is used upon compilation instead. The most common scenario would be replacing the library's standard messages found in `messages.h` with your own implementation. Another common scenario would be replacing one of the PunyInform library extensions with a customized version.
+
+## Hacks
+
+Hacks are settings which you can add to the configuration file of your project to override the default behavior of the Puny BuildTools. All hacks are case-sensitive.
+
+### APPLE2_Z3_INFOCOM=true
+Builds Apple II Z-machine version 3 targets with Infocom's interpreter version K instead of Vezza. This hack is ignored if `ZVERSION 5` is defined in your project's configuration file.
 
 ## Credits
 
