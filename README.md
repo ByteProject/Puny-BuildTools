@@ -373,7 +373,7 @@ So what does it do? Let's assume for a moment that you want to replace a PunyInf
 
 Hacks are settings which you can add to the configuration file of your project to override the default behavior of the Puny BuildTools. All hacks are case-sensitive.
 
-### APPLE2_Z3_INFOCOM=true
+#### APPLE2_Z3_INFOCOM=true
 Builds Apple II Z-machine version 3 targets with Infocom's interpreter version K instead of Vezza. This hack is ignored if `ZVERSION 5` is defined in your project's configuration file.
 
 ## Credits
