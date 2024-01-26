@@ -3,7 +3,7 @@
 ## 2.0.1 (Helix Nebula minor update)
 
 * updated Inform compiler binary: fixing zchar_weight 1 instead of 4, plural flags, new /~n flag
-* CLI feature: current git version ammended to CLI version number
+* CLI feature: current git version appended to CLI version number
 * introducing 'hacks' logic
 * hack feature: Apple 2 module can use Infocom interpreter for .z3 target
 * hacks chapter added to the documentation
