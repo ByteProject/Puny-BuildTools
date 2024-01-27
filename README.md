@@ -41,7 +41,7 @@ mkdir ~/FictionTools
 The Puny BuildTools require some dependencies. Install these via a single command: 
 
 ```
-sudo apt update && sudo apt install frotz cpmtools dosfstools mtools git ruby imagemagick zip
+sudo apt update && sudo apt install frotz cpmtools dosfstools mtools git ruby imagemagick zip python3-pip
 ```
 
 When prompted to install additional dependencies, type `Y` to confirm. Switch to the folder you created and use Git to load the newest version from GitHub:
