@@ -5,7 +5,7 @@
 #read config file 
 source config.sh
 
-echo -e "\ndos.sh 2.0 - MS-DOS release builder"
+echo -e "\ndos.sh 2.1 - MS-DOS release builder"
 echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 #story check / arrangement
@@ -15,19 +15,33 @@ if ! [ -f ${STORY}.z${ZVERSION} ] ; then
 fi 
 cp ${STORY}.z${ZVERSION} STORY.DAT
 
-#cleanup
+#pre-cleanup
 if [ -d Releases/DOS ] ; then
     rm -rf Releases/DOS
 fi
 
 #copy resources
-cp ~/FictionTools/Templates/Interpreters/FROTZ.EXE ~/FictionTools/Templates/Interpreters/DOSTEMP/MOONM.EXE
+zvalue="$ZVERSION"
+if [[ $zvalue == 5 ]] ; then
+    cp ~/FictionTools/Templates/Interpreters/DOS_I_Z5.EXE ~/FictionTools/Templates/Interpreters/DOSTEMP/MOONM.EXE
+fi
+if [[ $zvalue == 3 ]] ; then
+    cp ~/FictionTools/Templates/Interpreters/DOS_I_Z3.COM ~/FictionTools/Templates/Interpreters/DOSTEMP/MOONM.COM
+fi
 
 #place story in temporary directory
 mv STORY.DAT ~/FictionTools/Templates/Interpreters/DOSTEMP
 
 #copy content to Release directory
 cp -r ~/FictionTools/Templates/Interpreters/DOSTEMP Releases/DOS
+
+#post-cleanup
+if [ -f ~/FictionTools/Templates/Interpreters/DOSTEMP/MOONM.EXE ] ; then
+    rm ~/FictionTools/Templates/Interpreters/DOSTEMP/MOONM.EXE
+fi
+if [ -f ~/FictionTools/Templates/Interpreters/DOSTEMP/MOONM.COM ] ; then
+    rm ~/FictionTools/Templates/Interpreters/DOSTEMP/MOONM.COM
+fi
 
 #check for loading screen and arrange resources
 if ! [ -f Resources/SCREEN.PNG ] ; then
