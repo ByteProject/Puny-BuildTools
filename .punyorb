@@ -1,0 +1,5 @@
+# Puny BuildTools OrbStack resource file
+
+# OrbStack / MacOS related settings
+export PUNY_WINE_TARGETS_OFF=true
+
