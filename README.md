@@ -66,28 +66,39 @@ cd ~/FictionTools && chmod 755 kenobi && ./kenobi -p
 
 > This may take some time. Should you ever need to fix permissions again, simply run `kenobi -p`.
 
-Next, you need to make sure all environment variables and paths are properly set on your system. Launch `nano` to edit your Bash resource file via 
+Next, you need to make sure all environment variables and paths are properly set on your system. Launch `nano` to edit your Bash resource file. The next step depends on which host system you are using, so I recommend reading it carefully.
 
 ```
 nano ~/.bashrc
 ```
 
-and add this entry:
+In case you're on `Linux` add this entry:
 
 ```
 source ~/FictionTools/.punyrc
 ```
 
-In case you're on `Windows / WSL2`, the code needs to look like this instead:
+In case you're on `Windows / WSL2`, the entry needs to look like this instead:
 
 ```
 source ~/FictionTools/.punyrc
 source ~/FictionTools/.punywsl
 ```
 
+And for those on `MacOS`, make sure the entry looks like this:
+
+```
+source ~/FictionTools/.punyrc
+source ~/FictionTools/.punyorb
+```
+
 After you've made your changes, hit `CTRL X` to exit Nano. Make sure you select `Y` when you're asked to save the modified buffer.
 
-Another dependency is Wine, a compatibility layer that allows running Windows applications on Linux. To install Wine, type these three commands:
+Another dependency is Wine, a compatibility layer that allows running Windows applications on Linux. 
+
+> Note: MacOS users can skip this step as Wine won't run in OrbStack.
+
+To install Wine, type these three commands:
 
 ```
 sudo apt update && sudo apt install wine
@@ -375,6 +386,14 @@ Hacks are settings which you can add to the configuration file of your project t
 
 #### APPLE2_Z3_INFOCOM=true
 Builds Apple II Z-machine version 3 targets with Infocom's interpreter version K instead of Vezza. This hack is ignored if `ZVERSION 5` is defined in your project's configuration file.
+
+## Limitations
+
+There is only one limitation I am currently aware of and it affects `MacOS` hosts. OrbStack unfortunately does not support Wine. That means build targets that use Wine to execute Windows-binaries during the disk image creation process won't work. 
+
+> To be more precise: if you run the Puny BuildTools on `MacOS` you are not able to build disk images for `TRS80 Model 3` and `TRS80 Model 4`. If you try to, the TRS disk image builders will tell you that this is not supported on your host.
+
+I am currently looking into a workaround. The problem is the lack of tools that allow you to write TRS disk images on Linux or other *nix based operating systems.
 
 ## Credits
 
