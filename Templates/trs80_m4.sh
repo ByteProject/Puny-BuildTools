@@ -5,19 +5,25 @@
 #read config file 
 source config.sh
 
-echo -e "\ntrs80_m4.sh 2.5 - TRS80 Model 4 disk builder"
+echo -e "\ntrs80_m4.sh 2.6 - TRS80 Model 4 disk builder"
 echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 #story check / arrangement
 if ! [ -f ${STORY}.z${ZVERSION} ] ; then
     echo -e "Story file '${STORY}.z${ZVERSION}' not found. Operation aborted.\n"
-    exit 1;
+    exit 1
 fi 
+
+#check if Wine targets are disabled (currently the case on MacOS)
+if [[ -v PUNY_WINE_TARGETS_OFF ]] ; then
+     echo -e "Your host system does not support running Wine. Operation aborted.\n"
+     exit 1
+fi
 
 #abort if Wine is not installed
 if ! [ -f /usr/bin/wine ] ; then
     echo -e "You need Wine installed to build TRS80 Model 4 disks. Operation aborted.\n"
-    exit 1;
+    exit 1
 fi 
 
 #cleanup 
@@ -35,7 +41,7 @@ cp ~/FictionTools/Templates/Interpreters/TRS80_M4.dsk .
 mv TRS80_M4.dsk ${STORY}_trs80_m4.dsk
 wine ~/FictionTools/trswrite.exe -o ${STORY}_trs80_m4.dsk STORY.DAT
 printf "\n" # only cosmetical
-wine ~/FictionTools/trsread.exe -v ${STORY}_trs80_m4.dsk
+trs80-tool dir ${STORY}_trs80_m4.dsk
 
 #post cleanup
 rm STORY.DAT
