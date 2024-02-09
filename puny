@@ -35,8 +35,8 @@ do_compile()
   fi
 }
 
-printf "puny CLI 2.0.1_%s" "$gitversion"
-printf " | Helix Nebula\n\n"
+printf "puny CLI 2.1_%s" "$gitversion"
+printf " | Pillars of Creation\n\n"
 
 while getopts ':iectb:haosv' opt; do
   case "$opt" in
@@ -162,12 +162,12 @@ while getopts ':iectb:haosv' opt; do
       echo "Copyright (c) 2024, Stefan Vogt"
       echo "https://github.com/ByteProject/Puny-BuildTools"
       echo -e "\n| component versions: |"
-      echo "[CLI 2.0.1] [pi6 3.0] [bundle.sh 2.0] [Puny-Wan Kenobi 1.3]"
+      echo "[CLI 2.1] [pi6 3.0] [bundle.sh 2.0] [Puny-Wan Kenobi 1.3]"
       echo "[makescr.sh 1.0] [ifftool.sh 1.2] [cpcscr.sh 1.0] [degaspi1.sh 1.0]"
       echo -e "\n| module versions: |"
       echo "[c64 2.0] [amiga 2.0] [speccy 2.5] [cpc_pcw 2.5] [atari_st 2.0] [a8bit 3.0]"
-      echo "[dos 2.0] [msx 2.5] [bbc_acorn 2.2] [c128 2.0] [plus4 2.0] [apple2 2.6]" 
-      echo "[sam_coupe 2.5] [trs80_m3 2.5] [trs80_m4 2.5] [mega65 2.0] [macintosh 2.0]"
+      echo "[dos 2.1] [msx 2.5] [bbc_acorn 2.2] [c128 2.0] [plus4 2.0] [apple2 2.6]" 
+      echo "[sam_coupe 2.5] [trs80_m3 2.6] [trs80_m4 2.6] [mega65 2.0] [macintosh 2.0]"
       echo "[vic20_pet 1.5] [decrainbow 1.0] [trs_coco_dragon64 1.5] [osborne1 1.0]"
       echo -e "[ti99 1.5] [oric 1.5] [kaypro 1.0]\n"
       exit 0
