@@ -5,7 +5,7 @@
 * removed 'trsread' from binary distribution
 * added 'trs80-tool' to binary distribution
 * added Infocom's MS-DOS .z5 interpreter version 6J
-* TRS-80 modules now use 'trs80-tool'to list the disk directory
+* TRS-80 modules now use 'trs80-tool' to list the disk directory
 * MS-DOS module now builds projects with Infocom interpreters by default (lower memory footprint)
 * added OrbStack resource file '.punyorb' for MacOS hosts
 * modules using Wine now disabled on MacOS (TRS80 Model 3 & 4), as Wine doesn't work in OrbStack
