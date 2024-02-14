@@ -28,10 +28,16 @@ while getopts ':t:h' opt; do
       
         # by standard all possible z5/multi-z targets are enabled, 
         # all z3-only targets are disabled (see below)
-        zip -r ${STORY}_${RELEASE}.zip ${STORY}_apple2_s1.dsk ${STORY}_apple2_s2.dsk ${STORY}_speccy.dsk ${STORY}_amiga.adf ${STORY}_atari8bit.atr ${STORY}_c128.d71 ${STORY}_plus4.d64 ${STORY}_c64.d64 ${STORY}_mega65.d81 ${STORY}_cpc_pcw.dsk ${STORY}_atarist.st ${STORY}.z5 ${STORY}_bbc_elk.ssd ${STORY}_MSX.dsk CPM_Plus_speccy.dsk ${STORY}_mac.dsk ${STORY}_sam_coupe.cpm ${STORY}_trs80_m3.dsk ${STORY}_trs80_m4.dsk Pro-DOS-v2.dsk PlayIF.pdf readme.txt licenses.txt game.transcript DOS
+        zip -r ${STORY}_${RELEASE}.zip ${STORY}_apple2_s1.dsk ${STORY}_apple2_s2.dsk ${STORY}_speccy.dsk ${STORY}_amiga.adf ${STORY}_atari8bit.atr ${STORY}_c128.d71 ${STORY}_plus4.d64 ${STORY}_c64.d64 ${STORY}_mega65.d81 ${STORY}_cpc_pcw.dsk ${STORY}_atarist.st ${STORY}.z5 ${STORY}_bbc_elk.ssd ${STORY}_MSX.dsk CPM_Plus_speccy.dsk ${STORY}_mac.dsk ${STORY}_sam_coupe.cpm Pro-DOS-v2.dsk PlayIF.pdf readme.txt licenses.txt game.transcript DOS
 
         if [ -f ${STORY}_c128.d64 ] ; then
             zip ${STORY}_${RELEASE}.zip ${STORY}_c128.d64
+        fi
+        if [ -f ${STORY}_trs80_m3.dsk ] ; then
+            zip ${STORY}_${RELEASE}.zip ${STORY}_trs80_m3.dsk
+        fi
+        if [ -f ${STORY}_trs80_m4.dsk ] ; then
+            zip ${STORY}_${RELEASE}.zip ${STORY}_trs80_m4.dsk
         fi
 
         # these targets only support z3 and are deactivated by default, 
