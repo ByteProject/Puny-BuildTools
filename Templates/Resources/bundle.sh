@@ -1,5 +1,5 @@
 #!/bin/bash
-# Puny BuildTools v2.0
+# Puny BuildTools
 # bundle.sh - the game release archiver
 # (c) 2024 Stefan Vogt
 
@@ -8,8 +8,8 @@
 #read config file 
 source config.sh
 
-echo "bundle.sh 2.0 - the game release archiver"
-echo -e "Puny BuildTools 2.0, (c) 2024 Stefan Vogt\n"
+echo "bundle.sh 2.1 - the game release archiver"
+echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 while getopts ':t:h' opt; do
   case "$opt" in
@@ -29,6 +29,10 @@ while getopts ':t:h' opt; do
         # by standard all possible z5/multi-z targets are enabled, 
         # all z3-only targets are disabled (see below)
         zip -r ${STORY}_${RELEASE}.zip ${STORY}_apple2_s1.dsk ${STORY}_apple2_s2.dsk ${STORY}_speccy.dsk ${STORY}_amiga.adf ${STORY}_atari8bit.atr ${STORY}_c128.d71 ${STORY}_plus4.d64 ${STORY}_c64.d64 ${STORY}_mega65.d81 ${STORY}_cpc_pcw.dsk ${STORY}_atarist.st ${STORY}.z5 ${STORY}_bbc_elk.ssd ${STORY}_MSX.dsk CPM_Plus_speccy.dsk ${STORY}_mac.dsk ${STORY}_sam_coupe.cpm ${STORY}_trs80_m3.dsk ${STORY}_trs80_m4.dsk Pro-DOS-v2.dsk PlayIF.pdf readme.txt licenses.txt game.transcript DOS
+
+        if [ -f ${STORY}_c128.d64 ] ; then
+            zip ${STORY}_${RELEASE}.zip ${STORY}_c128.d64
+        fi
 
         # these targets only support z3 and are deactivated by default, 
         # add them to the zip line above if desired
