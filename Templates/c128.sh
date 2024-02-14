@@ -5,7 +5,7 @@
 #read config file 
 source config.sh
 
-echo -e "\nc128.sh 2.0 - C128 disk builder"
+echo -e "\nc128.sh 2.1 - C128 disk builder"
 echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 #story check / arrangement
@@ -17,6 +17,9 @@ fi
 #cleanup 
 if [ -f ${STORY}_c128.d71 ] ; then
     rm ${STORY}_c128.d71
+fi
+if [ -f ${STORY}_c128.d64 ] ; then
+    rm ${STORY}_c128.d64
 fi
 
 #compile
