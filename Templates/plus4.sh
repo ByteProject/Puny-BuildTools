@@ -5,7 +5,7 @@
 #read config file 
 source config.sh
 
-echo -e "\nplus4.sh 2.0 - Plus/4 disk builder"
+echo -e "\nplus4.sh 2.1 - Plus/4 disk builder"
 echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 #story check / arrangement
@@ -28,7 +28,7 @@ else
 fi
 
 #compile
-ruby ~/FictionTools/Templates/Interpreters/Ozmoo/make.rb -t:plus4 ${LOADSCRFLAG}-dc:2:9 -ss1:"${LABEL}" -ss2:"Interactive Fiction" -ss3:"${SUBTITLE}" -sw:6 ${STORY}.z${ZVERSION}
+ruby ~/FictionTools/Templates/Interpreters/Ozmoo/make.rb -t:plus4 ${LOADSCRFLAG}-dc:2:9 -ss1:"${LABEL}" -ss2:"Interactive Fiction" -ss3:"${SUBTITLE}" -sw:6 -dm:0 ${STORY}.z${ZVERSION}
 
 mv plus4_${STORY}.d64 ${STORY}_plus4.d64
 

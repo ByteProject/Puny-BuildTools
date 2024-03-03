@@ -5,7 +5,7 @@
 #read config file 
 source config.sh
 
-echo -e "\nmega65.sh 2.0 - MEGA65 disk builder"
+echo -e "\nmega65.sh 2.1 - MEGA65 disk builder"
 echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 #story check / arrangement
@@ -20,7 +20,7 @@ if [ -f ${STORY}_mega65.d81 ] ; then
 fi
 
 #create disk
-ruby ~/FictionTools/Templates/Interpreters/Ozmoo/make.rb -t:mega65 -dc:2:9 -ss1:"${LABEL}" -ss2:"Interactive Fiction" -ss3:"${SUBTITLE}" -sw:6 ${STORY}.z${ZVERSION}
+ruby ~/FictionTools/Templates/Interpreters/Ozmoo/make.rb -t:mega65 -dc:2:9 -ss1:"${LABEL}" -ss2:"Interactive Fiction" -ss3:"${SUBTITLE}" -sw:6 -dm:0 ${STORY}.z${ZVERSION}
 
 #post-notification and cleanup
 if [ -f Resources/screen16.iff ] ; then
