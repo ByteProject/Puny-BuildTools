@@ -1,5 +1,5 @@
 splashline0 
-	!pet "Moonmist / ZZAP!64", 0
+	!pet "Moonmist", 0
 splashline1
 	!pet "Interactive Fiction", 0
 splashline2
@@ -53,5 +53,5 @@ splashline7alt
 
 
 splash_index_col
-	!byte 11, 11, 12, 0, 0, 0, 0, 0
+	!byte 16, 11, 12, 0, 0, 0, 0, 0
 
