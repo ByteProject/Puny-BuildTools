@@ -1,2 +1,2 @@
 viewer.exe screen.png
-moonm
+moonm story.dat

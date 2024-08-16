@@ -1,1 +1,1 @@
-moonm
+moonm story.dat
