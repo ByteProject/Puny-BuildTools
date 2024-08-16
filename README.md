@@ -4,7 +4,7 @@ Welcome brave adventurer! If you're still into classic 8-bit / 16-bit home compu
 
 ## Current version
 
-`2.1` Pillars of Creation
+`2.2` Craters of Ganymede
 
 ## Build Targets
 
