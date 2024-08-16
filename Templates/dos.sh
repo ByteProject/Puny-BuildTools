@@ -5,7 +5,7 @@
 #read config file 
 source config.sh
 
-echo -e "\ndos.sh 2.1 - MS-DOS release builder"
+echo -e "\ndos.sh 2.2 - MS-DOS release builder"
 echo -e "Puny BuildTools, (c) 2024 Stefan Vogt\n"
 
 #story check / arrangement
@@ -26,7 +26,7 @@ if [[ $zvalue == 5 ]] ; then
     cp ~/FictionTools/Templates/Interpreters/DOS_I_Z5.EXE ~/FictionTools/Templates/Interpreters/DOSTEMP/MOONM.EXE
 fi
 if [[ $zvalue == 3 ]] ; then
-    cp ~/FictionTools/Templates/Interpreters/DOS_I_Z3.COM ~/FictionTools/Templates/Interpreters/DOSTEMP/MOONM.COM
+    cp ~/FictionTools/Templates/Interpreters/DOS_I_Z5.EXE ~/FictionTools/Templates/Interpreters/DOSTEMP/MOONM.EXE
 fi
 
 #place story in temporary directory
