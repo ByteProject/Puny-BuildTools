@@ -2,7 +2,7 @@
 
 ## 2.2 (Craters of Ganymede)
 
-* fixes and issue that causes BBC/Acorn to not build with >= Python 3.12
+* fixes an issue that causes BBC/Acorn to not build with >= Python 3.12
 * reverting DOS .z5 interpreter to Frotz since Infocom's is too buggy
 * fixes issue with DOS launch scripts not properly launching (UTF8 -> CP437)
 * bundling the latest Inform work in progress interpreter
