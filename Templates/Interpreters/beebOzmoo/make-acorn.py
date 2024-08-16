@@ -163,7 +163,7 @@ def prechecks():
             if version.startswith("1."):
                 c = version.split(".")
                 if len(c) >= 2:
-                    subversion = re.findall("^\d+", c[1])
+                    subversion = re.findall(r"^\d+", c[1])
                     if len(subversion) > 0 and int(subversion[0]) < 9:
                         die("You need beebasm 1.09 or later to build this")
     run_and_check(["beebasm", "--help"], output_filter=beebasm_version_check)
@@ -1101,7 +1101,7 @@ def substitute_text(s, d, f):
 
 
 def substitute(s, d, f):
-    c = re.split(b"(\$\{|\})", s)
+    c = re.split(rb"(\$\{|\})", s)
     result = b""
     i = 0
     while i < len(c):
