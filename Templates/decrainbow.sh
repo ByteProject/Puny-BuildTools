@@ -26,7 +26,7 @@ if [ -f ${STORY}_decrainbow.cpm ] ; then
 fi
 
 #copy resources
-cp ./Interpreters/decrainbow.cpm ./
+cp ~/FictionTools/Templates/Interpreters/decrainbow.cpm ./
 mv decrainbow.cpm ${STORY}_decrainbow.cpm
 
 #prepare story 

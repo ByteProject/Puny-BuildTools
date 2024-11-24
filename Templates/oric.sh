@@ -29,7 +29,7 @@ if [ -f ${STORY}_oric_2.dsk ] ; then
 fi
 
 #copy resources
-cp ./Interpreters/pinforic.dsk ./
+cp ~/FictionTools/Templates/Interpreters/pinforic.dsk ./
 mv pinforic.dsk ${STORY}_oric_1.dsk
 
 #prepare story file

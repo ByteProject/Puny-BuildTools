@@ -27,7 +27,7 @@ fi
 
 #create disk image for all versions except C64
 c1541 -format "${STORY},if" D64 "${STORY}_vic20_pet.d64" 8
-c1541 -attach "${STORY}_vic20_pet.d64" -write Interpreters/z3-vic "game-vic"
-c1541 -attach "${STORY}_vic20_pet.d64" -write Interpreters/z3-pet "game-pet"
+c1541 -attach "${STORY}_vic20_pet.d64" -write ~/FictionTools/Templates/Interpreters/z3-vic "game-vic"
+c1541 -attach "${STORY}_vic20_pet.d64" -write ~/FictionTools/Templates/Interpreters/z3-pet "game-pet"
 c1541 -attach "${STORY}_vic20_pet.d64" -write ${STORY}.z${ZVERSION} "z3 story,s"
-c1541 -attach "${STORY}_vic20_pet.d64" -write Interpreters/config.seq "config,s"
+c1541 -attach "${STORY}_vic20_pet.d64" -write ~/FictionTools/Templates/Interpreters/config.seq "config,s"

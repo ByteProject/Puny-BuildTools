@@ -29,7 +29,7 @@ if [ -f ${STORY}_dragon64.vdk ] ; then
 fi
 
 #copy resources
-cp Interpreters/trs_coco.dsk .
+cp ~/FictionTools/Templates/Interpreters/trs_coco.dsk .
 mv trs_coco.dsk ${STORY}_trs_coco.dsk
 
 # skip the first two tracks, they have the terp
@@ -44,10 +44,10 @@ dd if=${STORY}.z3 of=${STORY}_trs_coco.dsk conv=notrunc bs=1 skip=64512 seek=829
 touch ${STORY}_dragon64.vdk
 
 # append Dragon DOS header to file
-dd if=Interpreters/dragondos_header of=${STORY}_dragon64.vdk bs=1G oflag=append conv=notrunc
+dd if=~/FictionTools/Templates/Interpreters/dragondos_header of=${STORY}_dragon64.vdk bs=1G oflag=append conv=notrunc
 
 # append TRS CoCo disk image to file
 dd if=${STORY}_trs_coco.dsk of=${STORY}_dragon64.vdk bs=1G oflag=append conv=notrunc
 
 # fill Dragon disk image with bytes for the correct file size
-dd if=Interpreters/dragon_bytefill of=${STORY}_dragon64.vdk bs=1G oflag=append conv=notrunc
+dd if=~/FictionTools/Templates/Interpreters/dragon_bytefill of=${STORY}_dragon64.vdk bs=1G oflag=append conv=notrunc

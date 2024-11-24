@@ -26,7 +26,7 @@ if [ -f ${STORY}_ti99.dsk ] ; then
 fi
 
 #copy TI99/4a disk image template
-cp Interpreters/ti994a.dsk ./
+cp ~/FictionTools/Templates/Interpreters/ti994a.dsk ./
 mv ti994a.dsk ${STORY}_ti99.dsk
 
 #create TI99/4a story chunks
