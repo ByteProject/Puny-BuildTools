@@ -2,6 +2,7 @@
 
 ## 2.3 (Andromeda Calling)
 
+* various bugfixes in deprecated modules / templates
 * all.sh now can be run with switch -d to build deprecated targets
 * bundle.sh no longer skips deprecated targets, if found, they are added to the bundle
 * bundle.sh cleanup process improved
