@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.3 (Andromeda Calling)
+
+* all.sh now can be run with switch -d to build deprecated targets (Z-machine 3 only)
+* bundle.sh no longer skips deprecated targets, if found these are added
+* bundle.sh cleanup process improved
+* ProDOS template updated (SAM Coupe)
+* installation dependencies improved for Debian compatibility
+* installation instructions now with Wine32 disclaimer
+* installation instructions now allow WSL2/Linux users to opt out Wine32 targets (TRS80 Model 3 and 4)
+* revised documentation
+
 ## 2.2 (Craters of Ganymede)
 
 * fixes an issue that causes BBC/Acorn to not build with >= Python 3.12
