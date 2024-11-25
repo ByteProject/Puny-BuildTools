@@ -12,11 +12,13 @@ The following targets support Z-machine version 5 (XZIP) and Z-machine version 3
 
 _C64, Amiga, ZX Spectrum, Amstrad CPC/PCW, Atari ST, Atari 8-bit, MS-DOS, MSX, BBC Micro/Acorn Electron, C128, Plus/4, Apple II, SAM Coupe, TRS80 Model 3, TRS 80 Model 4, Mega65, classic Macintosh, modern PC._
 
-There are also a few deprecated targets available, only supporting Z-machine version 3:
+> Note: Puny BuildTools projects by default are configured to target Z-machine v5 and it's strongly recommended to keep it that way. The format is less restrictive and offers more options. 
+
+There are also a few deprecated targets available, coincidentally only supporting Z-machine version 3:
 
 _VIC20/PET, DEC Rainbow, TRS CoCo/Dragon64, Osborne1, Ti99/4a, Oric, Kaypro._
 
-> Note: Puny BuildTools projects by default are configured to target Z-machine v5 and it's strongly recommended to keep it that way. The format is less restrictive and offers more options. You can, however, force to build the deprecated targets either one by one using the `-b` switch for `Puny CLI` or by using the `-d` switch when running the `all.sh` switch from your project root. See `Puny CLI` documentation. 
+> Note: You can force to build the deprecated targets either one by one using the `-b` switch for `Puny CLI` or by using the `-d` switch when running the `all.sh` switch from your project root. See `Puny CLI` documentation. But beware: there are reasons why those systems are deprecated. You find these documented in the `Deprecated targets` section of this guide.
 
 You can use the built-in feature to compile your story from source but the project workflow allows to skip this step and use any given story file.
 
@@ -24,15 +26,15 @@ You can use the built-in feature to compile your story from source but the proje
 
 ## Host
 
-The Puny BuildTools are designed for `Linux (64-bit)` systems. They've been developed and extensively tested on `Ubuntu` and `Debian` but any derivate of the latter should be fine. 
+The Puny BuildTools are designed for `Linux (64-bit)` systems. They've been developed and extensively tested on `Debian`, which is the recommended system as it offers the most stability. Any derivate like `Ubuntu` should be fine though.
 
-If you're on `Windows 10` (or later) you can run the Puny BuildTools via [WSL2](https://learn.microsoft.com/en-us/windows/wsl/about).
+If you're on `Windows 10` (or later) you can run the Puny BuildTools via [WSL2](https://learn.microsoft.com/en-us/windows/wsl/about). Refer to the WSL2 docs on how to install Debian.
 
-If you work on `MacOS`, I can't recommend [OrbStack](https://orbstack.dev/) enough. Make sure you set up an Ubuntu machine with Intel architecture.
+If you work on `MacOS`, I can't recommend [OrbStack](https://orbstack.dev/) enough. Make sure you set up a Debian machine with Intel architecture. The OrbStack documentation covers this topic well.
 
 ## Installation
 
-Below instructions are intended for `Debian` based systems like `Ubuntu` and may vary if you are using a different distro. The recommended system is `Ubuntu`.
+Below instructions are intended for `Debian 12 "Bookworm"` (or later). Generally, the recommended system for the Puny BuildTools is `Debian` itself as it offers the most stability. As already stated, `Debian` derivates like `Ubuntu` or `Linux Mint `should be fine but remain untested.
 
 Open a Bash terminal. In your home directory, create a folder named `FictionTools` with 
 
@@ -391,11 +393,30 @@ Builds Apple II Z-machine version 3 targets with Infocom's interpreter version K
 
 ## Limitations
 
-There is only one limitation I am currently aware of and it affects `MacOS` hosts. OrbStack unfortunately does not support Wine. That means build targets that use Wine to execute Windows-binaries during the disk image creation process won't work. 
+- MacOS: You cannot build TRS80 Model 3 and 4 disks since OrbStack does not support Wine32.
+- Linux/WSL2: You can build TRS80 Model 3 and 4 disks but only if you have Wine32 installed.
 
-> To be more precise: if you run the Puny BuildTools on `MacOS` you are not able to build disk images for `TRS80 Model 3` and `TRS80 Model 4`. If you try to, the TRS disk image builders will tell you that this is not supported on your host.
+> The TRS disk image builders will tell you that this target is not supported on your host system if your host is MacOS (via OrbStack) or if you opted to not install Wine32 during the installation process following the Puny BuildTools installation guide.
 
-I am currently looking into a workaround. The problem is the lack of tools that allow you to write TRS disk images on Linux or other *nix based operating systems.
+## Deprecated targets
+
+Some of the build targets are deprecated and flagged as such in Puny CLI. I've tried to document the reasons why below. Note that the issues listed per system are not considered complete and you may encounter even more issues. You can force building deprecated targets either one-by-one using Puny CLI or using the `-d` flag when running the `all.sh` script in your project dir like this `./all.sh -d`.
+
+> Disclaimer: use deprecated targets at your own risk and don't come at me if something is not working as intended. It's recommended to only use build targets which are not flagged as deprecated in Puny CLI, since these have been tested well and offer a proven track of reliability.
+
+- VIC-20 / PET: Very slow third-party interpreter. Won't offer a good experience to players. You'll also need at least 32kb of RAM. On VIC-20, this requires you to plug in a memory-expansion cartridge. On PET, you may need to upgrade the built-in RAM to 32kb. So your game won't run out of the box on these machines.
+
+- DEC Rainbow 100: Due to the lack of emulators, this interpreter is completely untested and for that, cannot be recommended. This is the only interpreter that Infocom ever released for the DEC Rainbow and it is a very old interpreter. The last game that Infocom released for this machine was Infidel. If you, by any chance, get this running, I would expect bugs. 
+
+- Dragon64 / TRS CoCo: The Dragon64 interpreter seems to only work in emulations. The disk image is not suitable to be written to a real Dragon64 disk. If your target audience can live with that, you're good to go. Please note that you explicitly need a Dragon64, as the interpreter won't run on a Dragon32 machine. Since the Dragon and the TRS CoCo are relatives, the Dragon interpreter is based on the CoCo interpreter. The CoCo target on the other hand uses a mature interpreter, which seems to be save to use. It is slow though and has a narrow screen so it doesn't offer the best experience.
+
+- Osborne 1: This is a generic CPM interpreter which does not offer a statusline. Note that Osborne1 disks are very small (only 91kb) and you need to subtract the interpreter and some system files from that value. If your story file exceeds 68k, it makes no sense to build this target.
+
+- TI99/4a: Infocom stopped supporting the TI99 very early. This target uses a third-party interpreter which generally works okay if you stick to its limitations. If your story file is below 52k, the game won't run. Anything above 98k could also be problematic. Some story files I tested did not work, some did. I never got my head around why.
+
+- Oric: This interpreter generally works well but would require more testing. And it needs a modified drive in case you want to play this on real hardware. Fine to use with emulators though.
+
+- Kaypro: Generic third-party CPM interpreter which doesn't offer a statusline. I found this interpreter on the internet but I was never able to actually test it on a Kaypro machine. The disk image cannot be loaded in an emulator since the Kaypro emulators out there only support awkward formats and not the output generated cpmtools.
 
 ## Credits
 
