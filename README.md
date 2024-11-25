@@ -4,7 +4,7 @@ Welcome brave adventurer! If you're still into classic 8-bit / 16-bit home compu
 
 ## Current version
 
-`2.2` Craters of Ganymede
+`2.3` Andromeda Calling
 
 ## Build Targets
 
@@ -16,9 +16,11 @@ There are also a few deprecated targets available, only supporting Z-machine ver
 
 _VIC20/PET, DEC Rainbow, TRS CoCo/Dragon64, Osborne1, Ti99/4a, Oric, Kaypro._
 
-> Note: Puny BuildTools projects by default are configured to target Z-machine v5 and it's strongly recommended to keep it that way. The format is less restrictive and offers more options.
+> Note: Puny BuildTools projects by default are configured to target Z-machine v5 and it's strongly recommended to keep it that way. The format is less restrictive and offers more options. You can, however, force to build the deprecated targets either one by one using the `-b` switch for `Puny CLI` or by using the `-d` switch when running the `all.sh` switch from your project root. See `Puny CLI` documentation. 
 
 You can use the built-in feature to compile your story from source but the project workflow allows to skip this step and use any given story file.
+
+> Note: Puny BuildTools are not intended to target mixed Z-machine versions. You define the Z-machine in your config file. Once set, all targets are built for said version. 
 
 ## Host
 
@@ -41,7 +43,7 @@ mkdir ~/FictionTools
 The Puny BuildTools require some dependencies. Install these via a single command: 
 
 ```
-sudo apt update && sudo apt install frotz cpmtools dosfstools mtools git ruby imagemagick zip python3-pip
+sudo apt update && sudo apt install frotz cpmtools dosfstools mtools git ruby imagemagick zip python3-pip libsdl1.2debian libsdl2-2.0-0 python-is-python3
 ```
 
 When prompted to install additional dependencies, type `Y` to confirm. Switch to the folder you created and use Git to load the newest version from GitHub:
@@ -78,6 +80,13 @@ In case you're on `Linux` add this entry:
 source ~/FictionTools/.punyrc
 ```
 
+For `MacOS`, make sure the entry looks like this:
+
+```
+source ~/FictionTools/.punyrc
+source ~/FictionTools/.punyorb
+```
+
 In case you're on `Windows / WSL2`, the entry needs to look like this instead:
 
 ```
@@ -85,20 +94,13 @@ source ~/FictionTools/.punyrc
 source ~/FictionTools/.punywsl
 ```
 
-And for those on `MacOS`, make sure the entry looks like this:
-
-```
-source ~/FictionTools/.punyrc
-source ~/FictionTools/.punyorb
-```
+> Note to Linux and WSL2 users: The TRS80 Model 3 and TRS80 Model 4 targets require Wine32 to be installed. For this, your system will have to add the i386 architecture. If you think this is a fundamental overkill (I personally do), then add the line `source ~/FictionTools/.punyorb` in addition to the above. This will deactivate Wine32 targets and if you then try to build a TRS80 Model 3 or 4 disk image, you get a message that the architecture is not supported by your host system and is skipped.
 
 After you've made your changes, hit `CTRL X` to exit Nano. Make sure you select `Y` when you're asked to save the modified buffer.
 
-Another dependency is Wine, a compatibility layer that allows running Windows applications on Linux. 
+> Note: MacOS users have to skip the next step (Wine installation) as Wine32 won't run in OrbStack. Linux and WSL2 users that opted against the overkill of installing Wine32 should skip the next step, too.
 
-> Note: MacOS users can skip this step as Wine won't run in OrbStack.
-
-To install Wine, type these three commands:
+Considering all the disclaimers above, if you intend to install Wine, type these three commands:
 
 ```
 sudo apt update && sudo apt install wine
@@ -252,7 +254,7 @@ You'll find the resulting disk images right in your project folder. It's really 
 ./all.sh
 ```
 
-and it will build all supported targets at once. To be more precise, it is configured to build all targets at once that support Z-machine version 5, which means you get 17 disk images for 19 classic computer systems. The whole build process takes only a few seconds. You can edit the `all.sh` script of course to suite your needs, for example to activate the deprecated z3 targets. That's why the script is placed locally in your project's root folder, so you may alter it based on the project's scope.
+and it will build all supported targets at once. To be more precise, it is configured to build all targets at once that support Z-machine version 5, which means you get 17 disk images for 19 classic computer systems. The whole build process takes only a few seconds. You can edit the `all.sh` script of course to suite your needs. That's why the script is placed locally in your project's root folder, so you may alter it based on the project's scope. In case you want it to build the deprecated targets as well, run it with the `-d` switch, like this `./all.sh -d`. Deprecated targets are only available if targeting Z-machine version 3, so if you build your project for Z-machine 5, these are skipped anyway.
 
 There is one more thing to know. You probably noticed the `Resources` folder that has been created when you initiated the project directory. Puny CLI will look into this folder upon building a target. When it finds a pixel artwork with the right format in it, Puny CLI will build a disk image for you with a proper loading screen. Not all targets support loading screens, but many targets do. If you look into the `Resources` folder, you'll find `pixel_guide.txt`, which explains in detail how to create the pixel artworks for all supported systems. 
 
