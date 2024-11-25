@@ -12,17 +12,15 @@ The following targets support Z-machine version 5 (XZIP) and Z-machine version 3
 
 _C64, Amiga, ZX Spectrum, Amstrad CPC/PCW, Atari ST, Atari 8-bit, MS-DOS, MSX, BBC Micro/Acorn Electron, C128, Plus/4, Apple II, SAM Coupe, TRS80 Model 3, TRS 80 Model 4, Mega65, classic Macintosh, modern PC._
 
-> Note: Puny BuildTools projects by default are configured to target Z-machine v5 and it's strongly recommended to keep it that way. The format is less restrictive and offers more options. 
+> Note: Puny BuildTools projects by default are configured to target Z-machine version 5 and it's strongly recommended to keep it that way. The format is less restrictive and offers more options. The Z-machine version is defined in your project's config file. The BuildTools will ignore other Z-machine versions than 5 (default) or 3. Please consider that the Puny BuildTools are not intended to target mixed Z-machine versions. All targets will be built using the Z-machine version defined in your project's config file.
+
+You can use the built-in feature to compile your story from source but the project workflow allows to skip this step and use any given story file.
 
 There are also a few deprecated targets available, coincidentally only supporting Z-machine version 3:
 
 _VIC20/PET, DEC Rainbow, TRS CoCo/Dragon64, Osborne1, Ti99/4a, Oric, Kaypro._
 
 > Note: You can force to build the deprecated targets either one by one using the `-b` switch for `Puny CLI` or by using the `-d` switch when running the `all.sh` switch from your project root. See `Puny CLI` documentation. But beware: there are reasons why those systems are deprecated. You find these documented in the `Deprecated targets` section of this guide.
-
-You can use the built-in feature to compile your story from source but the project workflow allows to skip this step and use any given story file.
-
-> Note: Puny BuildTools are not intended to target mixed Z-machine versions. You define the Z-machine in your config file. Once set, all targets are built for said version. 
 
 ## Host
 
