@@ -1,6 +1,6 @@
 #!/bin/bash
 # puny CLI - The Puny BuildTools command-line interface 
-# Copyright (c) 2024 Stefan Vogt
+# Copyright (c) 2025 Stefan Vogt
 
 #read config file
 if [ -f config.sh ] ; then
@@ -35,8 +35,8 @@ do_compile()
   fi
 }
 
-printf "puny CLI 2.3_%s" "$gitversion"
-printf " | Andromeda Calling\n\n"
+printf "puny CLI 2.4_%s" "$gitversion"
+printf " | Unknown Transmission\n\n"
 
 while getopts ':iectb:haosv' opt; do
   case "$opt" in
@@ -159,7 +159,7 @@ while getopts ':iectb:haosv' opt; do
 
     v) # version information
       echo "the Puny BuildTools command-line interface"
-      echo "Copyright (c) 2024, Stefan Vogt"
+      echo "Copyright (c) 2025, Stefan Vogt"
       echo "https://github.com/ByteProject/Puny-BuildTools"
       echo -e "\n| component versions: |"
       echo "[CLI 2.2] [pi6 3.0] [bundle.sh 2.2] [Puny-Wan Kenobi 1.3]"
