@@ -1,6 +1,6 @@
 #!/bin/bash
 # pi6 3.0 - the Inform 6 command-line wrapper
-# Puny Buildtools, (c) 2024 Stefan Vogt
+# Puny Buildtools, (c) 2025 Stefan Vogt
 
 source ~/FictionTools/.pi6rc
 inform=~/FictionTools/inform
@@ -19,7 +19,7 @@ main()
 usage()
 {
 	printf "pi6 3.0 - the Inform 6 command-line wrapper\n"
-	printf "Puny BuildTools, (c) 2024 Stefan Vogt\n\n"
+	printf "Puny BuildTools, (c) 2025 Stefan Vogt\n\n"
 	printf "Usage: pi6 game.inf\n"
 	printf "       pi6 [-3] game.inf\n"
 	printf "       pi6 [-5] game.inf\n\n"
