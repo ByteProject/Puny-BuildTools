@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.4 (Unknown Transmission)
+
+* updated Inform 6 compiler to latest trunk
+* updated ZAbbrevMaker to newest version 0.11, tool now called zabbrev
+
 ## 2.3 (Andromeda Calling)
 
 * various bugfixes in deprecated modules / templates
